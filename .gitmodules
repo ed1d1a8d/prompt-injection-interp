@@ -1,0 +1,3 @@
+[submodule "submodules/acdc"]
+	path = submodules/acdc
+	url = git@github.com:ed1d1a8d/pii-acdc.git
