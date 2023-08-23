@@ -12,6 +12,7 @@ RUN apt-get update -q \
   && apt-get install -y \
   curl \
   git \
+  htop \
   nginx \
   openssh-server \
   python3.10 \
