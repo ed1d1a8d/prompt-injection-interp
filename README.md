@@ -34,7 +34,7 @@ see https://github.com/microsoft/vscode-remote-release/issues/8544#issuecomment-
 If you want to update the container,
 run the following from the root of the repo:
 ```
-docker build -t tonytwang/pii:main .
+docker build . -f docker/Dockerfile -t tonytwang/pii:main
 docker push tonytwang/pii:main
 ```
 You can check the image here:
