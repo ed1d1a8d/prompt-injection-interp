@@ -2,11 +2,14 @@
 # We only pin the versions of critical libraries (e.g. torch).
 
 # Pytorch
-torch==2.0.1
-torchvision==0.15.2
+torch==1.13.1
+torchvision==0.14.1
 
 # Huggingface transformers
 transformers==4.32.0
+
+# Transformer Lens
+transformer_lens
 
 # Deep learning helpers
 einops

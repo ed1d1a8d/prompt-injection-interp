@@ -1,5 +1,7 @@
 # To build, navigate to the *root* of this repo and run:
-# docker build . -t tonytwang/pii:main
+#   docker build . -t tonytwang/pii:main
+# You may also want to push the image to Docker Hub:
+#   docker push tonytwang/pii:main
 
 FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
@@ -18,6 +20,12 @@ RUN apt-get update -q \
   wget \
   # python
   python3.10-venv \
+  # ACDC
+  build-essential \
+  graphviz \
+  graphviz-dev \
+  libgl1-mesa-glx \
+  python3.10-dev \
   # Clean up
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
