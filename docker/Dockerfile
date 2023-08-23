@@ -3,7 +3,7 @@
 # You may also want to push the image to Docker Hub:
 #   docker push tonytwang/pii:main
 
-FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
+FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04 AS base
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -64,9 +64,18 @@ RUN /home/mier/.local/bin/micromamba env create -y -n pii python=3.10
 # Install pip requirements
 RUN /home/mier/.local/bin/micromamba run -n pii \
   pip install --no-cache-dir --upgrade pip setuptools
-COPY requirements.txt downloads/requirements.txt
+COPY --chown=mier requirements.txt downloads/requirements.txt
 RUN /home/mier/.local/bin/micromamba run -n pii \
   pip install --no-cache-dir -r downloads/requirements.txt
 
-COPY docker/start.sh downloads/start.sh
+# Install vscode server
+FROM base AS vscode
+RUN curl -Lk \
+  'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64'\
+  --output downloads/vscode_cli.tar.gz
+RUN tar -xf downloads/vscode_cli.tar.gz
+
+FROM vscode AS final
+COPY --from=vscode --chown=mier /home/mier/code code
+COPY --chown=mier docker/start.sh downloads/start.sh
 CMD ["downloads/start.sh"]
