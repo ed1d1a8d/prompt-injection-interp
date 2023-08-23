@@ -68,14 +68,6 @@ COPY --chown=mier requirements.txt downloads/requirements.txt
 RUN /home/mier/.local/bin/micromamba run -n pii \
   pip install --no-cache-dir -r downloads/requirements.txt
 
-# Install vscode server
-FROM base AS vscode
-RUN curl -Lk \
-  'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64'\
-  --output downloads/vscode_cli.tar.gz
-RUN tar -xf downloads/vscode_cli.tar.gz
-
-FROM vscode AS final
-COPY --from=vscode --chown=mier /home/mier/code code
+# Copy start script
 COPY --chown=mier docker/start.sh downloads/start.sh
 CMD ["downloads/start.sh"]
