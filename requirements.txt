@@ -7,9 +7,17 @@ torchvision==0.14.1
 
 # Huggingface transformers
 transformers==4.32.0
+accelerate
+
+# Llama stuff
+sentencepiece
 
 # Transformer Lens
 transformer_lens
+
+# ACDC
+# -e submodules/acdc
+networkx
 
 # Deep learning helpers
 einops
