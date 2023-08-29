@@ -51,15 +51,16 @@ RUN pip install --no-cache-dir --upgrade --no-warn-script-location pip setuptool
 RUN pip install --no-cache-dir --no-warn-script-location jupyterlab
 
 # Install micromamba
-ARG PREFIXLOCATION=/home/mier/.micromamba
-ARG MAMBA_ROOT_PREFIX=/home/mier/.micromamba
-ARG CONDA_FORGE_YES=yes
-RUN curl -L -o install_micromamba.sh micro.mamba.pm/install.sh && \
-  bash install_micromamba.sh && \
-  rm install_micromamba.sh
-# RUN . /home/mier/.bashrc
+# https://mamba.readthedocs.io/en/latest/micromamba-installation.html#manual-installation
+RUN curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+RUN mkdir -p .local/bin && mv bin/micromamba .local/bin && rmdir bin
+RUN .local/bin/micromamba shell init -s bash -p /home/mier/.micromamba
+RUN .local/bin/micromamba config append channels conda-forge \
+  && .local/bin/micromamba config append channels nodefaults \
+  && .local/bin/micromamba config set channel_priority strict
 
 # Create micromamba environment
+ARG MAMBA_ROOT_PREFIX=/home/mier/.micromamba
 RUN /home/mier/.local/bin/micromamba env create -y -n pii python=3.10
 
 # Install pip requirements
