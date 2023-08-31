@@ -70,6 +70,9 @@ COPY --chown=mier requirements.txt downloads/requirements.txt
 RUN /home/mier/.local/bin/micromamba run -n pii \
   pip install --no-cache-dir -r downloads/requirements.txt
 
+# Set up git credential store
+RUN git config --global credential.helper store
+
 # Copy start script
 COPY --chown=mier docker/start.sh downloads/start.sh
 CMD ["downloads/start.sh"]
