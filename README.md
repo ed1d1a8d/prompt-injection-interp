@@ -1,6 +1,22 @@
 # prompt-injection-interp
 
+### Repository setup
+Clone the repository (recursively to get the submodules) and then run:
+```
+pip install -r requirements.txt
+pip install -e .
+```
+The requirements.txt step should be unnecessary if you are runn from the docker container.
+
+### AC/DC setup
+This is WIP by Tony and may not work, but to setup AC/DC, run:
+```
+pip install -e submodules/acdc
+```
+
 ### Hofvarpnir instructions
+TODO(tony): Support secrets
+
 Launch a devbox on Hofvarpnir with the following command:
 ```
 ctl devbox run \
