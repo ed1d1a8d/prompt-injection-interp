@@ -4,8 +4,9 @@
 Clone the repository (recursively to get the submodules) and then run:
 ```
 pip install -r requirements.txt
+pip install -e .
 ```
-This step should be unnecessary if you are runn from the docker container.
+The requirements.txt step should be unnecessary if you are runn from the docker container.
 
 ### AC/DC setup
 This is WIP by Tony and may not work, but to setup AC/DC, run:
