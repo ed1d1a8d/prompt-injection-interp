@@ -1,6 +1,5 @@
 import torch
 import transformer_lens.utils as tl_utils
-from rich import print as rprint
 from transformer_lens import HookedTransformer
 
 
