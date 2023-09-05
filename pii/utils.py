@@ -11,7 +11,8 @@ def get_top_responses(
     n_continuation_tokens: int = 5,
     prepend_bos: bool | None = None,
     print_prompt: bool = False,
-) -> None:
+    return_token_ids: bool = False,
+) -> None | tuple[torch.Tensor, list[str]]:
     """
     Prints the most likely responses to a prompt.
     Adapted from transformer_lens.utils.test_prompt.
@@ -56,3 +57,7 @@ def get_top_responses(
             f"Prob: {prob:6.2%} "
             f"Tokens: |{'|'.join([model.to_string(t) for t in continuation_tokens])}|"
         )
+    
+    #we return the top k token ids and token strings
+    return sort_idxs[:top_k], [model.to_string(t) for t in sort_idxs[:top_k]]
+
