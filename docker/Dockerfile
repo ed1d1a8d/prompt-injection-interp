@@ -1,5 +1,5 @@
 # To build, navigate to the *root* of this repo and run:
-#   docker build . -f docker/Dockerfile -t tonytwang/pii:main
+#   DOCKER_BUILDKIT=1 docker build . -f docker/Dockerfile -t tonytwang/pii:main --secret id=hf_token,src=docker/.hf_token
 # You may also want to push the image to Docker Hub:
 #   docker push tonytwang/pii:main
 
@@ -72,6 +72,20 @@ RUN /home/mier/.local/bin/micromamba run -n pii \
 
 # Set up git credential store
 RUN git config --global credential.helper store
+
+
+FROM base AS hf-downloads
+
+COPY --chown=mier docker/dl_hf_models.py downloads/dl_hf_models.py
+RUN --mount=type=secret,id=hf_token,uid=1000 \
+  /home/mier/.local/bin/micromamba run -n pii \
+  python downloads/dl_hf_models.py
+
+
+FROM base AS final
+
+# Copy huggingface cache
+COPY --from=hf-downloads /home/mier/.cache/huggingface /home/mier/.cache/huggingface
 
 # Copy start script
 COPY --chown=mier docker/start.sh downloads/start.sh

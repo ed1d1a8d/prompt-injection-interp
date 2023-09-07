@@ -4,3 +4,6 @@ __pycache__
 
 # Hofvarpnir generated binary for vscode
 code
+
+# Huggingface token
+docker/.hf_token
