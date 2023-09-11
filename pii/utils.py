@@ -10,6 +10,7 @@ def get_top_responses(
     n_continuation_tokens: int = 5,
     prepend_bos: bool | None = None,
     print_prompt: bool = False,
+    use_kv_cache: bool = True,
 ) -> None:
     """
     Prints the most likely responses to a prompt.
@@ -47,6 +48,7 @@ def get_top_responses(
             prepend_bos=prepend_bos,
             verbose=False,
             temperature=0,
+            use_past_kv_cache=use_kv_cache,
         )[0][prompt_tokens.shape[1] :]
 
         print(

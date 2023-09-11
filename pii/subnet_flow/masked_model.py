@@ -30,33 +30,30 @@ class PerTokenMaskedTransformer(nn.Module):
         # Allows for disabling of masks
         self.masks_active = True
 
-        mask_dict: dict[str, nn.Parameter] = {}
+        self.masks = nn.ParameterDict()
         for hp in get_hook_points(tl_model):
-            include_patterns = ["attn.hook_z", "mlp_out"]
+            # include_patterns = ["attn.hook_z", "mlp_out"]
+            include_patterns = ["mlp_out", "attn_out"]
             if not any(pattern in hp.name for pattern in include_patterns):
                 continue
 
-            mask = nn.Parameter(
+            self.masks[self.get_mask_key(hp)] = nn.Parameter(
                 torch.ones(
                     size=(self.n_tokens,),
                     dtype=torch.float32,
                     device=self.device,
                 )
             )
-            key = (
-                hp.name.replace(".", "_")
-                .replace("blocks_", "")
-                .replace("hook_", "")
-            )
-            mask_dict[key] = mask
 
             def mask_hook(
                 act: Float[torch.Tensor, "batch token head_index d_head"]
                 | Float[torch.Tensor, "batch token d_model"],
-                hook: HookPoint,  # Unused
+                hook: HookPoint,
             ):
                 if not self.masks_active:
                     return act
+
+                mask = self.get_mask(hook)
 
                 # Pad mask with 1s to match act
                 mask_padded = torch.cat(
@@ -70,25 +67,34 @@ class PerTokenMaskedTransformer(nn.Module):
                     ]
                 )
 
-                if "mlp_out" in hook.name:
-                    return act * einops.rearrange(
-                        mask_padded, "token -> 1 token 1"
+                mask_reshaped = einops.rearrange(
+                    mask_padded, "token -> 1 token"
+                )
+                while mask_reshaped.ndim < act.ndim:
+                    mask_reshaped = einops.rearrange(
+                        mask_reshaped, "... -> ... 1"
                     )
-                else:
-                    return act * einops.rearrange(
-                        mask_padded, "token -> 1 token 1 1"
-                    )
+
+                return act * mask_reshaped
 
             hp.remove_hooks(including_permanent=True)
             hp.add_perma_hook(hook=mask_hook)
-
-        self.masks = nn.ParameterDict(mask_dict)
 
         # TODO: Support adding masks to attention patterns
 
     @property
     def device(self):
         return next(self.parameters()).device
+
+    def get_mask_key(self, hp: HookPoint):
+        return (
+            hp.name.replace(".", "_")
+            .replace("blocks_", "")
+            .replace("hook_", "")
+        )
+
+    def get_mask(self, hp: HookPoint):
+        return self.masks[self.get_mask_key(hp)]
 
     def forward(self, *args, **kwargs):
         """Convenience method that calls out to the underlying tl_model."""
