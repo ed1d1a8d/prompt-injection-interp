@@ -53,5 +53,5 @@ def get_top_responses(
             f"Rank {i}. "
             f"Logit: {logit:5.2f} "
             f"Prob: {prob:6.2%} "
-            f"Tokens: |{'|'.join([model.to_string(t) for t in continuation_tokens])}|"
+            f"Tokens: ({continuation_tokens[0]:5d}) |{'|'.join([model.to_string(t) for t in continuation_tokens])}|"
         )
