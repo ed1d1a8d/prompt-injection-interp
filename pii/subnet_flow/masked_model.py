@@ -15,7 +15,12 @@ def get_hook_points(model: nn.Module):
 
 
 class PerTokenMaskedTransformer(nn.Module):
-    def __init__(self, tl_model: HookedTransformer, base_prompt: str):
+    def __init__(
+        self,
+        tl_model: HookedTransformer,
+        base_prompt: str,
+        mask_start_idx: int = 0,
+    ):
         """
         Warning: This will modify the transformer in-place with perma-hooks.
         It will clear existing perma-hooks in the places where it adds new ones.
@@ -26,9 +31,12 @@ class PerTokenMaskedTransformer(nn.Module):
         self.tl_model = tl_model
         self.tl_model.requires_grad_(False)
         self.n_tokens = tl_model.to_tokens(base_prompt).shape[1]
+        self.mask_start_idx = mask_start_idx
 
         # Allows for disabling of masks
         self.masks_active = True
+
+        self.zero_threshold = 0.0
 
         self.masks = nn.ParameterDict()
         for hp in get_hook_points(tl_model):
@@ -38,11 +46,7 @@ class PerTokenMaskedTransformer(nn.Module):
                 continue
 
             self.masks[self.get_mask_key(hp)] = nn.Parameter(
-                torch.ones(
-                    size=(self.n_tokens,),
-                    dtype=torch.float32,
-                    device=self.device,
-                )
+                self.get_ones_vector(self.n_tokens - self.mask_start_idx),
             )
 
             def mask_hook(
@@ -58,11 +62,10 @@ class PerTokenMaskedTransformer(nn.Module):
                 # Pad mask with 1s to match act
                 mask_padded = torch.cat(
                     [
+                        self.get_ones_vector(self.mask_start_idx),
                         mask,
-                        torch.ones(
-                            size=(act.shape[1] - self.n_tokens,),
-                            dtype=mask.dtype,
-                            device=mask.device,
+                        self.get_ones_vector(
+                            max(0, act.shape[1] - self.n_tokens)
                         ),
                     ]
                 )
@@ -75,12 +78,17 @@ class PerTokenMaskedTransformer(nn.Module):
                         mask_reshaped, "... -> ... 1"
                     )
 
-                return act * mask_reshaped
+                return (
+                    act * mask_reshaped * (mask_reshaped > self.zero_threshold)
+                )
 
             hp.remove_hooks(including_permanent=True)
             hp.add_perma_hook(hook=mask_hook)
 
         # TODO: Support adding masks to attention patterns
+
+    def get_ones_vector(self, n: int):
+        return torch.ones(size=(n,), dtype=torch.float32, device=self.device)
 
     @property
     def device(self):
