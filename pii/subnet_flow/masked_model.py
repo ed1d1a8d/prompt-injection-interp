@@ -40,14 +40,21 @@ class PerTokenMaskedTransformer(nn.Module):
 
         self.masks = nn.ParameterDict()
         for hp in get_hook_points(tl_model):
-            # include_patterns = ["attn.hook_z", "mlp_out"]
-            include_patterns = ["mlp_out", "attn_out"]
+            include_patterns = ["attn.hook_z", "attn_out", "mlp_out"]
             if not any(pattern in hp.name for pattern in include_patterns):
                 continue
 
-            self.masks[self.get_mask_key(hp)] = nn.Parameter(
-                self.get_ones_vector(self.n_tokens - self.mask_start_idx),
-            )
+            if "attn.hook_z" in hp.name:
+                self.masks[self.get_mask_key(hp)] = nn.Parameter(
+                    self.get_ones_vector(
+                        self.n_tokens - self.mask_start_idx,
+                        self.tl_model.cfg.n_heads,
+                    ),
+                )
+            else:
+                self.masks[self.get_mask_key(hp)] = nn.Parameter(
+                    self.get_ones_vector(self.n_tokens - self.mask_start_idx),
+                )
 
             def mask_hook(
                 act: Float[torch.Tensor, "batch token head_index d_head"]
@@ -57,26 +64,8 @@ class PerTokenMaskedTransformer(nn.Module):
                 if not self.masks_active:
                     return act
 
-                mask = self.get_mask(hook)
-
-                # Pad mask with 1s to match act
-                mask_padded = torch.cat(
-                    [
-                        self.get_ones_vector(self.mask_start_idx),
-                        mask,
-                        self.get_ones_vector(
-                            max(0, act.shape[1] - self.n_tokens)
-                        ),
-                    ]
-                )
-
-                mask_reshaped = einops.rearrange(
-                    mask_padded, "token -> 1 token"
-                )
-                while mask_reshaped.ndim < act.ndim:
-                    mask_reshaped = einops.rearrange(
-                        mask_reshaped, "... -> ... 1"
-                    )
+                mask_padded = self.get_padded_mask(hook, act.shape[1])
+                mask_reshaped = einops.rearrange(mask_padded, "... -> 1 ... 1")
 
                 return (
                     act * mask_reshaped * (mask_reshaped > self.zero_threshold)
@@ -87,12 +76,12 @@ class PerTokenMaskedTransformer(nn.Module):
 
         # TODO: Support adding masks to attention patterns
 
-    def get_ones_vector(self, n: int):
-        return torch.ones(size=(n,), dtype=torch.float32, device=self.device)
-
     @property
     def device(self):
         return next(self.parameters()).device
+
+    def get_ones_vector(self, *size: int):
+        return torch.ones(size=size, dtype=torch.float32, device=self.device)
 
     def get_mask_key(self, hp: HookPoint):
         return (
@@ -101,8 +90,23 @@ class PerTokenMaskedTransformer(nn.Module):
             .replace("hook_", "")
         )
 
-    def get_mask(self, hp: HookPoint):
-        return self.masks[self.get_mask_key(hp)]
+    def get_padded_mask(self, hp: HookPoint, target_len: int):
+        assert target_len >= self.n_tokens
+
+        mask = self.masks[self.get_mask_key(hp)]
+
+        mask_shape = mask.shape
+        prefix_shape = (self.mask_start_idx,) + mask_shape[1:]
+        suffix_shape = (target_len - self.n_tokens,) + mask_shape[1:]
+
+        return torch.cat(
+            [
+                self.get_ones_vector(*prefix_shape),
+                mask,
+                self.get_ones_vector(*suffix_shape),
+            ],
+            dim=0,
+        )
 
     def forward(self, *args, **kwargs):
         """Convenience method that calls out to the underlying tl_model."""
