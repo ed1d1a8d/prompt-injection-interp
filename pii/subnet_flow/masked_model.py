@@ -45,7 +45,7 @@ class PerTokenMaskedTransformer(nn.Module):
             include_patterns = [
                 "attn.hook_z",
                 "attn_out",
-                # "attn_scores",
+                "attn_scores",
                 "mlp_out",
             ]
             if not any(pattern in hp.name for pattern in include_patterns):
@@ -59,12 +59,13 @@ class PerTokenMaskedTransformer(nn.Module):
                     ),
                 )
             elif "attn_scores" in hp.name:
-                raise NotImplementedError
                 self.masks[self.get_mask_key(hp)] = nn.Parameter(
-                    self.get_ones_vector(
-                        self.tl_model.cfg.n_heads,
-                        self.n_tokens - self.mask_start_idx,
-                        self.n_tokens - self.mask_start_idx,
+                    torch.tril(
+                        self.get_ones_vector(
+                            self.tl_model.cfg.n_heads,
+                            self.n_tokens - self.mask_start_idx,
+                            self.n_tokens - self.mask_start_idx,
+                        )
                     ),
                 )
             else:
@@ -74,8 +75,8 @@ class PerTokenMaskedTransformer(nn.Module):
 
             def mask_hook(
                 act: Float[torch.Tensor, "batch token head_index d_head"]
-                | Float[torch.Tensor, "batch token d_model"]
-                | Float[torch.Tensor, "batch token token"],
+                | Float[torch.Tensor, "batch head_index token token"]
+                | Float[torch.Tensor, "batch token d_model"],
                 hook: HookPoint,
             ):
                 if not self.masks_active:
@@ -91,13 +92,32 @@ class PerTokenMaskedTransformer(nn.Module):
                 if "attn.hook_z" in hook.name:
                     act[
                         :, self.mask_start_idx : self.n_tokens, :, :
-                    ] *= einops.rearrange(mask, "... -> 1 ... 1")
+                    ] *= einops.rearrange(mask, "tok head -> 1 tok head 1")
                 elif "attn_scores" in hook.name:
-                    raise NotImplementedError
+                    # Set upper triangle to 0 and diagonal to 1s
+                    # The diagonal of 1s is to ensure that the mask does not
+                    # cause self-attention to degenerate into nans.
+                    mask *= torch.tril(
+                        self.get_ones_vector(1, *mask.shape[1:]), diagonal=-1
+                    )
+                    mask += einops.rearrange(
+                        torch.eye(n=mask.shape[-1], device=self.device),
+                        "tok_q tok_k -> 1 tok_q tok_k",
+                    )
+
+                    act[
+                        :,
+                        :,
+                        self.mask_start_idx : self.n_tokens,
+                        self.mask_start_idx : self.n_tokens,
+                    ] += einops.rearrange(
+                        torch.log(mask),
+                        "head tok_q tok_k -> 1 head tok_q tok_k",
+                    )
                 else:
                     act[
                         :, self.mask_start_idx : self.n_tokens, :
-                    ] *= einops.rearrange(mask, "... -> 1 ... 1")
+                    ] *= einops.rearrange(mask, "tok -> 1 tok 1")
 
                 return act
 
