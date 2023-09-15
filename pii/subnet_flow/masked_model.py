@@ -36,11 +36,18 @@ class PerTokenMaskedTransformer(nn.Module):
         # Allows for disabling of masks
         self.masks_active = True
 
-        self.zero_threshold = 0.0
+        self.zero_threshold = 0.0  # If smaller than 0, has no effect.
+        # A 0 value makes the mask sticky at 0.
+        self.one_threshold = 1.1  # If larger than 1, has no effect
 
         self.masks = nn.ParameterDict()
         for hp in get_hook_points(tl_model):
-            include_patterns = ["attn.hook_z", "attn_out", "mlp_out"]
+            include_patterns = [
+                "attn.hook_z",
+                "attn_out",
+                # "attn_scores",
+                "mlp_out",
+            ]
             if not any(pattern in hp.name for pattern in include_patterns):
                 continue
 
@@ -51,6 +58,15 @@ class PerTokenMaskedTransformer(nn.Module):
                         self.tl_model.cfg.n_heads,
                     ),
                 )
+            elif "attn_scores" in hp.name:
+                raise NotImplementedError
+                self.masks[self.get_mask_key(hp)] = nn.Parameter(
+                    self.get_ones_vector(
+                        self.tl_model.cfg.n_heads,
+                        self.n_tokens - self.mask_start_idx,
+                        self.n_tokens - self.mask_start_idx,
+                    ),
+                )
             else:
                 self.masks[self.get_mask_key(hp)] = nn.Parameter(
                     self.get_ones_vector(self.n_tokens - self.mask_start_idx),
@@ -58,18 +74,32 @@ class PerTokenMaskedTransformer(nn.Module):
 
             def mask_hook(
                 act: Float[torch.Tensor, "batch token head_index d_head"]
-                | Float[torch.Tensor, "batch token d_model"],
+                | Float[torch.Tensor, "batch token d_model"]
+                | Float[torch.Tensor, "batch token token"],
                 hook: HookPoint,
             ):
                 if not self.masks_active:
                     return act
 
-                mask_padded = self.get_padded_mask(hook, act.shape[1])
-                mask_reshaped = einops.rearrange(mask_padded, "... -> 1 ... 1")
+                mask = self.get_mask(hook).clone()
 
-                return (
-                    act * mask_reshaped * (mask_reshaped > self.zero_threshold)
-                )
+                # Note that the one_threshold and zero_threshold are inclusive,
+                # meaning gradient descent is sticky at the threshold.
+                mask[mask >= self.one_threshold] = 1
+                mask[mask <= self.zero_threshold] = 0
+
+                if "attn.hook_z" in hook.name:
+                    act[
+                        :, self.mask_start_idx : self.n_tokens, :, :
+                    ] *= einops.rearrange(mask, "... -> 1 ... 1")
+                elif "attn_scores" in hook.name:
+                    raise NotImplementedError
+                else:
+                    act[
+                        :, self.mask_start_idx : self.n_tokens, :
+                    ] *= einops.rearrange(mask, "... -> 1 ... 1")
+
+                return act
 
             hp.remove_hooks(including_permanent=True)
             hp.add_perma_hook(hook=mask_hook)
@@ -88,25 +118,11 @@ class PerTokenMaskedTransformer(nn.Module):
             hp.name.replace(".", "_")
             .replace("blocks_", "")
             .replace("hook_", "")
+            .replace("attn_scores", "scores")
         )
 
-    def get_padded_mask(self, hp: HookPoint, target_len: int):
-        assert target_len >= self.n_tokens
-
-        mask = self.masks[self.get_mask_key(hp)]
-
-        mask_shape = mask.shape
-        prefix_shape = (self.mask_start_idx,) + mask_shape[1:]
-        suffix_shape = (target_len - self.n_tokens,) + mask_shape[1:]
-
-        return torch.cat(
-            [
-                self.get_ones_vector(*prefix_shape),
-                mask,
-                self.get_ones_vector(*suffix_shape),
-            ],
-            dim=0,
-        )
+    def get_mask(self, hp: HookPoint):
+        return self.masks[self.get_mask_key(hp)]
 
     def forward(self, *args, **kwargs):
         """Convenience method that calls out to the underlying tl_model."""
