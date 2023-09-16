@@ -45,7 +45,7 @@ class PerTokenMaskedTransformer(nn.Module):
             include_patterns = [
                 "attn.hook_z",
                 "attn_out",
-                "attn_scores",
+                "pattern",
                 "mlp_out",
             ]
             if not any(pattern in hp.name for pattern in include_patterns):
@@ -58,7 +58,7 @@ class PerTokenMaskedTransformer(nn.Module):
                         self.tl_model.cfg.n_heads,
                     ),
                 )
-            elif "attn_scores" in hp.name:
+            elif "pattern" in hp.name:
                 self.masks[self.get_mask_key(hp)] = nn.Parameter(
                     torch.tril(
                         self.get_ones_vector(
@@ -68,10 +68,12 @@ class PerTokenMaskedTransformer(nn.Module):
                         )
                     ),
                 )
-            else:
+            elif "attn_out" in hp.name or "mlp_out" in hp.name:
                 self.masks[self.get_mask_key(hp)] = nn.Parameter(
                     self.get_ones_vector(self.n_tokens - self.mask_start_idx),
                 )
+            else:
+                continue
 
             def mask_hook(
                 act: Float[torch.Tensor, "batch token head_index d_head"]
@@ -93,25 +95,32 @@ class PerTokenMaskedTransformer(nn.Module):
                     act[
                         :, self.mask_start_idx : self.n_tokens, :, :
                     ] *= einops.rearrange(mask, "tok head -> 1 tok head 1")
-                elif "attn_scores" in hook.name:
-                    # Set upper triangle to 0 and diagonal to 1s
-                    # The diagonal of 1s is to ensure that the mask does not
-                    # cause self-attention to degenerate into nans.
-                    mask *= torch.tril(
-                        self.get_ones_vector(1, *mask.shape[1:]), diagonal=-1
-                    )
-                    mask += einops.rearrange(
-                        torch.eye(n=mask.shape[-1], device=self.device),
-                        "tok_q tok_k -> 1 tok_q tok_k",
-                    )
+                elif "pattern" in hook.name:
+                    # Needed to avoid in-place modification so that backprop
+                    # works.
+                    act = act.clone()
 
                     act[
                         :,
                         :,
                         self.mask_start_idx : self.n_tokens,
                         self.mask_start_idx : self.n_tokens,
-                    ] += einops.rearrange(
-                        torch.log(mask),
+                    ] *= einops.rearrange(
+                        mask,
+                        "head tok_q tok_k -> 1 head tok_q tok_k",
+                    )
+
+                    act_tot = act.sum(dim=-1, keepdim=True)
+                    act /= torch.maximum(
+                        act_tot, torch.tensor(1e-9, device=act.device)
+                    )
+                    act[
+                        :,
+                        :,
+                        self.mask_start_idx : self.n_tokens,
+                        self.mask_start_idx : self.n_tokens,
+                    ] *= einops.rearrange(
+                        mask.max(dim=-1, keepdim=True)[0],
                         "head tok_q tok_k -> 1 head tok_q tok_k",
                     )
                 else:
@@ -138,7 +147,6 @@ class PerTokenMaskedTransformer(nn.Module):
             hp.name.replace(".", "_")
             .replace("blocks_", "")
             .replace("hook_", "")
-            .replace("attn_scores", "scores")
         )
 
     def get_mask(self, hp: HookPoint):
