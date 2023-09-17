@@ -60,4 +60,3 @@ def get_top_responses(
     
     #we return the top k token ids and token strings
     return sort_idxs[:top_k], [model.to_string(t) for t in sort_idxs[:top_k]]
-
