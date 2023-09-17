@@ -11,7 +11,9 @@ def get_top_responses(
     prepend_bos: bool | None = None,
     print_prompt: bool = False,
     use_kv_cache: bool = True,
-) -> None:
+    return_top_token: bool = False,
+    silent: bool = False,
+) -> None | int:
     """
     Prints the most likely responses to a prompt.
     Adapted from transformer_lens.utils.test_prompt.
@@ -50,10 +52,12 @@ def get_top_responses(
             temperature=0,
             use_past_kv_cache=use_kv_cache,
         )[0][prompt_tokens.shape[1] :]
-
-        print(
-            f"Rank {i}. "
-            f"Logit: {logit:5.2f} "
-            f"Prob: {prob:6.2%} "
-            f"Tokens: ({continuation_tokens[0]:5d}) |{'|'.join([model.to_string(t) for t in continuation_tokens])}|"
-        )
+        if not silent:
+            print(
+                f"Rank {i}. "
+                f"Logit: {logit:5.2f} "
+                f"Prob: {prob:6.2%} "
+                f"Tokens: ({continuation_tokens[0]:5d}) |{'|'.join([model.to_string(t) for t in continuation_tokens])}|"
+            )
+    if return_top_token:
+        return sort_idxs[0].item()
