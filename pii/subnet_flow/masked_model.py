@@ -20,6 +20,7 @@ class PerTokenMaskedTransformer(nn.Module):
         tl_model: HookedTransformer,
         base_prompt: str,
         mask_start_idx: int = 0,
+        noise_std: float = 0.0,
     ):
         """
         Warning: This will modify the transformer in-place with perma-hooks.
@@ -39,6 +40,7 @@ class PerTokenMaskedTransformer(nn.Module):
         self.zero_threshold = 0.0  # If smaller than 0, has no effect.
         # A 0 value makes the mask sticky at 0.
         self.one_threshold = 1.1  # If larger than 1, has no effect
+        self.noise_std = noise_std
 
         self.masks = nn.ParameterDict()
         for hp in get_hook_points(tl_model):
@@ -85,16 +87,29 @@ class PerTokenMaskedTransformer(nn.Module):
                     return act
 
                 mask = self.get_mask(hook).clone()
+                mask = einops.rearrange(mask, "... -> 1 ...")  # Add batch dim
 
                 # Note that the one_threshold and zero_threshold are inclusive,
                 # meaning gradient descent is sticky at the threshold.
                 mask[mask >= self.one_threshold] = 1
                 mask[mask <= self.zero_threshold] = 0
 
+                if self.noise_std > 0 and self.training:
+                    mask = einops.repeat(
+                        mask, "1 ... -> b ...", b=act.shape[0]
+                    ).clone()
+
+                    noise = torch.clamp(
+                        torch.randn_like(mask) * self.noise_std * (mask > 0),
+                        min=-mask / 2,
+                        max=(1 - mask) / 2,
+                    )
+                    mask += noise
+
                 if "attn.hook_z" in hook.name:
                     act[
                         :, self.mask_start_idx : self.n_tokens, :, :
-                    ] *= einops.rearrange(mask, "tok head -> 1 tok head 1")
+                    ] *= einops.rearrange(mask, "b tok head -> b tok head 1")
                 elif "pattern" in hook.name:
                     # Needed to avoid in-place modification so that backprop
                     # works.
@@ -105,10 +120,7 @@ class PerTokenMaskedTransformer(nn.Module):
                         :,
                         self.mask_start_idx : self.n_tokens,
                         self.mask_start_idx : self.n_tokens,
-                    ] *= einops.rearrange(
-                        mask,
-                        "head tok_q tok_k -> 1 head tok_q tok_k",
-                    )
+                    ] *= mask
 
                     act_tot = act.sum(dim=-1, keepdim=True)
                     act /= torch.maximum(
@@ -119,14 +131,11 @@ class PerTokenMaskedTransformer(nn.Module):
                         :,
                         self.mask_start_idx : self.n_tokens,
                         self.mask_start_idx : self.n_tokens,
-                    ] *= einops.rearrange(
-                        mask.max(dim=-1, keepdim=True)[0],
-                        "head tok_q tok_k -> 1 head tok_q tok_k",
-                    )
+                    ] *= mask.max(dim=-1, keepdim=True)[0]
                 else:
                     act[
                         :, self.mask_start_idx : self.n_tokens, :
-                    ] *= einops.rearrange(mask, "tok -> 1 tok 1")
+                    ] *= einops.rearrange(mask, "b tok -> b tok 1")
 
                 return act
 
