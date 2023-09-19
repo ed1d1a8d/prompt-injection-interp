@@ -64,20 +64,12 @@ def get_top_responses(
 
 
 def plot_head_data(
-    lines: list[tuple[str, torch.Tensor]],
+    lines: list[tuple[str, torch.Tensor, list[str]]],
     annotation_text: str | None = None,
-    n_heads: int = 32,
-    n_layers: int = 32,
     **kwargs,
 ):
-    labels = [
-        f"L{layer}H{head}"
-        for layer in range(n_layers)
-        for head in range(n_heads)
-    ]
-
     fig = go.Figure()
-    for name, xs in lines:
+    for name, xs, labels in lines:
         xs = xs.flatten().cpu().numpy()
         fig.add_trace(go.Scatter(x=labels, y=xs, mode="lines", name=name))
     fig.update_layout(
@@ -103,7 +95,6 @@ def plot_head_data(
                     font=dict(size=11),
                 )
             ],
-            
         )
 
     return fig

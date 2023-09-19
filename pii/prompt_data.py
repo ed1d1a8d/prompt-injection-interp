@@ -13,6 +13,7 @@ from tuned_lens.plotting import PredictionTrajectory
 class PromptData:
     prompt: str
     tokens: torch.Tensor
+    token_strs: list[str]
 
     logits: torch.Tensor
     final_logits: torch.Tensor
@@ -36,9 +37,12 @@ class PromptData:
             logits = tl_utils.remove_batch_dim(logits_b)
             final_logits = logits[-1]
 
+        tokens = tl_model.to_tokens(prompt)[0]
+
         return cls(
             prompt=prompt,
-            tokens=tl_model.to_tokens(prompt)[0],
+            tokens=tokens,
+            token_strs=[tl_model.to_string(t) for t in tokens],
             logits=logits,
             final_logits=logits[-1],
             cache=cache,
@@ -50,9 +54,15 @@ class PromptData:
 @dataclasses.dataclass
 class LensData:
     pd: PromptData
+    n_layers: int
+    n_heads: int
 
-    # traj_dict: dict[str, PredictionTrajectory]
-    logits_dict: dict[str, Float[torch.Tensor, "layer head vocab"]]
+    # Only stores last token logits
+    logits_dict: dict[
+        str,
+        Float[torch.Tensor, "layer head vocab"]
+        | Float[torch.Tensor, "layer vocab"],
+    ]
 
     @classmethod
     def get_key(cls, residual_component: str, lens_type: str):
@@ -64,20 +74,30 @@ class LensData:
         lens_type: str,
         zero_mean: bool = True,
         flatten: bool = True,
-    ):
+    ) -> tuple[torch.Tensor, list[str]]:
         logits = self.logits_dict[
             self.get_key(residual_component, lens_type)
         ].clone()
 
+        labels = (
+            [
+                f"L{layer}H{head}"
+                for layer in range(self.n_layers)
+                for head in range(self.n_heads)
+            ]
+            if logits.ndim == 3
+            else [f"L{layer}" for layer in range(self.n_layers)]
+        )
+
         if zero_mean:
             logits -= logits.mean(dim=-1, keepdim=True)
 
-        if flatten:
+        if flatten and logits.ndim == 3:
             logits = einops.rearrange(
                 logits, "layer head vocab -> (layer head) vocab"
             )
 
-        return logits
+        return logits, labels
 
     @classmethod
     def get_data(
@@ -86,18 +106,26 @@ class LensData:
         tl_model: HookedTransformer,
         logit_lens: LogitLens,
         tuned_lens: TunedLens,
+        res_components: tuple[str, ...] = (
+            "resid_pre",
+            "attn_out",
+            "mlp_out",
+        ),
     ):
-        # traj_dict = dict()
-        # for residual_component in ["resid_pre", "attn_out", "mlp_out"]:
-        #     for lens_type in ["logit", "tuned"]:
-        #         key = cls.get_key(residual_component, lens_type)
-        #         traj_dict[key] = PredictionTrajectory.from_lens_and_cache(
-        #             lens=logit_lens if lens_type == "logit" else tuned_lens,
-        #             input_ids=prompt_data.tokens,
-        #             cache=prompt_data.cache,
-        #             model_logits=prompt_data.logits,
-        #             residual_component=residual_component,
-        #         )
+        logits_dict = dict()
+
+        for lens_type in ["logit", "tuned"]:
+            lens = logit_lens if lens_type == "logit" else tuned_lens
+            for res_str in res_components:
+                logits_dict[cls.get_key(res_str, lens_type)] = torch.stack(
+                    [
+                        lens.forward(
+                            h=prompt_data.cache[res_str, layer][-1, :],
+                            idx=layer,
+                        )
+                        for layer in range(tl_model.cfg.n_layers)
+                    ]
+                )
 
         per_head_res = prompt_data.cache.stack_head_results()
         per_head_res = einops.rearrange(
@@ -106,7 +134,6 @@ class LensData:
             layer=tl_model.cfg.n_layers,
         )
 
-        logits_dict = dict()
         for lens_type in ["logit", "tuned"]:
             lens = logit_lens if lens_type == "logit" else tuned_lens
             logits_dict[cls.get_key("attn_head", lens_type)] = torch.stack(
@@ -118,6 +145,7 @@ class LensData:
 
         return cls(
             pd=prompt_data,
-            # traj_dict=traj_dict,
+            n_layers=tl_model.cfg.n_layers,
+            n_heads=tl_model.cfg.n_heads,
             logits_dict=logits_dict,
         )
