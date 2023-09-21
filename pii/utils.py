@@ -10,7 +10,8 @@ def get_top_responses(
     n_continuation_tokens: int = 5,
     prepend_bos: bool | None = None,
     print_prompt: bool = False,
-) -> None:
+    use_kv_cache: bool = True,
+) -> tuple[int, str]:
     """
     Prints the most likely responses to a prompt.
     Adapted from transformer_lens.utils.test_prompt.
@@ -47,11 +48,15 @@ def get_top_responses(
             prepend_bos=prepend_bos,
             verbose=False,
             temperature=0,
+            use_past_kv_cache=use_kv_cache,
         )[0][prompt_tokens.shape[1] :]
 
         print(
             f"Rank {i}. "
             f"Logit: {logit:5.2f} "
             f"Prob: {prob:6.2%} "
-            f"Tokens: |{'|'.join([model.to_string(t) for t in continuation_tokens])}|"
+            f"Tokens: ({continuation_tokens[0]:5d}) |{'|'.join([model.to_string(t) for t in continuation_tokens])}|"
         )
+
+    # Return top token
+    return sort_idxs[0].item(), model.to_string(sort_idxs[0])
