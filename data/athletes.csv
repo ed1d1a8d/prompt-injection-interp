@@ -1,0 +1,621 @@
+sport,name
+Basketball,LeBron James
+Basketball,Stephen Curry
+Basketball,Kevin Durant
+Basketball,Kawhi Leonard
+Basketball,Giannis Antetokounmpo
+Basketball,James Harden
+Basketball,Anthony Davis
+Basketball,Luka Dončić
+Basketball,Damian Lillard
+Basketball,Jayson Tatum
+Basketball,Chris Paul
+Basketball,Kyrie Irving
+Basketball,Joel Embiid
+Basketball,Nikola Jokić
+Basketball,Paul George
+Basketball,Bradley Beal
+Basketball,Donovan Mitchell
+Basketball,Klay Thompson
+Basketball,Jimmy Butler
+Basketball,Russell Westbrook
+Basketball,Devin Booker
+Basketball,Ben Simmons
+Basketball,Zion Williamson
+Basketball,Karl-Anthony Towns
+Basketball,John Wall
+Basketball,Trae Young
+Basketball,Pascal Siakam
+Basketball,CJ McCollum
+Basketball,Victor Oladipo
+Basketball,LaMarcus Aldridge
+Basketball,Bam Adebayo
+Basketball,De'Aaron Fox
+Basketball,Jrue Holiday
+Basketball,Malcolm Brogdon
+Basketball,Rudy Gobert
+Basketball,Kristaps Porziņģis
+Basketball,Myles Turner
+Basketball,Kyle Lowry
+Basketball,Jonas Valančiūnas
+Basketball,Kemba Walker
+Basketball,DeAndre Ayton
+Basketball,Jaren Jackson Jr.
+Basketball,D'Angelo Russell
+Basketball,Gordon Hayward
+Basketball,Tobias Harris
+Basketball,Steven Adams
+Basketball,Michael Porter Jr.
+Basketball,Andre Drummond
+Basketball,Jarrett Allen
+Basketball,Brandon Ingram
+Basketball,Collin Sexton
+Basketball,RJ Barrett
+Basketball,Derrick Rose
+Basketball,Lauri Markkanen
+Basketball,Bojan Bogdanović
+Basketball,Lou Williams
+Basketball,Domantas Sabonis
+Basketball,Montrezl Harrell
+Basketball,Marcus Smart
+Basketball,Coby White
+Basketball,Buddy Hield
+Basketball,Evan Fournier
+Basketball,Dennis Schröder
+Basketball,Caris LeVert
+Basketball,Clint Capela
+Basketball,Terry Rozier
+Basketball,Seth Curry
+Basketball,Eric Bledsoe
+Basketball,Norman Powell
+Basketball,Joe Harris
+Basketball,Otto Porter
+Basketball,Kelly Oubre Jr.
+Basketball,Al Horford
+Basketball,Robert Covington
+Basketball,Tim Hardaway Jr.
+Basketball,Aaron Gordon
+Basketball,JJ Redick
+Basketball,Duncan Robinson
+Basketball,Dwight Howard
+Basketball,Serge Ibaka
+Basketball,Danny Green
+Basketball,Patrick Beverley
+Basketball,Kentavious Caldwell-Pope
+Basketball,Alex Caruso
+Basketball,Mikal Bridges
+Basketball,Gary Harris
+Basketball,Derrick White
+Basketball,PJ Tucker
+Basketball,Jae Crowder
+Basketball,Dillon Brooks
+Basketball,Cameron Johnson
+Basketball,Reggie Jackson
+Basketball,Will Barton
+Basketball,Dāvis Bertāns
+Basketball,Doug McDermott
+Basketball,Markieff Morris
+Basketball,Ricky Rubio
+Basketball,Jeff Teague
+Basketball,Maurice Harkless
+Basketball,Wesley Matthews
+Basketball,Ish Smith
+Basketball,Matthew Dellavedova
+Tennis,Roger Federer
+Tennis,Rafael Nadal
+Tennis,Novak Djokovic
+Tennis,Serena Williams
+Tennis,Venus Williams
+Tennis,Andy Murray
+Tennis,Stan Wawrinka
+Tennis,Kei Nishikori
+Tennis,Juan Martin del Potro
+Tennis,Dominic Thiem
+Tennis,Alexander Zverev
+Tennis,Stefanos Tsitsipas
+Tennis,Daniil Medvedev
+Tennis,Grigor Dimitrov
+Tennis,Milos Raonic
+Tennis,John Isner
+Tennis,Nick Kyrgios
+Tennis,Ashleigh Barty
+Tennis,Naomi Osaka
+Tennis,Simona Halep
+Tennis,Karolina Pliskova
+Tennis,Petra Kvitova
+Tennis,Elina Svitolina
+Tennis,Sofia Kenin
+Tennis,Bianca Andreescu
+Tennis,Iga Swiatek
+Tennis,Aryna Sabalenka
+Tennis,Victoria Azarenka
+Tennis,Garbiñe Muguruza
+Tennis,Johanna Konta
+Tennis,Anett Kontaveit
+Tennis,Angelique Kerber
+Tennis,Madison Keys
+Tennis,Sloane Stephens
+Tennis,Kiki Bertens
+Tennis,Amanda Anisimova
+Tennis,Coco Gauff
+Tennis,Belinda Bencic
+Tennis,Elena Rybakina
+Tennis,Caroline Garcia
+Tennis,Daria Kasatkina
+Tennis,Dayana Yastremska
+Tennis,Svetlana Kuznetsova
+Tennis,Maria Sakkari
+Tennis,Jelena Ostapenko
+Tennis,Alison Riske
+Tennis,Donna Vekic
+Tennis,Ekaterina Alexandrova
+Tennis,Cori Gauff
+Tennis,Felix Auger-Aliassime
+Tennis,Denis Shapovalov
+Tennis,Alex de Minaur
+Tennis,Taylor Fritz
+Tennis,Reilly Opelka
+Tennis,Karen Khachanov
+Tennis,Andrey Rublev
+Tennis,Matteo Berrettini
+Tennis,Hubert Hurkacz
+Tennis,Borna Coric
+Tennis,Frances Tiafoe
+Tennis,Casper Ruud
+Tennis,Ugo Humbert
+Tennis,Jan-Lennard Struff
+Tennis,Adrian Mannarino
+Tennis,Albert Ramos-Vinolas
+Tennis,Miomir Kecmanovic
+Tennis,Jordan Thompson
+Tennis,Feliciano Lopez
+Tennis,Gael Monfils
+Tennis,Gilles Simon
+Tennis,Philipp Kohlschreiber
+Tennis,Richard Gasquet
+Tennis,Fabio Fognini
+Tennis,Jo-Wilfried Tsonga
+Tennis,Fernando Verdasco
+Tennis,Tommy Paul
+Tennis,Sebastian Korda
+Tennis,Mackenzie McDonald
+Tennis,Yoshihito Nishioka
+Tennis,Thiago Monteiro
+Tennis,Cameron Norrie
+Tennis,Marin Cilic
+Tennis,Lorenzo Sonego
+Tennis,Sam Querrey
+Tennis,Pablo Cuevas
+Tennis,Pablo Carreno Busta
+Tennis,Roberto Bautista Agut
+Tennis,Guido Pella
+Tennis,Lloyd Harris
+Tennis,Nicolas Jarry
+Tennis,Tommy Haas
+Tennis,Steve Johnson
+Tennis,John Millman
+Tennis,Jannik Sinner
+Soccer,Lionel Messi
+Soccer,Cristiano Ronaldo
+Soccer,Neymar Jr.
+Soccer,Kylian Mbappé
+Soccer,Robert Lewandowski
+Soccer,Mohamed Salah
+Soccer,Kevin De Bruyne
+Soccer,Virgil van Dijk
+Soccer,Sergio Ramos
+Soccer,Luka Modrić
+Soccer,Eden Hazard
+Soccer,Karim Benzema
+Soccer,N'Golo Kanté
+Soccer,Joshua Kimmich
+Soccer,Harry Kane
+Soccer,Sadio Mané
+Soccer,Raheem Sterling
+Soccer,Paul Pogba
+Soccer,Bruno Fernandes
+Soccer,Romelu Lukaku
+Soccer,Alisson Becker
+Soccer,Frenkie de Jong
+Soccer,Jan Oblak
+Soccer,Marc-André ter Stegen
+Soccer,Trent Alexander-Arnold
+Soccer,Erling Haaland
+Soccer,Gianluigi Donnarumma
+Soccer,Kalidou Koulibaly
+Soccer,Andrew Robertson
+Soccer,Jadon Sancho
+Soccer,Thibaut Courtois
+Soccer,Son Heung-min
+Soccer,Kai Havertz
+Soccer,Casemiro
+Soccer,Keylor Navas
+Soccer,Thiago Alcântara
+Soccer,Sergio Busquets
+Soccer,Matthijs de Ligt
+Soccer,Riyad Mahrez
+Soccer,Manuel Neuer
+Soccer,Ciro Immobile
+Soccer,Zlatan Ibrahimović
+Soccer,Philippe Coutinho
+Soccer,Luis Suárez
+Soccer,Marco Verratti
+Soccer,Sergio Agüero
+Soccer,Christian Pulisic
+Soccer,Marquinhos
+Soccer,Antoine Griezmann
+Soccer,Thomas Müller
+Soccer,Pierre-Emerick Aubameyang
+Soccer,Leon Goretzka
+Soccer,Mats Hummels
+Soccer,Ángel Di María
+Soccer,David Alaba
+Soccer,Lautaro Martínez
+Soccer,Isco
+Soccer,Alejandro Gómez
+Soccer,Kingsley Coman
+Soccer,Nicolo Barella
+Soccer,Benjamin Pavard
+Soccer,Roberto Firmino
+Soccer,Hakim Ziyech
+Soccer,Lucas Hernández
+Soccer,Jordi Alba
+Soccer,David de Gea
+Soccer,João Cancelo
+Soccer,Hugo Lloris
+Soccer,Fabinho
+Soccer,Dani Carvajal
+Soccer,Jamie Vardy
+Soccer,Wilfred Ndidi
+Soccer,Raphinha
+Soccer,Iñaki Williams
+Soccer,Leroy Sané
+Soccer,Mikel Oyarzabal
+Soccer,Kieran Tierney
+Soccer,Nicolás Tagliafico
+Soccer,Rodri
+Soccer,Youri Tielemans
+Soccer,Wojciech Szczęsny
+Soccer,Marco Reus
+Soccer,Mason Mount
+Soccer,Declan Rice
+Soccer,Jack Grealish
+Soccer,Pedri
+Soccer,Ousmane Dembélé
+Soccer,Federico Chiesa
+Soccer,Oscar Mingueza
+Soccer,Ferran Torres
+Soccer,Jules Koundé
+Soccer,Martin Ødegaard
+Soccer,Matteo Guendouzi
+Soccer,Renan Lodi
+Soccer,Piotr Zieliński
+Soccer,Florian Neuhaus
+Soccer,Achraf Hakimi
+Soccer,Gabriel Jesus
+Soccer,Jesse Lingard
+Soccer,Ilkay Gündogan
+Soccer,Georginio Wijnaldum
+Soccer,Ruben Dias
+Soccer,João Félix
+American Football,Patrick Mahomes
+American Football,Tom Brady
+American Football,Aaron Rodgers
+American Football,Russell Wilson
+American Football,Lamar Jackson
+American Football,Josh Allen
+American Football,Deshaun Watson
+American Football,Dak Prescott
+American Football,Matthew Stafford
+American Football,Derrick Henry
+American Football,Christian McCaffrey
+American Football,Alvin Kamara
+American Football,Dalvin Cook
+American Football,Saquon Barkley
+American Football,Nick Chubb
+American Football,Aaron Donald
+American Football,Khalil Mack
+American Football,T.J. Watt
+American Football,Myles Garrett
+American Football,Chandler Jones
+American Football,J.J. Watt
+American Football,Joey Bosa
+American Football,Nick Bosa
+American Football,Von Miller
+American Football,DeAndre Hopkins
+American Football,Tyreek Hill
+American Football,Stefon Diggs
+American Football,Davante Adams
+American Football,Michael Thomas
+American Football,Julio Jones
+American Football,Travis Kelce
+American Football,George Kittle
+American Football,Darren Waller
+American Football,Mark Andrews
+American Football,T.J. Hockenson
+American Football,Jalen Ramsey
+American Football,Stephon Gilmore
+American Football,Tre'Davious White
+American Football,Marlon Humphrey
+American Football,Xavien Howard
+American Football,Fred Warner
+American Football,Bobby Wagner
+American Football,Darius Leonard
+American Football,Devin White
+American Football,Roquan Smith
+American Football,Quenton Nelson
+American Football,Zack Martin
+American Football,Brandon Scherff
+American Football,David Bakhtiari
+American Football,Laremy Tunsil
+American Football,Ronnie Stanley
+American Football,Justin Tucker
+American Football,Harrison Butker
+American Football,Jason Sanders
+American Football,Justin Herbert
+American Football,Joe Burrow
+American Football,Tua Tagovailoa
+American Football,Kyler Murray
+American Football,Baker Mayfield
+American Football,Sam Darnold
+American Football,Daniel Jones
+American Football,Ryan Tannehill
+American Football,Matt Ryan
+American Football,Jimmy Garoppolo
+American Football,Ben Roethlisberger
+American Football,Philip Rivers
+American Football,Drew Brees
+American Football,Ezekiel Elliott
+American Football,Austin Ekeler
+American Football,Chris Carson
+American Football,Todd Gurley
+American Football,Le'Veon Bell
+American Football,A.J. Brown
+American Football,Calvin Ridley
+American Football,Chris Godwin
+American Football,Allen Robinson
+American Football,Adam Thielen
+American Football,Keenan Allen
+American Football,Amari Cooper
+American Football,JuJu Smith-Schuster
+American Football,Odell Beckham Jr.
+American Football,Mike Evans
+American Football,Tyler Lockett
+American Football,D.K. Metcalf
+American Football,CeeDee Lamb
+American Football,Cooper Kupp
+American Football,Robert Woods
+American Football,D.J. Moore
+American Football,Kenny Golladay
+American Football,Jarvis Landry
+American Football,Courtland Sutton
+American Football,Terry McLaurin
+American Football,Chase Claypool
+American Football,Jerry Jeudy
+American Football,Henry Ruggs III
+American Football,Justin Jefferson
+American Football,Brandon Aiyuk
+American Football,Diontae Johnson
+American Football,Mecole Hardman
+American Football,Deebo Samuel
+American Football,J.K. Dobbins
+American Football,Jonathan Taylor
+American Football,Clyde Edwards-Helaire
+American Football,Cam Akers
+American Football,Antonio Gibson
+American Football,James Robinson
+American Football,D'Andre Swift
+American Football,Micah Parsons
+American Football,Jaycee Horn
+American Football,Patrick Surtain II
+American Football,Jeremiah Owusu-Koramoah
+American Football,Zaven Collins
+American Football,Jamin Davis
+American Football,Trevor Lawrence
+American Football,Zach Wilson
+American Football,Trey Lance
+American Football,Mac Jones
+American Football,Kyle Pitts
+American Football,Ja'Marr Chase
+American Football,DeVonta Smith
+American Football,Jaylen Waddle
+American Football,Kadarius Toney
+American Football,Rashod Bateman
+American Football,Rondale Moore
+American Football,Terrace Marshall Jr.
+American Football,Elijah Moore
+Baseball,Mike Trout
+Baseball,Mookie Betts
+Baseball,Jacob deGrom
+Baseball,Fernando Tatis Jr.
+Baseball,Ronald Acuña Jr.
+Baseball,Cody Bellinger
+Baseball,Juan Soto
+Baseball,Christian Yelich
+Baseball,Freddie Freeman
+Baseball,Gerrit Cole
+Baseball,Nolan Arenado
+Baseball,Alex Bregman
+Baseball,Bryce Harper
+Baseball,Francisco Lindor
+Baseball,Shohei Ohtani
+Baseball,Trea Turner
+Baseball,Max Scherzer
+Baseball,Anthony Rendon
+Baseball,Jose Ramirez
+Baseball,J.T. Realmuto
+Baseball,Manny Machado
+Baseball,Aaron Judge
+Baseball,Walker Buehler
+Baseball,Jack Flaherty
+Baseball,George Springer
+Baseball,Kris Bryant
+Baseball,Xander Bogaerts
+Baseball,Corey Seager
+Baseball,Luis Robert
+Baseball,Ozzie Albies
+Baseball,Jose Altuve
+Baseball,Kyle Tucker
+Baseball,Eloy Jimenez
+Baseball,Bo Bichette
+Baseball,Javier Baez
+Baseball,Pete Alonso
+Baseball,Carlos Correa
+Baseball,Gleyber Torres
+Baseball,Charlie Blackmon
+Baseball,Whit Merrifield
+Baseball,Trevor Story
+Baseball,Paul Goldschmidt
+Baseball,Joey Gallo
+Baseball,Ketel Marte
+Baseball,Max Fried
+Baseball,Zac Gallen
+Baseball,Brandon Woodruff
+Baseball,Tyler Glasnow
+Baseball,Zack Wheeler
+Baseball,Clayton Kershaw
+Baseball,Yu Darvish
+Baseball,Corbin Burnes
+Baseball,Shane Bieber
+Baseball,Lucas Giolito
+Baseball,Lance Lynn
+Baseball,Stephen Strasburg
+Baseball,Sonny Gray
+Baseball,Liam Hendriks
+Baseball,Josh Hader
+Baseball,Devin Williams
+Baseball,Edwin Diaz
+Baseball,Aroldis Chapman
+Baseball,Salvador Perez
+Baseball,Willson Contreras
+Baseball,Yasmani Grandal
+Baseball,Austin Nola
+Baseball,Matt Olson
+Baseball,Jose Abreu
+Baseball,Vladimir Guerrero Jr.
+Baseball,Max Muncy
+Baseball,DJ LeMahieu
+Baseball,Brandon Lowe
+Baseball,Tim Anderson
+Baseball,Marcus Semien
+Baseball,Dansby Swanson
+Basebal,Jeff McNeil
+Baseball,Tommy Edman
+Baseball,Starling Marte
+Baseball,Byron Buxton
+Baseball,Randy Arozarena
+Baseball,Michael Conforto
+Baseball,Tommy Pham
+Baseball,Ramon Laureano
+Baseball,Marcell Ozuna
+Baseball,Eddie Rosario
+Baseball,Trent Grisham
+Baseball,Victor Robles
+Baseball,Jo Adell
+Baseball,Alex Verdugo
+Baseball,Lourdes Gurriel Jr.
+Baseball,Hunter Dozier
+Baseball,Willi Castro
+Baseball,Nick Senzel
+Baseball,Alex Kirilloff
+Baseball,J.D. Martinez
+Baseball,Nelson Cruz
+Baseball,Yordan Alvarez
+Baseball,Franmil Reyes
+Baseball,Will Smith
+Baseball,Dylan Carlson
+Baseball,Jared Walsh
+Baseball,Nick Madrigal
+Baseball,Dylan Moore
+Baseball,Nick Solak
+Wrestling,John Cena
+Wrestling,Roman Reigns
+Wrestling,Seth Rollins
+Wrestling,Brock Lesnar
+Wrestling,Randy Orton
+Wrestling,Daniel Bryan
+Wrestling,AJ Styles
+Wrestling,Bray Wyatt
+Wrestling,Drew McIntyre
+Wrestling,Sasha Banks
+Wrestling,Charlotte Flair
+Wrestling,Becky Lynch
+Wrestling,Kenny Omega
+Wrestling,Cody Rhodes
+Wrestling,Young Bucks (Nick & Matt Jackson)
+Wrestling,Jon Moxley
+Wrestling,Asuka
+Wrestling,Bailey
+Wrestling,Alexa Bliss
+Wrestling,Adam Cole
+Wrestling,Finn Balor
+Wrestling,Triple H
+Wrestling,The Undertaker
+Wrestling,Mick Foley
+Wrestling,Chris Jericho
+Wrestling,Kurt Angle
+Wrestling,Edge
+Wrestling,Shawn Michaels
+Wrestling,Stone Cold Steve Austin
+Wrestling,The Rock
+Wrestling,Kazuchika Okada
+Wrestling,Hiroshi Tanahashi
+Wrestling,Tetsuya Naito
+Wrestling,Will Ospreay
+Wrestling,Tomohiro Ishii
+Wrestling,Kota Ibushi
+Wrestling,Jay White
+Wrestling,Sanada
+Wrestling,Minoru Suzuki
+Wrestling,Jordan Burroughs
+Wrestling,Kyle Dake
+Wrestling,J'den Cox
+Wrestling,David Taylor
+Wrestling,Helen Maroulis
+Wrestling,Adeline Gray
+Wrestling,Kyle Snyder
+Wrestling,Sushil Kumar
+Wrestling,Yogeshwar Dutt
+Wrestling,Taha Akgül
+Wrestling,Abdulrashid Sadulaev
+Wrestling,Frank Chamizo
+Wrestling,Hassan Yazdani
+Wrestling,Rulon Gardner
+Wrestling,John Smith
+Wrestling,Aleksandr Karelin
+Wrestling,Bruce Baumgartner
+Wrestling,Valentin Jordanov
+Wrestling,Artur Taymazov
+Wrestling,Yelena Pirozhkova
+Wrestling,Clarissa Chun
+Wrestling,Randy Couture
+Wrestling,Dan Severn
+Wrestling,Ken Shamrock
+Wrestling,Sara McMann
+Wrestling,Henry Cejudo
+Wrestling,Ronda Rousey
+Wrestling,Buvaisar Saitiev
+Wrestling,Besik Kudukhov
+Wrestling,Mijain Lopez
+Wrestling,Saori Yoshida
+Wrestling,Kaori Icho
+Wrestling,Karam Gaber
+Wrestling,Amit Kumar
+Wrestling,Makhov Bilyal
+Wrestling,Geandry Garzon
+Wrestling,Hardeep Singh
+Wrestling,Sakshi Malik
+Wrestling,Vinesh Phogat
+Wrestling,Babita Kumari
+Wrestling,Geeta Phogat
+Wrestling,Yogeshwar Dutt
+Wrestling,Sushil Kumar
+Wrestling,Erik Guerrero
+Wrestling,Daniel Cormier
+Wrestling,Chael Sonnen
+Wrestling,CM Punk
+Wrestling,Bobby Lashley
+Wrestling,Matt Riddle
+Wrestling,Jake Hager
+Wrestling,Shayna Baszler
+Wrestling,Tom Lawlor
