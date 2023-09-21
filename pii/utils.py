@@ -1,3 +1,4 @@
+import plotly.graph_objects as go
 import torch
 import transformer_lens.utils as tl_utils
 from transformer_lens import HookedTransformer
@@ -60,3 +61,40 @@ def get_top_responses(
 
     # Return top token
     return sort_idxs[0].item(), model.to_string(sort_idxs[0])
+
+
+def plot_head_data(
+    lines: list[tuple[str, torch.Tensor, list[str]]],
+    annotation_text: str | None = None,
+    **kwargs,
+):
+    fig = go.Figure()
+    for name, xs, labels in lines:
+        xs = xs.flatten().cpu().numpy()
+        fig.add_trace(go.Scatter(x=labels, y=xs, mode="lines", name=name))
+    fig.update_layout(
+        xaxis_title="Layers and Heads",
+        xaxis=dict(
+            tickvals=[i for i in range(0, 32 * 32, 4 * 32)],
+            ticktext=[f"L{i}H0" for i in range(0, 32, 4)],
+        ),
+        hovermode="x unified",
+        showlegend=True,
+        **kwargs,
+    )
+    if annotation_text:
+        fig.update_layout(
+            annotations=[
+                dict(
+                    x=1,
+                    y=1.05,
+                    xref="paper",
+                    yref="paper",
+                    text=annotation_text,
+                    showarrow=False,
+                    font=dict(size=11),
+                )
+            ],
+        )
+
+    return fig
