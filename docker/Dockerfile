@@ -1,5 +1,5 @@
 # To build, navigate to the *root* of this repo and run:
-#   docker build . -f docker/Dockerfile -t tonytwang/pii:main
+#   DOCKER_BUILDKIT=1 docker build . -f docker/Dockerfile -t tonytwang/pii:main
 # You may also want to push the image to Docker Hub:
 #   docker push tonytwang/pii:main
 

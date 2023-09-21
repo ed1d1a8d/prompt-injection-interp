@@ -14,6 +14,7 @@ sentencepiece
 
 # Transformer Lens
 transformer_lens==1.6.0
+circuitsvis
 
 # Tuned lens
 tuned-lens==0.2.0
@@ -54,3 +55,4 @@ isort
 gpustat
 ipywidgets==7.7.3 # https://github.com/microsoft/vscode-jupyter/issues/11014
 jupyterlab
+magic-wormhole
