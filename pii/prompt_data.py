@@ -28,17 +28,29 @@ class PromptData:
         return self.tokens.shape[0]
 
     @classmethod
-    def get_data(cls, prompt: str, tl_model: HookedTransformer):
+    def get_data(cls, prompt: str | torch.Tensor | list[int], tl_model: HookedTransformer):
+        if isinstance(prompt, str):
+            batch_tokens = tl_model.to_tokens(prompt)
+        elif isinstance(prompt, list):
+            batch_tokens = torch.tensor(prompt)
+            batch_tokens = einops.rearrange(batch_tokens, "pos -> 1 pos")
+            prompt = tl_model.to_string(batch_tokens[0])
+        else:
+            batch_tokens = prompt
+            if batch_tokens.ndim == 1:
+                batch_tokens = einops.rearrange(prompt, "pos -> 1 pos")
+            prompt = tl_model.to_string(batch_tokens[0])
+
         with torch.no_grad():
             logits_b, cache = tl_model.run_with_cache(
-                prompt,
+                batch_tokens,
                 remove_batch_dim=True,
             )
             logits = tl_utils.remove_batch_dim(logits_b)
             final_logits = logits[-1]
 
-        tokens = tl_model.to_tokens(prompt)[0]
 
+        tokens = batch_tokens[0]
         return cls(
             prompt=prompt,
             tokens=tokens,
