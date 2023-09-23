@@ -1,12 +1,15 @@
 import dataclasses
+import functools
 
 import einops
+import numpy as np
 import torch
 import transformer_lens.utils as tl_utils
 from jaxtyping import Float
+from tqdm.auto import tqdm
 from transformer_lens import ActivationCache, HookedTransformer
+from transformer_lens.hook_points import HookPoint
 from tuned_lens.nn import LogitLens, TunedLens
-from tuned_lens.plotting import PredictionTrajectory
 
 
 @dataclasses.dataclass
@@ -52,7 +55,7 @@ class PromptData:
 
 
 @dataclasses.dataclass
-class LensData:
+class LogitData:
     pd: PromptData
     n_layers: int
     n_heads: int
@@ -68,25 +71,41 @@ class LensData:
     def get_key(cls, residual_component: str, lens_type: str):
         return f"{residual_component}_{lens_type}"
 
+    @classmethod
+    def get_resid_code(cls, residual_component: str) -> str:
+        return dict(
+            resid_pre="PRE",
+            attn_out="ATN",
+            attn_head="ATH",
+            mlp_out="MLP",
+        ).get(residual_component, residual_component)
+
     def get_logits(
         self,
         residual_component: str,
         lens_type: str,
         zero_mean: bool = True,
         flatten: bool = True,
-    ) -> tuple[torch.Tensor, list[str]]:
+    ) -> tuple[torch.Tensor, np.ndarray]:
         logits = self.logits_dict[
             self.get_key(residual_component, lens_type)
         ].clone()
 
+        resid_code = self.get_resid_code(residual_component)
         labels = (
-            [
-                f"L{layer}H{head}"
-                for layer in range(self.n_layers)
-                for head in range(self.n_heads)
-            ]
+            np.array(
+                [
+                    [
+                        f"L{layer}H{head}{resid_code}"
+                        for head in range(self.n_heads)
+                    ]
+                    for layer in range(self.n_layers)
+                ]
+            )
             if logits.ndim == 3
-            else [f"L{layer}" for layer in range(self.n_layers)]
+            else np.array(
+                [f"L{layer}{resid_code}" for layer in range(self.n_layers)]
+            )
         )
 
         if zero_mean:
@@ -96,11 +115,12 @@ class LensData:
             logits = einops.rearrange(
                 logits, "layer head vocab -> (layer head) vocab"
             )
+            labels = labels.flatten()
 
         return logits, labels
 
     @classmethod
-    def get_data(
+    def get_lens_data(
         cls,
         prompt_data: PromptData,
         tl_model: HookedTransformer,
@@ -145,6 +165,96 @@ class LensData:
 
         return cls(
             pd=prompt_data,
+            n_layers=tl_model.cfg.n_layers,
+            n_heads=tl_model.cfg.n_heads,
+            logits_dict=logits_dict,
+        )
+
+    @classmethod
+    def get_patch_data(
+        cls,
+        pd: PromptData,
+        tl_model: HookedTransformer,
+        opd: PromptData | None = None,
+        res_components: tuple[str, ...] = (
+            "attn_out",
+            "mlp_out",
+        ),
+    ):
+        """
+        Setting opd to None will do zero ablation.
+        """
+        logits_dict = dict()
+
+        def patch_res(
+            act: Float[torch.Tensor, "batch seq d"],
+            hook: HookPoint,
+            layer: int,
+            res_str: str,
+        ) -> Float[torch.Tensor, "batch seq head d"]:
+            act[:, -1] = (
+                0 if opd is None else opd.cache[res_str, layer][None, -1]
+            )
+            return act
+
+        for res_str in res_components:
+            logits_dict[cls.get_key(res_str, "patch")] = torch.stack(
+                [
+                    tl_model.run_with_hooks(
+                        pd.prompt,
+                        return_type="logits",
+                        fwd_hooks=[
+                            (
+                                tl_utils.get_act_name(res_str, layer),
+                                functools.partial(
+                                    patch_res, layer=layer, res_str=res_str
+                                ),
+                            )
+                        ],
+                    )[0, -1]
+                    for layer in range(tl_model.cfg.n_layers)
+                ]
+            )
+
+        def patch_attn_head(
+            zs: Float[torch.Tensor, "batch seq head d"],
+            hook: HookPoint,
+            head: int,
+            layer: int,
+        ) -> Float[torch.Tensor, "batch seq head d"]:
+            zs[:, -1, head] = (
+                0 if opd is None else opd.cache["z", layer][None, -1, head]
+            )
+            return zs
+
+        lhs = [
+            (l, h)
+            for l in range(tl_model.cfg.n_layers)
+            for h in range(tl_model.cfg.n_heads)
+        ]
+        attn_logits = torch.zeros(
+            (len(lhs), tl_model.cfg.d_vocab), device=pd.cache["z", 0].device
+        )
+        for i, (l, h) in enumerate(tqdm(lhs)):
+            attn_logits[i] = tl_model.run_with_hooks(
+                pd.prompt,
+                return_type="logits",
+                fwd_hooks=[
+                    (
+                        tl_utils.get_act_name("z", l),
+                        functools.partial(patch_attn_head, head=h, layer=l),
+                    )
+                ],
+            )[0, -1]
+
+        logits_dict[cls.get_key("attn_head", "patch")] = einops.rearrange(
+            attn_logits,
+            "(layer head) vocab -> layer head vocab",
+            layer=tl_model.cfg.n_layers,
+        )
+
+        return cls(
+            pd=pd,
             n_layers=tl_model.cfg.n_layers,
             n_heads=tl_model.cfg.n_heads,
             logits_dict=logits_dict,
