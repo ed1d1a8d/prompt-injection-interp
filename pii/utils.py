@@ -1,7 +1,13 @@
+import numpy as np
+import pandas as pd
 import plotly.graph_objects as go
 import torch
 import transformer_lens.utils as tl_utils
 from transformer_lens import HookedTransformer
+
+
+def device(tl_model: HookedTransformer):
+    return tl_model.b_O.device
 
 
 def get_top_responses(
@@ -64,19 +70,34 @@ def get_top_responses(
 
 
 def plot_head_data(
-    lines: list[tuple[str, torch.Tensor, list[str]]],
+    lines: list[tuple[str, torch.Tensor | np.ndarray | pd.Series, list[str]]],
     annotation_text: str | None = None,
+    spacing: int = 4 * 32,
     **kwargs,
 ):
     fig = go.Figure()
     for name, xs, labels in lines:
-        xs = xs.flatten().cpu().numpy()
-        fig.add_trace(go.Scatter(x=labels, y=xs, mode="lines", name=name))
+        if isinstance(xs, torch.Tensor):
+            xs = xs.flatten().cpu().numpy()
+        elif isinstance(xs, pd.Series):
+            xs = xs.values
+        else:
+            xs = xs.flatten()
+        fig.add_trace(
+            go.Scatter(
+                x=labels,
+                y=xs,
+                mode="lines",
+                name=name,
+                opacity=0.7,
+            )
+        )
+
+    labels = lines[0][2]
     fig.update_layout(
-        xaxis_title="Layers and Heads",
         xaxis=dict(
-            tickvals=[i for i in range(0, 32 * 32, 4 * 32)],
-            ticktext=[f"L{i}H0" for i in range(0, 32, 4)],
+            tickvals=[i for i in range(0, len(labels), spacing)],
+            ticktext=labels[::spacing],
         ),
         hovermode="x unified",
         showlegend=True,
@@ -96,5 +117,8 @@ def plot_head_data(
                 )
             ],
         )
+
+    # Zoom out of plot slightly along x axis
+    fig.update_xaxes(range=[-0.03 * len(labels), 1.03 * len(labels)])
 
     return fig
