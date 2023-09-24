@@ -1,8 +1,9 @@
 import dataclasses
 
+from typing import Callable
 import einops
 import numpy as np
-import pandas as pd
+import pandas
 import torch
 import transformer_lens.utils as tl_utils
 from jaxtyping import Float
@@ -130,7 +131,7 @@ class LogitData:
         top_k: int | None = 10,
         include_embedding: bool = False,
         increasing: bool = True,
-    ) -> pd.DataFrame:
+    ) -> pandas.DataFrame:
         """
         Sorts components by log-odds contribution to the target_token, runs
         ablations on these components cumulatively, and returns both the true
@@ -189,7 +190,7 @@ class LogitData:
                 )
             )
 
-        df = pd.DataFrame(metrics)
+        df = pandas.DataFrame(metrics)
         assert np.isclose(
             df.logit[0], self.pd.final_logits[target_token].item()
         )
@@ -254,11 +255,68 @@ def get_ablated_logits(
     )
 
 
-def get_indep_loo_logits(
+def get_indep_ablation_logits(
     pd: PromptData,
     tl_model: HookedTransformer,
+    ablation_cache: ActivationCache | None = None,
 ) -> LogitData:
-    raise NotImplementedError
+    """
+    Ablates each component assuming additive independence.
+
+    Setting ablation_cache to None will do zero ablation.
+    """
+    assert ablation_cache is None or (not ablation_cache.has_batch_dim)
+    orig_resid: Float[torch.Tensor, "vocab"] = pd.cache["resid_post", -1][-1]
+
+    def unembed(
+        res: Float[torch.Tensor, "... d"]
+    ) -> Float[torch.Tensor, "... vocab"]:
+        return tl_model.ln_final(res) @ tl_model.W_U
+
+    def _get_logits(
+        fn: Callable[[ActivationCache], torch.Tensor]
+    ) -> torch.Tensor:
+        if ablation_cache is None:
+            return unembed(orig_resid - fn(pd.cache))
+        else:
+            return unembed(orig_resid - fn(pd.cache) + fn(ablation_cache))
+
+    embed_logits = _get_logits(lambda cache: cache["embed"][-1])
+
+    mlp_logits = _get_logits(
+        lambda cache: torch.stack(
+            [cache["mlp_out", lyr][-1] for lyr in range(tl_model.cfg.n_layers)]
+        )
+    )
+
+    attn_bias_logits = _get_logits(
+        lambda _: torch.stack(
+            [tl_model.b_O[lyr] for lyr in range(tl_model.cfg.n_layers)]
+        )
+    )
+
+    if "blocks.0.attn.hook_result" not in pd.cache.cache_dict:
+        pd.cache.compute_head_results()
+    if (
+        ablation_cache is not None
+        and "blocks.0.attn.hook_result" not in ablation_cache.cache_dict
+    ):
+        ablation_cache.compute_head_results()
+    attn_head_logits = _get_logits(
+        lambda cache: torch.stack(
+            [cache["result", lyr][-1] for lyr in range(tl_model.cfg.n_layers)]
+        )
+    )
+
+    return LogitData(
+        pd=pd,
+        n_layers=tl_model.cfg.n_layers,
+        n_heads=tl_model.cfg.n_heads,
+        embed_logits=embed_logits,
+        mlp_logits=mlp_logits,
+        attn_bias_logits=attn_bias_logits,
+        attn_head_logits=attn_head_logits,
+    )
 
 
 def get_lens_data(
