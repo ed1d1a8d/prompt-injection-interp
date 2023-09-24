@@ -128,6 +128,7 @@ class LogitData:
         self,
         tl_model: HookedTransformer,
         target_token: int,
+        ablation_cache: ActivationCache | None = None,
         top_k: int | None = 10,
         include_embedding: bool = False,
         increasing: bool = True,
@@ -169,6 +170,7 @@ class LogitData:
                 tl_model=tl_model,
                 prompt=self.pd.prompt,
                 return_type="logits",
+                ablation_cache=ablation_cache,
                 **self.ablate_locs_dict(labels),
             )[0, -1]
 
