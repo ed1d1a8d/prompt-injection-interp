@@ -1,13 +1,9 @@
-import functools
-from typing import Iterable
-
 import numpy as np
+import pandas as pd
 import plotly.graph_objects as go
 import torch
 import transformer_lens.utils as tl_utils
-from jaxtyping import Float
-from transformer_lens import HookedTransformer, ActivationCache
-from transformer_lens.hook_points import HookPoint
+from transformer_lens import HookedTransformer
 
 
 def device(tl_model: HookedTransformer):
@@ -74,14 +70,17 @@ def get_top_responses(
 
 
 def plot_head_data(
-    lines: list[tuple[str, torch.Tensor | np.ndarray, list[str]]],
+    lines: list[tuple[str, torch.Tensor | np.ndarray | pd.Series, list[str]]],
     annotation_text: str | None = None,
+    spacing: int = 4 * 32,
     **kwargs,
 ):
     fig = go.Figure()
     for name, xs, labels in lines:
         if isinstance(xs, torch.Tensor):
             xs = xs.flatten().cpu().numpy()
+        elif isinstance(xs, pd.Series):
+            xs = xs.values
         else:
             xs = xs.flatten()
         fig.add_trace(
@@ -95,9 +94,7 @@ def plot_head_data(
         )
 
     labels = lines[0][2]
-    spacing = 4 * 32
     fig.update_layout(
-        xaxis_title="Layers and Heads",
         xaxis=dict(
             tickvals=[i for i in range(0, len(labels), spacing)],
             ticktext=labels[::spacing],
@@ -125,117 +122,3 @@ def plot_head_data(
     fig.update_xaxes(range=[-0.03 * len(labels), 1.03 * len(labels)])
 
     return fig
-
-
-def run_with_ablation(
-    tl_model: HookedTransformer,
-    prompt: str,
-    ablation_cache: ActivationCache | None = None,
-    attn_head_locs: Iterable[tuple[int, int, int]] = (),  # (lyr, head, seq)
-    attn_bias_locs: Iterable[tuple[int, int]] = (),  # (lyr, seq)
-    mlp_head_locs: Iterable[tuple[int, int]] = (),  # (lyr, seq)
-    embed_locs: Iterable[int] = (),  # seq
-    **kwargs,
-):
-    """
-    Runs the tl_model with the specified heads ablated.
-    If ablation_cache is None, will run with zeroed activations.
-
-    Innefficient, but should be fine when number of ablations is small.
-
-    TODO: Also support ablating position embeddings. We don't need this for
-          llama2 models because they use rotary embeddings and thus don't have
-          initial position embeddings.
-    """
-    # Deduplicate locations
-    attn_head_locs = set(attn_head_locs)
-    attn_bias_locs = set(attn_bias_locs)
-    mlp_head_locs = set(mlp_head_locs)
-    embed_locs = set(embed_locs)
-
-    def ablate_attn_head(
-        zs: Float[torch.Tensor, "b seq head d"],
-        hook: HookPoint,
-        layer: int,
-    ):
-        for lyr, head, seq in attn_head_locs:
-            if layer == lyr:
-                if ablation_cache is None:
-                    zs[:, seq, head] = 0
-                else:
-                    if ablation_cache.has_batch_dim:
-                        raise NotImplementedError
-                    else:
-                        zs[:, seq, head] = ablation_cache["z", lyr][
-                            None, seq, head
-                        ]
-        return zs
-
-    def ablate_attn_bias(
-        act: Float[torch.Tensor, "b seq d"],
-        hook: HookPoint,
-        layer: int,
-    ):
-        for lyr, seq in attn_bias_locs:
-            if layer == lyr:
-                if ablation_cache is None:
-                    act[:, seq] -= tl_model.b_O[lyr]
-                else:
-                    # noop because biases are the same for different runs
-                    pass
-        return act
-
-    def ablate_mlp(
-        act: Float[torch.Tensor, "b seq d"],
-        hook: HookPoint,
-        layer: int,
-    ):
-        for lyr, seq in mlp_head_locs:
-            if layer == lyr:
-                if ablation_cache is None:
-                    act[:, seq] = 0
-                else:
-                    if ablation_cache.has_batch_dim:
-                        raise NotImplementedError
-                    else:
-                        act[:, seq] = ablation_cache["mlp_out", lyr][None, seq]
-        return act
-
-    def ablate_embed(
-        act: Float[torch.Tensor, "b seq d"],
-        hook: HookPoint,
-    ):
-        for seq in embed_locs:
-            if ablation_cache is None:
-                act[:, seq] = 0
-            else:
-                # noop because embeddings are the same for different runs
-                pass
-        return act
-
-    return tl_model.run_with_hooks(
-        prompt,
-        fwd_hooks=[
-            (
-                tl_utils.get_act_name("z", l),
-                functools.partial(ablate_attn_head, layer=l),
-            )
-            for l in set(l for l, _, _ in attn_head_locs)
-        ]
-        + [
-            (
-                tl_utils.get_act_name("attn_out", l),
-                functools.partial(ablate_attn_bias, layer=l),
-            )
-            for l in set(l for l, _ in attn_bias_locs)
-        ]
-        + [
-            (
-                tl_utils.get_act_name("mlp_out", l),
-                functools.partial(ablate_mlp, layer=l),
-            )
-            for l in set(l for l, _ in mlp_head_locs)
-        ]
-        + [(tl_utils.get_act_name("embed"), ablate_embed)],
-        **kwargs,
-    )
