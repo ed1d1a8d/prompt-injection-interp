@@ -68,12 +68,14 @@ class LogitData:
 
     def get_logits_and_labels(
         self,
+        include_embedding: bool = False,
     ) -> tuple[Float[torch.Tensor, "idx vocab"], list[str]]:
         logits_list = []
         labels = []
 
-        logits_list.append(self.embed_logits[None, :])
-        labels.append("EMB")
+        if include_embedding:
+            logits_list.append(self.embed_logits[None, :])
+            labels.append("EMB")
 
         for lyr in range(self.n_layers):
             logits_list.append(self.attn_bias_logits[None, lyr, :])
@@ -99,8 +101,8 @@ def get_ablated_logits(
 
     def get_ablated_final_logits(**kwargs):
         return utils.run_with_ablation(
-            prompt=pd.prompt,
             tl_model=tl_model,
+            prompt=pd.prompt,
             return_type="logits",
             ablation_cache=ablation_cache,
             **kwargs,
