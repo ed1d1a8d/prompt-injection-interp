@@ -64,6 +64,8 @@ class LogitData:
     n_layers: int
     n_heads: int
 
+    ablation_cache: ActivationCache | None
+
     attn_head_logits: Float[torch.Tensor, "layer head vocab"]
     attn_bias_logits: Float[torch.Tensor, "layer vocab"]
     mlp_logits: Float[torch.Tensor, "layer vocab"]
@@ -169,6 +171,7 @@ class LogitData:
                 tl_model=tl_model,
                 prompt=self.pd.prompt,
                 return_type="logits",
+                ablation_cache=self.ablation_cache,
                 **self.ablate_locs_dict(labels),
             )[0, -1]
 
@@ -248,6 +251,7 @@ def get_ablated_logits(
         pd=pd,
         n_layers=tl_model.cfg.n_layers,
         n_heads=tl_model.cfg.n_heads,
+        ablation_cache=ablation_cache,
         embed_logits=embed_logits,
         mlp_logits=mlp_logits,
         attn_bias_logits=attn_bias_logits,
@@ -312,6 +316,7 @@ def get_indep_ablation_logits(
         pd=pd,
         n_layers=tl_model.cfg.n_layers,
         n_heads=tl_model.cfg.n_heads,
+        ablation_cache=ablation_cache,
         embed_logits=embed_logits,
         mlp_logits=mlp_logits,
         attn_bias_logits=attn_bias_logits,
