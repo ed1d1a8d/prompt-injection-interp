@@ -1,6 +1,6 @@
 import dataclasses
-
 from typing import Callable
+
 import einops
 import numpy as np
 import pandas
@@ -9,7 +9,6 @@ import transformer_lens.utils as tl_utils
 from jaxtyping import Float
 from tqdm.auto import tqdm
 from transformer_lens import ActivationCache, HookedTransformer
-from tuned_lens.nn import LogitLens, TunedLens
 
 from pii import ablation
 
@@ -324,47 +323,105 @@ def get_indep_ablation_logits(
     )
 
 
-def get_lens_data(
-    prompt_data: PromptData,
+def attribution_patch(
+    pd: PromptData,
     tl_model: HookedTransformer,
-    logit_lens: LogitLens,
-    tuned_lens: TunedLens,
+    metric: Callable[[torch.Tensor], torch.Tensor],
+    ablation_cache: ActivationCache | None = None,
 ) -> LogitData:
-    # TODO(tony): Fix implementation
-    logits_dict = dict()
+    """
+    Adapted from https://colab.research.google.com/github/neelnanda-io/TransformerLens/blob/main/demos/Attribution_Patching_Demo.ipynb
 
-    for lens_type in ["logit", "tuned"]:
-        lens = logit_lens if lens_type == "logit" else tuned_lens
-        for res_str in res_components:
-            logits_dict[cls.get_key(res_str, lens_type)] = torch.stack(
-                [
-                    lens.forward(
-                        h=prompt_data.cache[res_str, layer][-1, :],
-                        idx=layer,
-                    )
-                    for layer in range(tl_model.cfg.n_layers)
-                ]
-            )
+    metric is a function that takes logits and returns a scalar.
+    Slightly abuses LogitData, since it returns logit data with |vocab| = 1.
+    """
+    tl_model.reset_hooks()
+    _grad_cache = {}
 
-    per_head_res = prompt_data.cache.stack_head_results()
-    per_head_res = einops.rearrange(
-        per_head_res,
-        "(layer head) ... -> layer head ...",
-        layer=tl_model.cfg.n_layers,
+    def backward_cache_hook(act, hook):
+        _grad_cache[hook.name] = act[0].detach()
+
+    backward_hook_locs = set(
+        [tl_utils.get_act_name("embed")]
+        + [
+            tl_utils.get_act_name("mlp_out", lyr)
+            for lyr in range(tl_model.cfg.n_layers)
+        ]
+        + [
+            tl_utils.get_act_name("resid_mid", lyr)
+            for lyr in range(tl_model.cfg.n_layers)
+        ]
+        + [
+            tl_utils.get_act_name("z", lyr)
+            for lyr in range(tl_model.cfg.n_layers)
+        ]
+    )
+    tl_model.add_hook(
+        lambda name: name in backward_hook_locs,
+        backward_cache_hook,
+        "bwd",
     )
 
-    for lens_type in ["logit", "tuned"]:
-        lens = logit_lens if lens_type == "logit" else tuned_lens
-        logits_dict[cls.get_key("attn_head", lens_type)] = torch.stack(
-            [
-                lens.forward(h=per_head_res[layer, :, -1, :], idx=layer)
-                for layer in range(tl_model.cfg.n_layers)
-            ]
-        )
+    value = metric(tl_model(pd.tokens)[0])
+    value.backward()
+    tl_model.reset_hooks()
 
-    return cls(
-        pd=prompt_data,
+    gcache = ActivationCache(_grad_cache, tl_model)
+
+    def linearized_ablation(
+        get_act: Callable[[ActivationCache], torch.Tensor],
+        get_grad: Callable[[ActivationCache], torch.Tensor] | None = None,
+    ) -> torch.Tensor:
+        if get_grad is None:
+            get_grad = get_act
+
+        if ablation_cache is None:
+            # Zero ablation
+            return -einops.einsum(
+                get_grad(gcache),
+                get_act(pd.cache),
+                "... d , ... d -> ...",
+            )
+        else:
+            return einops.einsum(
+                get_grad(gcache),
+                get_act(ablation_cache) - get_act(pd.cache),
+                "... d , ... d -> ...",
+            )
+
+    embed_metrics = linearized_ablation(lambda cache: cache["embed"][-1])
+
+    mlp_metrics = linearized_ablation(
+        lambda cache: torch.stack(
+            [cache["mlp_out", lyr][-1] for lyr in range(tl_model.cfg.n_layers)]
+        )
+    )
+
+    attn_bias_metrics = linearized_ablation(
+        get_act=lambda _: torch.stack(
+            [tl_model.b_O[lyr] for lyr in range(tl_model.cfg.n_layers)]
+        ),
+        get_grad=lambda gcache: torch.stack(
+            [
+                gcache["resid_mid", lyr][-1]
+                for lyr in range(tl_model.cfg.n_layers)
+            ]
+        ),
+    )
+
+    attn_head_metrics = linearized_ablation(
+        lambda cache: torch.stack(
+            [cache["z", lyr][-1] for lyr in range(tl_model.cfg.n_layers)]
+        )
+    )
+
+    return LogitData(
+        pd=pd,
         n_layers=tl_model.cfg.n_layers,
         n_heads=tl_model.cfg.n_heads,
-        logits_dict=logits_dict,
+        ablation_cache=ablation_cache,
+        embed_logits=embed_metrics.unsqueeze(-1),
+        mlp_logits=mlp_metrics.unsqueeze(-1),
+        attn_bias_logits=attn_bias_metrics.unsqueeze(-1),
+        attn_head_logits=attn_head_metrics.unsqueeze(-1),
     )
