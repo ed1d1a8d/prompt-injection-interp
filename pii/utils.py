@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
@@ -122,3 +123,25 @@ def plot_head_data(
     fig.update_xaxes(range=[-0.03 * len(labels), 1.03 * len(labels)])
 
     return fig
+
+
+def plot_x_eq_y_line(
+    xs: np.ndarray,
+    ys: np.ndarray,
+    pos: bool = True,
+    **kwargs,
+):
+    minval = min(xs.min(), ys.min())
+    maxval = max(xs.max(), ys.max())
+    if pos:
+        plt.plot(
+            [minval, maxval],
+            [minval, maxval],
+            **kwargs,
+        )
+    else:
+        plt.plot(
+            [minval, maxval],
+            [-minval, -maxval],
+            **kwargs,
+        )

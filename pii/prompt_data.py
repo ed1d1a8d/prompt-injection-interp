@@ -70,28 +70,36 @@ class LogitData:
     mlp_logits: Float[torch.Tensor, "layer vocab"]
     embed_logits: Float[torch.Tensor, "vocab"]
 
+    def get_labels(self, include_embedding: bool = False) -> list[str]:
+        labels = []
+
+        if include_embedding:
+            labels.append("EMB")
+
+        for lyr in range(self.n_layers):
+            labels.append(f"L{lyr}ATB")
+            labels.extend(f"L{lyr}H{h}ATN" for h in range(self.n_heads))
+            labels.append(f"L{lyr}MLP")
+
+        return labels
+
     def get_logits_and_labels(
         self,
         include_embedding: bool = False,
     ) -> tuple[Float[torch.Tensor, "idx vocab"], list[str]]:
         logits_list = []
-        labels = []
 
         if include_embedding:
             logits_list.append(self.embed_logits[None, :])
-            labels.append("EMB")
 
         for lyr in range(self.n_layers):
             logits_list.append(self.attn_bias_logits[None, lyr, :])
-            labels.append(f"L{lyr}ATB")
-
             logits_list.append(self.attn_head_logits[lyr, :, :])
-            labels.extend(f"L{lyr}H{h}ATN" for h in range(self.n_heads))
-
             logits_list.append(self.mlp_logits[None, lyr, :])
-            labels.append(f"L{lyr}MLP")
 
-        return torch.concatenate(logits_list, dim=0), labels
+        return torch.concatenate(logits_list, dim=0), self.get_labels(
+            include_embedding=include_embedding,
+        )
 
     @classmethod
     def ablate_locs_dict(
@@ -258,9 +266,9 @@ def get_ablated_logits(
     )
 
 
-def get_indep_ablation_logits(
-    pd: PromptData,
+def get_direct_effect_logits(
     tl_model: HookedTransformer,
+    pd: PromptData,
     ablation_cache: ActivationCache | None = None,
 ) -> LogitData:
     """
