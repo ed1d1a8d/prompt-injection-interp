@@ -1,9 +1,11 @@
+import einops
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import torch
 import transformer_lens.utils as tl_utils
+from jaxtyping import Float
 from transformer_lens import HookedTransformer
 
 
@@ -131,17 +133,30 @@ def plot_x_eq_y_line(
     pos: bool = True,
     **kwargs,
 ):
-    minval = min(xs.min(), ys.min())
-    maxval = max(xs.max(), ys.max())
     if pos:
+        minval = min(xs.min(), ys.min())
+        maxval = max(xs.max(), ys.max())
         plt.plot(
             [minval, maxval],
             [minval, maxval],
             **kwargs,
         )
     else:
+        minval = min(xs.min(), -ys.max())
+        maxval = max(xs.max(), -ys.min())
         plt.plot(
             [minval, maxval],
             [-minval, -maxval],
             **kwargs,
         )
+
+
+def unembed(
+    x: Float[torch.Tensor, "... d_model"],
+    tl_model: HookedTransformer,
+) -> Float[torch.Tensor, "... vocab_size"]:
+    return einops.einsum(
+        tl_model.ln_final(x),
+        tl_model.W_U,
+        "... d_model, d_model vocab_size -> ... vocab_size",
+    )
