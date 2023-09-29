@@ -84,6 +84,9 @@ def get_mlp_head_components(
         if lyr == layer:
             break
 
+        comp_labels.append(f"L{lyr}MLP")
+        all_comps_list.append(cache["mlp_out", lyr][pos][None, :])
+
     all_comps = torch.cat(all_comps_list, dim=0)
     assert torch.allclose(
         all_comps.sum(dim=0), cache["resid_mid", layer][pos], atol=1e-5
