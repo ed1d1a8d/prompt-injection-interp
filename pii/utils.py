@@ -179,3 +179,10 @@ def print_most_likely_tokens(
         )
         if i % n_per_line == n_per_line - 1:
             print()
+
+
+def tokenize_to_strs(
+    s: str,
+    tl_model: HookedTransformer,
+) -> list[str]:
+    return [tl_model.to_string(t) for t in tl_model.to_tokens(s)[0]]
