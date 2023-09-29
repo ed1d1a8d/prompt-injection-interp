@@ -1,9 +1,11 @@
+import einops
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import torch
 import transformer_lens.utils as tl_utils
+from jaxtyping import Float
 from transformer_lens import HookedTransformer
 
 
@@ -131,17 +133,49 @@ def plot_x_eq_y_line(
     pos: bool = True,
     **kwargs,
 ):
-    minval = min(xs.min(), ys.min())
-    maxval = max(xs.max(), ys.max())
     if pos:
+        minval = min(xs.min(), ys.min())
+        maxval = max(xs.max(), ys.max())
         plt.plot(
             [minval, maxval],
             [minval, maxval],
             **kwargs,
         )
     else:
+        minval = min(xs.min(), -ys.max())
+        maxval = max(xs.max(), -ys.min())
         plt.plot(
             [minval, maxval],
             [-minval, -maxval],
             **kwargs,
         )
+
+
+def unembed(
+    x: Float[torch.Tensor, "... d_model"],
+    tl_model: HookedTransformer,
+) -> Float[torch.Tensor, "... vocab_size"]:
+    return einops.einsum(
+        tl_model.ln_final(x),
+        tl_model.W_U,
+        "... d_model, d_model vocab_size -> ... vocab_size",
+    )
+
+
+def print_most_likely_tokens(
+    xs: Float[torch.Tensor, "vocab_size"] | np.ndarray,
+    tl_model: HookedTransformer,
+    n_tokens: int = 50,
+    n_per_line: int = 5,
+    largest: bool = True,
+):
+    if isinstance(xs, np.ndarray):
+        xs = torch.tensor(xs, device="cpu")
+    top_tokens = torch.topk(xs, n_tokens, largest=largest).indices
+    for i, token in enumerate(top_tokens):
+        print(
+            f"{tl_model.to_string(token)} ({xs[token].item():.3f})",
+            end=" ",
+        )
+        if i % n_per_line == n_per_line - 1:
+            print()
