@@ -12,6 +12,9 @@ accelerate
 # Llama stuff
 sentencepiece
 
+# Trie
+marisa-trie
+
 # Transformer Lens
 transformer_lens==1.6.0
 circuitsvis
