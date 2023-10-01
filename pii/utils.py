@@ -199,3 +199,21 @@ def get_repo_root() -> pathlib.Path:
             search_parent_directories=True,
         ).git.rev_parse("--show-toplevel")
     )
+
+
+def plot_with_err(
+    xs: np.ndarray,
+    ys: np.ndarray,
+    ci: float = 0.95,
+    err_alpha: float = 0.2,
+    **kwargs,
+):
+    plt.plot(xs, ys.mean(axis=0), **kwargs)
+    plt.fill_between(
+        xs,
+        np.quantile(ys, (1 - ci) / 2, axis=0),
+        np.quantile(ys, (1 + ci) / 2, axis=0),
+        # ys.mean(axis=0) - ys.std(axis=0),
+        # ys.mean(axis=0) + ys.std(axis=0),
+        alpha=0.3,
+    )
