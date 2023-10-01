@@ -29,12 +29,57 @@ class LabelledComponents:
         )
 
 
+def get_all_resid_components(
+    tl_model: HookedTransformer,
+    cache: ActivationCache,
+    pos: int,
+    batch_idx: int | None = None,
+) -> LabelledComponents:
+    if "blocks.0.attn.hook_result" not in cache:
+        cache.compute_head_results()
+
+    assert cache.has_batch_dim == (not (batch_idx is None))
+    # assert tl_model.b_O.abs().max() == 0, "TODO: handle bias"
+
+    def cget(*args):
+        if batch_idx is None:
+            return cache[args]
+        else:
+            return cache[args][batch_idx]
+
+    comp_labels = ["EMBED"]
+    all_comps_list = [cget("embed")[pos][None, :]]
+    for lyr in range(tl_model.cfg.n_layers):
+        comp_labels.extend(
+            [f"L{lyr}H{head}ATN" for head in range(tl_model.cfg.n_heads)]
+        )
+        all_comps_list.append(cget("result", lyr)[pos])
+
+        comp_labels.append(f"L{lyr}MLP")
+        all_comps_list.append(cget("mlp_out", lyr)[pos][None, :])
+
+    all_comps = torch.cat(all_comps_list, dim=0)
+    assert torch.allclose(
+        all_comps.sum(dim=0),
+        cget("resid_post", -1)[pos],
+        atol=1e-1,
+        rtol=1e-1,
+    )
+
+    return LabelledComponents(
+        labels=comp_labels,
+        components=all_comps,
+    )
+
+
 def get_attn_head_resid_components(
     tl_model: HookedTransformer,
     cache: ActivationCache,
     layer: int,
     pos: int,
 ) -> LabelledComponents:
+    # TODO: Refactor this to build off of get_all_resid_components
+
     if "blocks.0.attn.hook_result" not in cache:
         cache.compute_head_results()
 
@@ -68,6 +113,8 @@ def get_mlp_head_components(
     cache: ActivationCache,
     tl_model: HookedTransformer,
 ) -> LabelledComponents:
+    # TODO: Refactor this to build off of get_all_resid_components
+
     if "blocks.0.attn.hook_result" not in cache:
         cache.compute_head_results()
 
