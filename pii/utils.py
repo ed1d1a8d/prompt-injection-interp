@@ -173,7 +173,7 @@ def print_most_likely_tokens(
     largest: bool = True,
 ):
     if isinstance(xs, np.ndarray):
-        xs = torch.tensor(xs, device="cpu")
+        xs = torch.tensor(xs, device="cpu", dtype=torch.float32)
     top_tokens = torch.topk(xs, n_tokens, largest=largest).indices
     for i, token in enumerate(top_tokens):
         print(
@@ -216,4 +216,23 @@ def plot_with_err(
         # ys.mean(axis=0) - ys.std(axis=0),
         # ys.mean(axis=0) + ys.std(axis=0),
         alpha=0.3,
+    )
+
+
+def plot_hist_from_tensor(
+    xs: torch.Tensor, bins: int = 256, density: bool = True, **kwargs
+):
+    with torch.no_grad():
+        mn, mx = xs.min(), xs.max()
+        counts = torch.histc(xs.float(), bins, min=mn, max=mx).cpu().numpy()
+        boundaries = torch.linspace(mn, mx, bins + 1).cpu().numpy()
+
+    if density:
+        counts /= counts.sum() * np.diff(boundaries)[0]
+
+    plt.bar(
+        boundaries[:-1],
+        counts,
+        width=np.diff(boundaries),
+        **kwargs,
     )
