@@ -1,0 +1,14 @@
+{
+ "argv": [
+  "/net/scratch/milesw/miniconda3/envs/vicuna/bin/python",
+  "-m",
+  "ipykernel_launcher",
+  "-f",
+  "{connection_file}"
+ ],
+ "display_name": "vicuna",
+ "language": "python",
+ "metadata": {
+  "debugger": true
+ }
+}
