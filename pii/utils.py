@@ -1,4 +1,7 @@
+import pathlib
+
 import einops
+import git
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -186,3 +189,31 @@ def tokenize_to_strs(
     tl_model: HookedTransformer,
 ) -> list[str]:
     return [tl_model.to_string(t) for t in tl_model.to_tokens(s)[0]]
+
+
+def get_repo_root() -> pathlib.Path:
+    """Returns repo root (relative to this file)."""
+    return pathlib.Path(
+        git.Repo(
+            __file__,
+            search_parent_directories=True,
+        ).git.rev_parse("--show-toplevel")
+    )
+
+
+def plot_with_err(
+    xs: np.ndarray,
+    ys: np.ndarray,
+    ci: float = 0.95,
+    err_alpha: float = 0.2,
+    **kwargs,
+):
+    plt.plot(xs, ys.mean(axis=0), **kwargs)
+    plt.fill_between(
+        xs,
+        np.quantile(ys, (1 - ci) / 2, axis=0),
+        np.quantile(ys, (1 + ci) / 2, axis=0),
+        # ys.mean(axis=0) - ys.std(axis=0),
+        # ys.mean(axis=0) + ys.std(axis=0),
+        alpha=0.3,
+    )
