@@ -220,12 +220,28 @@ def plot_with_err(
 
 
 def plot_hist_from_tensor(
-    xs: torch.Tensor, bins: int = 256, density: bool = True, **kwargs
+    xs: torch.Tensor,
+    bins: int = 256,
+    density: bool = True,
+    anti_xs: torch.Tensor | None = None,
+    **kwargs,
 ):
     with torch.no_grad():
         mn, mx = xs.min(), xs.max()
         counts = torch.histc(xs.float(), bins, min=mn, max=mx).cpu().numpy()
         boundaries = torch.linspace(mn, mx, bins + 1).cpu().numpy()
+
+        if anti_xs is not None:
+            counts -= (
+                torch.histc(
+                    anti_xs.float(),
+                    bins,
+                    min=mn,
+                    max=mx,
+                )
+                .cpu()
+                .numpy()
+            )
 
     if density:
         counts /= counts.sum() * np.diff(boundaries)[0]
