@@ -34,6 +34,7 @@ scikit-learn
 # Visualization libraries
 matplotlib
 plotly
+seaborn
 
 # Experiment management
 wandb
