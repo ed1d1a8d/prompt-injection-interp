@@ -1,0 +1,12 @@
+pgf.texsystem: pdflatex
+font.family: serif
+font.serif: Times
+text.usetex: True
+text.latex.preamble: \usepackage{amsfonts} \usepackage{amsmath} \usepackage{amssymb}
+pgf.rcfonts: False
+pgf.preamble: \usepackage{amsfonts} \usepackage{amsmath} \usepackage{amssymb}
+font.size: 9
+font.weight: medium
+
+figure.constrained_layout.use: True
+figure.dpi: 240

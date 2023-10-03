@@ -1,0 +1,11 @@
+# Width obtained by running the following command inside a 1-column figure
+# environment: \printlength\textwidth
+#
+# To run this command, you need to add the following to the preamble:
+#   \usepackage{printlen}
+#   \uselengthunit{in}
+figure.figsize : 5.50107, 3
+
+# Show ticks on both sides since plot is so wide
+ytick.left: True
+ytick.right: True
