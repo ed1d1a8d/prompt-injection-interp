@@ -285,3 +285,22 @@ def plot_hist_from_tensor(
         width=np.diff(boundaries),
         **kwargs,
     )
+
+def logit_softmax(xs: torch.Tensor) -> torch.Tensor:
+    log_probs = xs.log_softmax(dim=-1)
+
+    mx = xs.max(dim=-1)
+
+    xs_shifted = xs - mx.values[:, None]
+    log_denom = xs_shifted.logsumexp(dim=-1)
+    xs_shifted[torch.arange(xs.shape[0]), mx.indices] = xs_shifted[:, -1]
+    log_numer = xs_shifted[:, :-1].logsumexp(dim=-1)
+
+    log1m_probs_max = log_numer - log_denom
+
+    logits = log_probs.exp().logit()
+    logits[torch.arange(xs.shape[0]), mx.indices] = (
+        log_probs[torch.arange(xs.shape[0]), mx.indices] - log1m_probs_max
+    )
+
+    return logits
