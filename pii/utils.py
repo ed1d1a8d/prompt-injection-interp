@@ -23,7 +23,9 @@ def get_style(style_name: str) -> str:
     return str(style_sheets_dir / f"{style_name}.mplstyle")
 
 
-def get_llama2_7b_chat_tl_model() -> HookedTransformer:
+def get_llama2_7b_chat_tl_model(
+    torch_dtype=torch.float16,
+) -> HookedTransformer:
     """
     Needs huggingface authentication, i.e. you should run the command:
         huggingface-cli login
@@ -32,7 +34,7 @@ def get_llama2_7b_chat_tl_model() -> HookedTransformer:
     hf_model = AutoModelForCausalLM.from_pretrained(
         "meta-llama/Llama-2-7b-chat-hf",
         low_cpu_mem_usage=True,
-        torch_dtype=torch.float16,
+        torch_dtype=torch_dtype,
     )
 
     return HookedTransformer.from_pretrained(
@@ -45,7 +47,7 @@ def get_llama2_7b_chat_tl_model() -> HookedTransformer:
         center_writing_weights=False,
         center_unembed=False,
         tokenizer=tokenizer,
-        torch_dtype=torch.float16,
+        torch_dtype=torch_dtype,
     )
 
 
@@ -285,6 +287,7 @@ def plot_hist_from_tensor(
         width=np.diff(boundaries),
         **kwargs,
     )
+
 
 def logit_softmax(xs: torch.Tensor) -> torch.Tensor:
     log_probs = xs.log_softmax(dim=-1)
