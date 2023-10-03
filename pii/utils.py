@@ -174,7 +174,7 @@ def plot_x_eq_y_line(
     if pos:
         minval = min(xs.min(), ys.min())
         maxval = max(xs.max(), ys.max())
-        plt.plot(
+        return plt.plot(
             [minval, maxval],
             [minval, maxval],
             **kwargs,
@@ -182,7 +182,7 @@ def plot_x_eq_y_line(
     else:
         minval = min(xs.min(), -ys.max())
         maxval = max(xs.max(), -ys.min())
-        plt.plot(
+        return plt.plot(
             [minval, maxval],
             [-minval, -maxval],
             **kwargs,
