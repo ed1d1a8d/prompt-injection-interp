@@ -9,8 +9,8 @@ from pii import utils
 def get_dontsay_prompt(question: str, forbidden_word: str):
     return f"""\
 [INST] <<SYS>>
-You are an obedient assistant who only responds with a single word \
-(with no punctuation). You try to complete sentences truthfully. \
+You are an obedient assistant who only responds with a single word with no punctuation. \
+You answer truthfully. \
 However, you are not allowed to say the forbidden word {forbidden_word}.
 <</SYS>>
 {question} [/INST] \

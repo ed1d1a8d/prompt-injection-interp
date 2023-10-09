@@ -10,10 +10,45 @@ import torch
 import transformer_lens.utils as tl_utils
 from jaxtyping import Float
 from transformer_lens import HookedTransformer
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
 def device(tl_model: HookedTransformer):
     return tl_model.b_O.device
+
+
+def get_style(style_name: str) -> str:
+    """Gets Matplotlib style sheet with a given name."""
+    style_sheets_dir = get_repo_root() / "matplotlib-styles"
+    return str(style_sheets_dir / f"{style_name}.mplstyle")
+
+
+def get_llama2_7b_chat_tl_model(
+    torch_dtype=torch.float16,
+) -> HookedTransformer:
+    """
+    Needs huggingface authentication, i.e. you should run the command:
+        huggingface-cli login
+    """
+    tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf")
+    hf_model = AutoModelForCausalLM.from_pretrained(
+        "meta-llama/Llama-2-7b-chat-hf",
+        low_cpu_mem_usage=True,
+        torch_dtype=torch_dtype,
+    )
+
+    return HookedTransformer.from_pretrained(
+        "meta-llama/Llama-2-7b-chat-hf",
+        hf_model=hf_model,
+        device="cuda",
+        move_to_device=True,
+        fold_ln=False,
+        fold_value_biases=False,
+        center_writing_weights=False,
+        center_unembed=False,
+        tokenizer=tokenizer,
+        torch_dtype=torch_dtype,
+    )
 
 
 def get_top_responses(
@@ -139,7 +174,7 @@ def plot_x_eq_y_line(
     if pos:
         minval = min(xs.min(), ys.min())
         maxval = max(xs.max(), ys.max())
-        plt.plot(
+        return plt.plot(
             [minval, maxval],
             [minval, maxval],
             **kwargs,
@@ -147,7 +182,7 @@ def plot_x_eq_y_line(
     else:
         minval = min(xs.min(), -ys.max())
         maxval = max(xs.max(), -ys.min())
-        plt.plot(
+        return plt.plot(
             [minval, maxval],
             [-minval, -maxval],
             **kwargs,
@@ -205,17 +240,17 @@ def plot_with_err(
     xs: np.ndarray,
     ys: np.ndarray,
     ci: float = 0.95,
-    err_alpha: float = 0.2,
+    err_alpha: float = 0.3,
     **kwargs,
 ):
-    plt.plot(xs, ys.mean(axis=0), **kwargs)
+    lines = plt.plot(xs, ys.mean(axis=0), **kwargs)
     plt.fill_between(
         xs,
         np.quantile(ys, (1 - ci) / 2, axis=0),
         np.quantile(ys, (1 + ci) / 2, axis=0),
-        # ys.mean(axis=0) - ys.std(axis=0),
-        # ys.mean(axis=0) + ys.std(axis=0),
-        alpha=0.3,
+        alpha=err_alpha,
+        color=lines[0].get_color(),
+        edgecolor="none",
     )
 
 
@@ -252,3 +287,23 @@ def plot_hist_from_tensor(
         width=np.diff(boundaries),
         **kwargs,
     )
+
+
+def logit_softmax(xs: torch.Tensor) -> torch.Tensor:
+    log_probs = xs.log_softmax(dim=-1)
+
+    mx = xs.max(dim=-1)
+
+    xs_shifted = xs - mx.values[:, None]
+    log_denom = xs_shifted.logsumexp(dim=-1)
+    xs_shifted[torch.arange(xs.shape[0]), mx.indices] = xs_shifted[:, -1]
+    log_numer = xs_shifted[:, :-1].logsumexp(dim=-1)
+
+    log1m_probs_max = log_numer - log_denom
+
+    logits = log_probs.exp().logit()
+    logits[torch.arange(xs.shape[0]), mx.indices] = (
+        log_probs[torch.arange(xs.shape[0]), mx.indices] - log1m_probs_max
+    )
+
+    return logits
