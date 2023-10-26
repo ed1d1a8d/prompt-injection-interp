@@ -25,6 +25,7 @@ def get_style(style_name: str) -> str:
 
 def get_llama2_7b_chat_tl_model(
     torch_dtype=torch.float16,
+    n_devices=1,
 ) -> HookedTransformer:
     """
     Needs huggingface authentication, i.e. you should run the command:
@@ -41,6 +42,67 @@ def get_llama2_7b_chat_tl_model(
         "meta-llama/Llama-2-7b-chat-hf",
         hf_model=hf_model,
         device="cuda",
+        n_devices=n_devices,
+        move_to_device=True,
+        fold_ln=False,
+        fold_value_biases=False,
+        center_writing_weights=False,
+        center_unembed=False,
+        tokenizer=tokenizer,
+        torch_dtype=torch_dtype,
+    )
+
+
+def get_llama2_13b_chat_tl_model(
+    torch_dtype=torch.float16,
+    n_devices=1,
+) -> HookedTransformer:
+    """
+    Needs huggingface authentication, i.e. you should run the command:
+        huggingface-cli login
+    """
+    tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf")
+    hf_model = AutoModelForCausalLM.from_pretrained(
+        "meta-llama/Llama-2-13b-chat-hf",
+        low_cpu_mem_usage=True,
+        torch_dtype=torch_dtype,
+    )
+
+    return HookedTransformer.from_pretrained(
+        "meta-llama/Llama-2-13b-chat-hf",
+        hf_model=hf_model,
+        device="cuda",
+        n_devices=n_devices,
+        move_to_device=True,
+        fold_ln=False,
+        fold_value_biases=False,
+        center_writing_weights=False,
+        center_unembed=False,
+        tokenizer=tokenizer,
+        torch_dtype=torch_dtype,
+    )
+
+
+def get_llama2_70b_chat_tl_model(
+    torch_dtype=torch.float16,
+    n_devices=1,
+) -> HookedTransformer:
+    """
+    Needs huggingface authentication, i.e. you should run the command:
+        huggingface-cli login
+    """
+    tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf")
+    hf_model = AutoModelForCausalLM.from_pretrained(
+        "meta-llama/Llama-2-70b-chat-hf",
+        low_cpu_mem_usage=True,
+        torch_dtype=torch_dtype,
+    )
+
+    return HookedTransformer.from_pretrained(
+        "meta-llama/Llama-2-70b-chat-hf",
+        hf_model=hf_model,
+        device="cuda",
+        n_devices=n_devices,
         move_to_device=True,
         fold_ln=False,
         fold_value_biases=False,
