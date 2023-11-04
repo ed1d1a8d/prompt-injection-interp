@@ -1,6 +1,8 @@
 import collections
 
 from transformer_lens import HookedTransformer
+from jaxtyping import Float
+import torch
 
 
 class VocabEquivalenceMap:
@@ -20,3 +22,13 @@ class VocabEquivalenceMap:
             return self.lcs_str_to_toks[x.lower()]
         else:
             return self.tok_to_equivalent_toks[x]
+
+    def p_correct(
+        self,
+        probs: Float[torch.Tensor, "... vocab"],
+        correct_answer: str,
+    ) -> Float[torch.Tensor, "..."]:
+        tot = 0
+        for tok in self.get_equivalent_tokens(correct_answer):
+            tot += probs[..., tok]
+        return tot
