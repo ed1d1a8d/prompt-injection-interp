@@ -1,7 +1,7 @@
 from typing import Callable
 
 import pandas as pd
-from transformer_lens import HookedTransformer
+from transformers import AutoTokenizer
 
 from pii import utils
 
@@ -24,7 +24,7 @@ def get_random_words() -> pd.Series:
 
 
 def get_counterfact_dataset(
-    tl_model: HookedTransformer,
+    tokenizer: AutoTokenizer,
     competing_prompt_generator: Callable[[str, str], str] | None = None,
 ) -> pd.DataFrame:
     """
@@ -89,7 +89,7 @@ def get_counterfact_dataset(
 
     df = df[
         [
-            len(tl_model.to_tokens(s, prepend_bos=False)[0]) == 1
+            len(tokenizer(s, add_special_tokens=False).input_ids) == 1
             for s in df.target_true_str
         ]
     ].reset_index(drop=True)

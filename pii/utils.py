@@ -1,4 +1,5 @@
 import pathlib
+import textwrap
 
 import einops
 import git
@@ -8,9 +9,14 @@ import pandas as pd
 import plotly.graph_objects as go
 import torch
 import transformer_lens.utils as tl_utils
-from jaxtyping import Float
+from jaxtyping import Float, Int
 from transformer_lens import HookedTransformer
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import (
+    AutoModelForCausalLM,
+    AutoTokenizer,
+    GenerationConfig,
+    PreTrainedTokenizer,
+)
 
 
 def device(tl_model: HookedTransformer):
@@ -21,6 +27,55 @@ def get_style(style_name: str) -> str:
     """Gets Matplotlib style sheet with a given name."""
     style_sheets_dir = get_repo_root() / "matplotlib-styles"
     return str(style_sheets_dir / f"{style_name}.mplstyle")
+
+
+def print_with_wrap(text, width=80):
+    print(textwrap.fill(text, width=width))
+
+
+def to_string(
+    tokens: Int[torch.Tensor, ""]
+    | Int[torch.Tensor, "batch pos"]
+    | Int[torch.Tensor, "pos"]
+    | np.ndarray
+    | list[Int[torch.Tensor, "pos"]],
+    tokenizer: AutoTokenizer,
+) -> str | list[str]:
+    """
+    Adapted from HookedTransformer.to_string.
+    """
+    if not isinstance(tokens, torch.Tensor):
+        # We allow lists to be input
+        tokens = torch.tensor(tokens)
+
+    # I'm not sure what exactly clean_up_tokenization_spaces does, but if
+    # it's set, then tokenization is no longer invertible, and some tokens
+    # with a bunch of whitespace get collapsed together
+    if len(tokens.shape) == 2:
+        return tokenizer.batch_decode(
+            tokens, clean_up_tokenization_spaces=False
+        )
+    elif len(tokens.shape) <= 1:
+        return tokenizer.decode(tokens, clean_up_tokenization_spaces=False)
+    else:
+        raise ValueError(f"Invalid shape passed in: {tokens.shape}")
+
+
+def tokenize_to_strs(
+    s: str,
+    tl_model: HookedTransformer,
+) -> list[str]:
+    return [tl_model.to_string(t) for t in tl_model.to_tokens(s)[0]]
+
+
+def get_repo_root() -> pathlib.Path:
+    """Returns repo root (relative to this file)."""
+    return pathlib.Path(
+        git.Repo(
+            __file__,
+            search_parent_directories=True,
+        ).git.rev_parse("--show-toplevel")
+    )
 
 
 def get_llama2_7b_chat_tl_model(
@@ -113,12 +168,78 @@ def get_llama2_70b_chat_tl_model(
     )
 
 
+def get_top_responses_hf(
+    prompt: str,
+    model: AutoModelForCausalLM,
+    tokenizer: AutoTokenizer,
+    top_k: int = 5,
+    n_continuation_tokens: int = 5,
+    prepend_bos: bool = True,
+    use_kv_cache: bool = True,
+) -> tuple[int, str]:
+    """
+    Prints the most likely responses to a prompt.
+    Adapted from transformer_lens.utils.test_prompt.
+    """
+    prompt_tokens = (
+        tokenizer(
+            prompt,
+            return_tensors="pt",
+            add_special_tokens=prepend_bos,
+        )
+        .to(model.device)
+        .input_ids
+    )
+
+    with torch.no_grad():
+        logits = model(input_ids=prompt_tokens, use_cache=False).logits[0, -1]
+        probs = logits.softmax(dim=-1)
+
+    _, sort_idxs = probs.sort(descending=True)
+    for i in range(top_k):
+        logit = logits[sort_idxs[i]]
+        prob = probs[sort_idxs[i]]
+
+        # Compute the continuation tokens
+        with torch.no_grad():
+            continuation_tokens = model.generate(
+                input_ids=torch.concatenate(
+                    [
+                        prompt_tokens,
+                        torch.tensor(
+                            [[sort_idxs[i]]],
+                            device=prompt_tokens.device,
+                        ),
+                    ],
+                    dim=1,
+                ),
+                generation_config=GenerationConfig(
+                    max_new_tokens=n_continuation_tokens,
+                    do_sample=False,
+                    eos_token_id=tokenizer.eos_token_id,
+                    pad_token_id=tokenizer.eos_token_id,
+                ),
+            )[0][prompt_tokens.shape[1] :]
+
+        print(
+            f"Rank {i}. "
+            f"Logit: {logit:5.2f} "
+            f"Prob: {prob:6.2%} "
+            f"Tokens: ({continuation_tokens[0]:5d}) |{'|'.join([to_string(tokens=t, tokenizer=tokenizer) for t in continuation_tokens])}|"
+        )
+
+    # Return top token
+    return sort_idxs[0].item(), to_string(
+        tokens=sort_idxs[0], tokenizer=tokenizer
+    )
+
+
 def get_top_responses(
     prompt: str,
     model: HookedTransformer,
     top_k: int = 5,
     n_continuation_tokens: int = 5,
-    prepend_bos: bool | None = None,
+    prepend_bos: bool = False,
     print_prompt: bool = False,
     use_kv_cache: bool = True,
 ) -> tuple[int, str]:
@@ -281,23 +402,6 @@ def print_most_likely_tokens(
             print()
 
 
-def tokenize_to_strs(
-    s: str,
-    tl_model: HookedTransformer,
-) -> list[str]:
-    return [tl_model.to_string(t) for t in tl_model.to_tokens(s)[0]]
-
-
-def get_repo_root() -> pathlib.Path:
-    """Returns repo root (relative to this file)."""
-    return pathlib.Path(
-        git.Repo(
-            __file__,
-            search_parent_directories=True,
-        ).git.rev_parse("--show-toplevel")
-    )
-
-
 def plot_with_err(
     xs: np.ndarray,
     ys: np.ndarray,
@@ -369,3 +473,30 @@ def logit_softmax(xs: torch.Tensor) -> torch.Tensor:
     )
 
     return logits
+
+
+def gen_text(
+    model: AutoModelForCausalLM,
+    tokenizer: PreTrainedTokenizer,
+    prompt: str,
+    max_new_tokens: int = 32,
+) -> str:
+    prompt_tokenized = tokenizer(
+        prompt,
+        return_tensors="pt",
+    ).to(model.device)
+    prompt_len = prompt_tokenized.input_ids.shape[-1]
+
+    with torch.no_grad():
+        gen_out = model.generate(
+            prompt_tokenized.input_ids,
+            attention_mask=prompt_tokenized.attention_mask,
+            generation_config=GenerationConfig(
+                max_new_tokens=max_new_tokens,
+                do_sample=False,
+                eos_token_id=tokenizer.eos_token_id,
+                pad_token_id=tokenizer.eos_token_id,
+            ),
+        )[0]
+
+    return tokenizer.decode(gen_out[prompt_len:])

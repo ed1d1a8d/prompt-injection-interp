@@ -1,15 +1,16 @@
 import collections
 
-from transformer_lens import HookedTransformer
+from transformers import AutoTokenizer
 from jaxtyping import Float
 import torch
 
 
+
 class VocabEquivalenceMap:
-    def __init__(self, tl_model: HookedTransformer):
+    def __init__(self, tokenizer: AutoTokenizer):
         self.lcs_str_to_toks = collections.defaultdict(list)
-        for tok in range(tl_model.cfg.d_vocab):
-            lcs_str = tl_model.to_single_str_token(tok).lower()
+        for tok in range(tokenizer.vocab_size):
+            lcs_str = tokenizer.batch_decode([tok], clean_up_tokenization_spaces=False)[0].lower()
             self.lcs_str_to_toks[lcs_str].append(tok)
 
         self.tok_to_equivalent_toks: dict[int, list[int]] = {}
