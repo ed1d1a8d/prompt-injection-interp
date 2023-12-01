@@ -9,6 +9,10 @@ torchvision==0.15.2
 transformers==4.32.1
 accelerate
 
+# OpenAI models
+openai
+tiktoken
+
 # Llama stuff
 sentencepiece
 
