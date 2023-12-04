@@ -127,11 +127,13 @@ def get_completion_model_logprob(
 
 
 @dataclasses.dataclass
-class ModelLogProb:
+class ModelTopLogProb:
     """
     Result of a log-probability extraction for a OpenAI chat model.
     """
 
+    top_token_str: str
+    top_token: int
     logprob_lb: float
     logprob_ub: float
 
@@ -156,7 +158,7 @@ def get_model_top_logprob(
     precision: float = 1e-3,
     err_prob: float = 1e-3,
     seed: int | None = 42,
-) -> ModelLogProb:
+) -> ModelTopLogProb:
     """
     Given `prompt_or_messages`, returns the log-probability of the most likely
     next token for an OpenAI model. Works for both completion and chat models,
@@ -271,7 +273,9 @@ def get_model_top_logprob(
         1 + np.expm1(-biased_logprob_ub) * np.exp(top_token_bias)
     )
 
-    return ModelLogProb(
+    return ModelTopLogProb(
+        top_token_str=top_token_str,
+        top_token=top_token,
         logprob_lb=logprob_lb,
         logprob_ub=logprob_ub,
         top_token_bias=top_token_bias,

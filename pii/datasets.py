@@ -90,7 +90,7 @@ def get_counterfact_dataset(
 
     def tokenize(s: str):
         if isinstance(tokenizer, tiktoken.core.Encoding):
-            return tokenizer.encode(" " + s)
+            return tokenizer.encode(s)
         else:
             return tokenizer(s, add_special_tokens=False).input_ids
 
