@@ -35,6 +35,12 @@ def count_tokens(
     )
 
 
+def get_fingerprints(
+    completions: list[CompletionT],
+) -> list[str | None]:
+    return [c.system_fingerprint for c in completions]
+
+
 @dataclasses.dataclass
 class CompletionLogProb:
     """
@@ -46,10 +52,10 @@ class CompletionLogProb:
 
     # The following fields are included for debugging purposes.
     seed: int | None
-    system_fingerprint: str | None
     logit_bias: float
 
     token_counts: TokenCounts
+    fingerprints: list[str | None]
 
 
 def get_completion_model_logprob(
@@ -81,7 +87,7 @@ def get_completion_model_logprob(
     tokenizer = tiktoken.encoding_for_model(completion_model)
 
     lo, hi = logit_bias_lo, logit_bias_hi
-    logprob_hist: list[tuple[float, float | None, str | None]] = []
+    logprob_hist: list[tuple[float, float | None]] = []
     for _ in range(n_binary_search_steps):
         mid = (lo + hi) / 2
         r = client.completions.create(
@@ -102,13 +108,13 @@ def get_completion_model_logprob(
             if tokenizer.encode_single_token(token) == target_token_idx:
                 target_logprob = logprob
 
-        logprob_hist.append((mid, target_logprob, r.system_fingerprint))
+        logprob_hist.append((mid, target_logprob))
         if target_logprob is None:
             lo = mid
         else:
             hi = mid
 
-    for b, biased_lp, fp in logprob_hist[::-1]:
+    for b, biased_lp in logprob_hist[::-1]:
         # Take the last binary search value that was valid,
         # as this should produce the most numerically stable result.
         if biased_lp is not None:
@@ -117,9 +123,9 @@ def get_completion_model_logprob(
                 logprob=logprob,
                 target_token_idx=target_token_idx,
                 seed=seed,
-                system_fingerprint=fp,
                 logit_bias=b,
                 token_counts=count_tokens(responses),
+                fingerprints=get_fingerprints(responses),
             )
 
     # Procedure failed
@@ -150,6 +156,7 @@ class ModelTopLogProb:
     seed: int | None
 
     token_counts: TokenCounts
+    fingerprints: list[str | None]
 
 
 def get_model_top_logprob(
@@ -158,6 +165,8 @@ def get_model_top_logprob(
     precision: float = 1e-3,
     err_prob: float = 1e-3,
     seed: int | None = 42,
+    target_fingerprint: str | None = None,
+    total_query_budget: int = 100,
 ) -> ModelTopLogProb:
     """
     Given `prompt_or_messages`, returns the log-probability of the most likely
@@ -174,26 +183,39 @@ def get_model_top_logprob(
     responses: list[CompletionT] = []
 
     def get_next_tokens(**kwargs) -> list[str]:
-        if isinstance(prompt_or_messages, str):
-            r = client.completions.create(
-                model=model_name,
-                prompt=prompt_or_messages,
-                max_tokens=1,
-                seed=seed,
-                **kwargs,
-            )
-            responses.append(r)
-            return [c.text for c in r.choices]
-        else:
-            r = client.chat.completions.create(
-                model=model_name,
-                messages=prompt_or_messages,
-                max_tokens=1,
-                seed=seed,
-                **kwargs,
-            )
-            responses.append(r)
-            return [c.message.content for c in r.choices]
+        while len(responses) < total_query_budget:
+            if isinstance(prompt_or_messages, str):
+                r = client.completions.create(
+                    model=model_name,
+                    prompt=prompt_or_messages,
+                    max_tokens=1,
+                    seed=seed,
+                    **kwargs,
+                )
+                responses.append(r)
+                if (
+                    target_fingerprint is not None
+                ) and r.system_fingerprint != target_fingerprint:
+                    continue
+
+                return [c.text for c in r.choices]
+            else:
+                r = client.chat.completions.create(
+                    model=model_name,
+                    messages=prompt_or_messages,
+                    max_tokens=1,
+                    seed=seed,
+                    **kwargs,
+                )
+                responses.append(r)
+                if (
+                    target_fingerprint is not None
+                ) and r.system_fingerprint != target_fingerprint:
+                    continue
+
+                return [c.message.content for c in r.choices]
+
+        raise RuntimeError("Exceeded total query budget")
 
     top_token_str: str = get_next_tokens(n=1, temperature=0)[0]
     top_token = tiktoken.encoding_for_model(model_name).encode_single_token(
@@ -214,8 +236,8 @@ def get_model_top_logprob(
         else:
             lo = mid
 
-    top_token_bias = hi
-    max_gap = hi - lo
+    top_token_bias = hi + 1  # +1 for buffer
+    max_gap = hi + 1 - lo
 
     # number of binary search iterations needed to get within precision
     n_bs_iters = np.ceil(np.log2(1 / precision)).astype(int)
@@ -286,6 +308,7 @@ def get_model_top_logprob(
         biased_prob_ub=biased_prob_ub,
         seed=seed,
         token_counts=count_tokens(responses),
+        fingerprints=get_fingerprints(responses),
     )
 
 
@@ -301,6 +324,7 @@ class ModelLogitDiff:
     target_token_idx: int
     seed: int
     token_counts: TokenCounts
+    fingerprints: list[str | None]
 
 
 def get_model_logit_diff(
@@ -309,6 +333,8 @@ def get_model_logit_diff(
     target_token_idx: int,
     precision: float = 1e-2,
     seed: int | None = 42,
+    target_fingerprint: str | None = None,
+    total_query_budget: int = 100,
 ) -> ModelLogitDiff:
     """
     Given `prompt_or_messages`, returns the difference in logits between the
@@ -327,30 +353,44 @@ def get_model_logit_diff(
     tokenizer = tiktoken.encoding_for_model(model_name)
 
     def get_next_token(**kwargs) -> str:
-        if isinstance(prompt_or_messages, str):
-            r = client.completions.create(
-                model=model_name,
-                prompt=prompt_or_messages,
-                temperature=0,
-                n=1,
-                max_tokens=1,
-                seed=seed,
-                **kwargs,
-            )
-            responses.append(r)
-            return r.choices[0].text
-        else:
-            r = client.chat.completions.create(
-                model=model_name,
-                messages=prompt_or_messages,
-                temperature=0,
-                n=1,
-                max_tokens=1,
-                seed=seed,
-                **kwargs,
-            )
-            responses.append(r)
-            return r.choices[0].message.content
+        while len(responses) < total_query_budget:
+            if isinstance(prompt_or_messages, str):
+                r = client.completions.create(
+                    model=model_name,
+                    prompt=prompt_or_messages,
+                    temperature=0,
+                    n=1,
+                    max_tokens=1,
+                    seed=seed,
+                    **kwargs,
+                )
+                responses.append(r)
+                if (
+                    target_fingerprint is not None
+                ) and r.system_fingerprint != target_fingerprint:
+                    continue
+                    continue
+
+                return r.choices[0].text
+            else:
+                r = client.chat.completions.create(
+                    model=model_name,
+                    messages=prompt_or_messages,
+                    temperature=0,
+                    n=1,
+                    max_tokens=1,
+                    seed=seed,
+                    **kwargs,
+                )
+                responses.append(r)
+                if (
+                    target_fingerprint is not None
+                ) and r.system_fingerprint != target_fingerprint:
+                    continue
+
+                return r.choices[0].message.content
+
+        raise RuntimeError("Exceeded total query budget")
 
     lo, hi = 0, 100
     n_bs_iters = np.ceil(np.log2((hi - lo) / precision)).astype(int)
@@ -370,4 +410,5 @@ def get_model_logit_diff(
         target_token_idx=target_token_idx,
         seed=seed,
         token_counts=count_tokens(responses),
+        fingerprints=get_fingerprints(responses),
     )
