@@ -30,6 +30,11 @@ RUN apt-get update -q \
   graphviz-dev \
   libgl1-mesa-glx \
   python3.10-dev \
+  # latex
+  texlive-latex-extra \
+  texlive-fonts-recommended \
+  dvipng \
+  cm-super \
   # Clean up
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
