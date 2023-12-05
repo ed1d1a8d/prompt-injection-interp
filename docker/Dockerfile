@@ -3,7 +3,7 @@
 # You may also want to push the image to Docker Hub:
 #   docker push tonytwang/pii:main
 
-FROM nvidia/cuda:12.1.0-cudnn8-runtime-ubuntu22.04 AS base
+FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04 AS base
 
 ARG DEBIAN_FRONTEND=noninteractive
 
