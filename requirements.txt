@@ -1,4 +1,4 @@
-# We use python 3.10 and cuda 11.8
+# We use python 3.10 and cuda 12.1
 # We only pin the versions of critical libraries (e.g. torch).
 
 # Pytorch
