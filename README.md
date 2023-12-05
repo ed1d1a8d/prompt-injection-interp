@@ -1,5 +1,7 @@
 # prompt-injection-interp
 
+Paper link: https://web.mit.edu/twang6/public/pii.pdf
+
 ### Repository setup
 Clone the repository (recursively to get the submodules) and then run:
 ```
