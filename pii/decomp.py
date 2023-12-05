@@ -12,7 +12,7 @@ from transformer_lens import ActivationCache, HookedTransformer
 class LabelledComponents:
     labels: list[str]
     components: Float[torch.Tensor, "n_components d"]
-    resid_post: Float[torch.Tensor, "d"]
+    resid_post: Float[torch.Tensor, "d"] | None = None
 
     def append_zero(self):
         return LabelledComponents(
@@ -27,6 +27,7 @@ class LabelledComponents:
                 ],
                 dim=0,
             ),
+            resid_post=self.resid_post,
         )
 
 
