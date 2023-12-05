@@ -24,37 +24,11 @@ def get_random_words() -> pd.Series:
     ).word.sort_values()
 
 
-def get_counterfact_dataset(
+def postprocess_df(
+    df: pd.DataFrame,
     tokenizer: AutoTokenizer | tiktoken.core.Encoding,
-    competing_prompt_generator: Callable[[str, str], str] | None = None,
+    competing_prompt_generator: Callable[[str, str], str],
 ) -> pd.DataFrame:
-    """
-    Returns a filtered version of the counterfact dataset.
-    """
-    if competing_prompt_generator is None:
-        competing_prompt_generator = get_dontsay_prompt
-
-    df = pd.read_json("https://rome.baulab.info/data/dsets/counterfact.json")
-
-    assert (df.case_id == df.index).all()
-    df = df[["case_id", "pararel_idx", "requested_rewrite"]]
-
-    df = (
-        df.join(
-            pd.json_normalize(
-                df.requested_rewrite,
-                sep="_",
-            )
-        )
-        .drop(columns=["requested_rewrite", "target_new_id", "target_true_id"])
-        .rename(columns={"prompt": "fact_template"})
-    )
-
-    df["fact_prefix"] = [
-        row.fact_template.format(row.subject) for _, row in df.iterrows()
-    ]
-    df = df.drop(columns=["fact_template"])
-
     random_words = get_random_words()
     irrelevant_words = random_words[
         [
@@ -99,3 +73,80 @@ def get_counterfact_dataset(
     )
 
     return df
+
+
+def get_counterfact_dataset(
+    tokenizer: AutoTokenizer | tiktoken.core.Encoding,
+    competing_prompt_generator: Callable[[str, str], str] | None = None,
+) -> pd.DataFrame:
+    """
+    Returns a filtered version of the counterfact dataset.
+    """
+    if competing_prompt_generator is None:
+        competing_prompt_generator = get_dontsay_prompt
+
+    df = pd.read_json("https://rome.baulab.info/data/dsets/counterfact.json")
+
+    assert (df.case_id == df.index).all()
+    df = df[["case_id", "pararel_idx", "requested_rewrite"]]
+
+    df = (
+        df.join(
+            pd.json_normalize(
+                df.requested_rewrite,
+                sep="_",
+            )
+        )
+        .drop(columns=["requested_rewrite", "target_new_id", "target_true_id"])
+        .rename(columns={"prompt": "fact_template"})
+    )
+
+    df["fact_prefix"] = [
+        row.fact_template.format(row.subject) for _, row in df.iterrows()
+    ]
+    df = df.drop(columns=["fact_template"])
+
+    return postprocess_df(
+        df=df,
+        tokenizer=tokenizer,
+        competing_prompt_generator=competing_prompt_generator,
+    )
+
+
+def get_hq_dataset(
+    tokenizer: AutoTokenizer | tiktoken.core.Encoding,
+    competing_prompt_generator: Callable[[str, str], str] | None = None,
+) -> pd.DataFrame:
+    """
+    Returns a filtered version of our own high quality dataset.
+    """
+    if competing_prompt_generator is None:
+        competing_prompt_generator = get_dontsay_prompt
+
+    df = pd.read_csv(utils.get_repo_root() / "data" / "our_hq_facts.csv")
+    df = df.rename(
+        columns={"question": "fact_prefix", "answer": "target_true_str"}
+    )
+
+    df = df[~df.target_true_str.str.contains(" ")].reset_index(drop=True)
+
+    df["target_new_str"] = ""
+    for question_type in df.type.unique():
+        sub_df = df.query(f"type == @question_type")
+
+        relevant_answers = sub_df.target_true_str.unique()
+        for row in sub_df.itertuples():
+            options = relevant_answers[
+                relevant_answers != row.target_true_str
+            ].tolist()
+            df.loc[row.Index, "target_new_str"] = options[
+                row.Index % len(options)
+            ]
+
+    assert not (df.target_true_str == df.target_new_str).any()
+
+    return postprocess_df(
+        df=df,
+        tokenizer=tokenizer,
+        competing_prompt_generator=competing_prompt_generator,
+    )
