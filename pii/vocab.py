@@ -1,17 +1,30 @@
 import collections
 
+import tiktoken
 from transformers import AutoTokenizer
 from jaxtyping import Float
 import torch
 
 
-
 class VocabEquivalenceMap:
-    def __init__(self, tokenizer: AutoTokenizer):
+    def __init__(self, tokenizer: AutoTokenizer | tiktoken.core.Encoding):
         self.lcs_str_to_toks = collections.defaultdict(list)
-        for tok in range(tokenizer.vocab_size):
-            lcs_str = tokenizer.batch_decode([tok], clean_up_tokenization_spaces=False)[0].lower()
-            self.lcs_str_to_toks[lcs_str].append(tok)
+
+        if isinstance(tokenizer, tiktoken.core.Encoding):
+            for b in tokenizer.token_byte_values():
+                try:
+                    lcs_str = b.decode("utf-8").lower().strip()
+                    self.lcs_str_to_toks[lcs_str].append(
+                        tokenizer.encode_single_token(b)
+                    )
+                except UnicodeDecodeError:
+                    continue
+        else:
+            for tok in range(tokenizer.vocab_size):
+                lcs_str = tokenizer.batch_decode(
+                    [tok], clean_up_tokenization_spaces=False
+                )[0].lower()
+                self.lcs_str_to_toks[lcs_str].append(tok)
 
         self.tok_to_equivalent_toks: dict[int, list[int]] = {}
         for toks in self.lcs_str_to_toks.values():

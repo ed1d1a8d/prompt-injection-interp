@@ -1,6 +1,7 @@
 from typing import Callable
 
 import pandas as pd
+import tiktoken
 from transformers import AutoTokenizer
 
 from pii import utils
@@ -24,7 +25,7 @@ def get_random_words() -> pd.Series:
 
 
 def get_counterfact_dataset(
-    tokenizer: AutoTokenizer,
+    tokenizer: AutoTokenizer | tiktoken.core.Encoding,
     competing_prompt_generator: Callable[[str, str], str] | None = None,
 ) -> pd.DataFrame:
     """
@@ -87,11 +88,14 @@ def get_counterfact_dataset(
     assert not df.target_true_str.str.contains(" ").any()
     assert not df.irrelevant_word.str.contains(" ").any()
 
-    df = df[
-        [
-            len(tokenizer(s, add_special_tokens=False).input_ids) == 1
-            for s in df.target_true_str
-        ]
-    ].reset_index(drop=True)
+    def tokenize(s: str):
+        if isinstance(tokenizer, tiktoken.core.Encoding):
+            return tokenizer.encode(s)
+        else:
+            return tokenizer(s, add_special_tokens=False).input_ids
+
+    df = df[[len(tokenize(s)) == 1 for s in df.target_true_str]].reset_index(
+        drop=True
+    )
 
     return df
