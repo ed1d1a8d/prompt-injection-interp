@@ -1,0 +1,1321 @@
+fact_prefix,target_true_str,type,target_new_str,irrelevant_word,prompt_c,prompt_nc0,prompt_nc1,p_correct_c,p_correct_nc0,p_correct_nc1,lo_correct_c,lo_correct_nc0,lo_correct_nc1,log_bf0,log_bf1
+The Acropolis is in the country of,Greece,country,India,pizza,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Greece.
+<</SYS>>
+The Acropolis is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word India.
+<</SYS>>
+The Acropolis is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word pizza.
+<</SYS>>
+The Acropolis is in the country of [/INST] ",0.0008417910988948778,0.6468750574519202,0.9882807246251535,-7.079136529975095,0.6053312260633037,4.434731837472702,-7.684467756038399,-11.513868367447797
+The Iguazu Falls are in the country of,Argentina,country,Brazil,whale,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Argentina.
+<</SYS>>
+The Iguazu Falls are in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Brazil.
+<</SYS>>
+The Iguazu Falls are in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word whale.
+<</SYS>>
+The Iguazu Falls are in the country of [/INST] ",1.1015444313457004e-05,0.9986946333849038,0.9963467536503626,-11.416201225891223,6.639965127204795,5.608479160068581,-18.056166353096017,-17.024680385959805
+Patrick Mahomes plays the sport of,football,sport,hockey,computer,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Patrick Mahomes plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word hockey.
+<</SYS>>
+Patrick Mahomes plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word computer.
+<</SYS>>
+Patrick Mahomes plays the sport of [/INST] ",0.010484980303703277,0.9894148120398524,0.9979048077784493,-4.547271158173286,4.537658007764427,6.166012587079408,-9.084929165937712,-10.713283745252694
+Russell Wilson plays the sport of,football,sport,snowboarding,grass,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Russell Wilson plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word snowboarding.
+<</SYS>>
+Russell Wilson plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word grass.
+<</SYS>>
+Russell Wilson plays the sport of [/INST] ",0.011252776953569278,0.9994346479106672,0.9972451102318649,-4.475823772020526,7.477496341983876,5.891619157283232,-11.953320114004402,-10.367442929303758
+The La Sagrada Familia is in the country of,Spain,country,Indonesia,sunset,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Spain.
+<</SYS>>
+The La Sagrada Familia is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Indonesia.
+<</SYS>>
+The La Sagrada Familia is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word sunset.
+<</SYS>>
+The La Sagrada Familia is in the country of [/INST] ",0.021611511510214905,0.9809323699785982,0.9908371336231462,-3.8126807056399232,3.940511383270533,4.683391122364468,-7.753192088910456,-8.496071828004391
+Slash plays the,guitar,instrument,violin,sock,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Slash plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word violin.
+<</SYS>>
+Slash plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word sock.
+<</SYS>>
+Slash plays the [/INST] ",0.03736233719990601,0.22271848298536215,0.4194552030968589,-3.2490139119325567,-1.2498940316940619,-0.32501023388968553,-1.9991198802384949,-2.924003678042871
+Mount Fuji is in the country of,Japan,country,Cambodia,pillow,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Japan.
+<</SYS>>
+Mount Fuji is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Cambodia.
+<</SYS>>
+Mount Fuji is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word pillow.
+<</SYS>>
+Mount Fuji is in the country of [/INST] ",0.30827142056649287,0.999901362750714,0.9999145365827011,-0.8082130219057367,9.223962943777236,9.367336674363095,-10.032175965682972,-10.175549696268831
+John Densmore plays the,drums,instrument,saxophone,volcano,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+John Densmore plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word saxophone.
+<</SYS>>
+John Densmore plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word volcano.
+<</SYS>>
+John Densmore plays the [/INST] ",0.16588346710114446,0.04656125754341745,0.040014248124263505,-1.6150875838736407,-3.0193063658914268,-3.177682848760375,1.404218782017786,1.5625952648867345
+The Dead Sea is in the country of,Jordan,country,England,river,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Jordan.
+<</SYS>>
+The Dead Sea is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word England.
+<</SYS>>
+The Dead Sea is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word river.
+<</SYS>>
+The Dead Sea is in the country of [/INST] ",0.07582059737049801,0.8551930438142955,0.8488089095934728,-2.5005362226296675,1.7759257069364716,1.7252895478117407,-4.276461929566139,-4.225825770441408
+Kobe Bryant played the sport of,basketball,sport,track,flower,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Kobe Bryant played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word track.
+<</SYS>>
+Kobe Bryant played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word flower.
+<</SYS>>
+Kobe Bryant played the sport of [/INST] ",0.8065335314663065,0.9993053770529166,0.9994423019079083,1.4276412650026478,7.271446517490603,7.491134941940833,-5.843805252487956,-6.063493676938185
+Anthony Davis plays the sport of,basketball,sport,track,mirror,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Anthony Davis plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word track.
+<</SYS>>
+Anthony Davis plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word mirror.
+<</SYS>>
+Anthony Davis plays the sport of [/INST] ",0.7349419805512107,0.9968697295047684,0.9922460034493293,1.0198428147332472,5.763500677922225,4.8517626694857245,-4.743657863188977,-3.8319198547524773
+Derek Jeter played the sport of,baseball,sport,track,forest,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Derek Jeter played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word track.
+<</SYS>>
+Derek Jeter played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word forest.
+<</SYS>>
+Derek Jeter played the sport of [/INST] ",0.12009028395972461,0.992435772929923,0.9930733503629067,-1.9915754805727885,4.876732127867652,4.965428290304565,-6.868307608440441,-6.957003770877353
+Julio Jones plays the sport of,football,sport,soccer,ocean,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Julio Jones plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word soccer.
+<</SYS>>
+Julio Jones plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word ocean.
+<</SYS>>
+Julio Jones plays the sport of [/INST] ",0.006034590641966782,0.9967746837552982,0.997074652046493,-5.104194385023589,5.73349374438113,5.831412211762501,-10.837688129404718,-10.93560659678609
+Usain Bolt competes in the sport of,track,sport,hockey,bird,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word track.
+<</SYS>>
+Usain Bolt competes in the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word hockey.
+<</SYS>>
+Usain Bolt competes in the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word bird.
+<</SYS>>
+Usain Bolt competes in the sport of [/INST] ",0.21266301203334745,0.5470088613668372,0.6755375107021598,-1.3089475401321804,0.18859243845462886,0.7333387520572497,-1.4975399785868093,-2.0422862921894303
+B.B. King plays the,guitar,instrument,trumpet,lighthouse,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+B.B. King plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word trumpet.
+<</SYS>>
+B.B. King plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word lighthouse.
+<</SYS>>
+B.B. King plays the [/INST] ",0.024863264947017204,0.355805804575085,0.3258776763752559,-3.669186291438439,-0.5936151370893435,-0.7268894983935413,-3.0755711543490953,-2.9422967930448976
+Les Paul plays the,guitar,instrument,violin,mountain,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Les Paul plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word violin.
+<</SYS>>
+Les Paul plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word mountain.
+<</SYS>>
+Les Paul plays the [/INST] ",0.06612341537207914,0.36956847614054206,0.18863023074635538,-2.647821367361416,-0.534068499113205,-1.4589352449330466,-2.113752868248211,-1.1888861224283693
+Luka Dončić plays the sport of,basketball,sport,baseball,island,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Luka Dončić plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Luka Dončić plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word island.
+<</SYS>>
+Luka Dončić plays the sport of [/INST] ",0.7600267001257347,0.9992065571524429,0.9975758595151232,1.152825897778361,7.138335288564786,6.019851173176646,-5.985509390786425,-4.8670252753982854
+The Ganges River is in the country of,India,country,France,waterfall,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word India.
+<</SYS>>
+The Ganges River is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word France.
+<</SYS>>
+The Ganges River is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word waterfall.
+<</SYS>>
+The Ganges River is in the country of [/INST] ",7.270080920812427e-05,0.9992768268233416,0.9981630784204545,-9.529085339248955,7.231138404579234,6.297825552285957,-16.76022374382819,-15.826910891534911
+Steffi Graf played the sport of,tennis,sport,snowboarding,leaf,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Steffi Graf played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word snowboarding.
+<</SYS>>
+Steffi Graf played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word leaf.
+<</SYS>>
+Steffi Graf played the sport of [/INST] ",0.36587771839143274,0.9996142846507519,0.9983868054065942,-0.5499426342182566,7.8600251079644305,6.427924349249515,-8.409967742182687,-6.977866983467771
+The Edinburgh Castle is in the country of,Scotland,country,Italy,radio,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Scotland.
+<</SYS>>
+The Edinburgh Castle is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Italy.
+<</SYS>>
+The Edinburgh Castle is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word radio.
+<</SYS>>
+The Edinburgh Castle is in the country of [/INST] ",0.6718824618648734,0.9998905534618304,0.9997376214737939,0.7167115251200051,9.119964911300062,8.245459927394265,-8.403253386180058,-7.5287484022742595
+Drew Brees played the sport of,football,sport,baseball,cloud,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Drew Brees played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Drew Brees played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word cloud.
+<</SYS>>
+Drew Brees played the sport of [/INST] ",0.008296197139518,0.9958296629378838,0.9970309475602592,-4.783627243026935,5.47557935902429,5.81653895211143,-10.259206602051226,-10.600166195138364
+Wayne Gretzky played the sport of,hockey,sport,tennis,butterfly,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word hockey.
+<</SYS>>
+Wayne Gretzky played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Wayne Gretzky played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word butterfly.
+<</SYS>>
+Wayne Gretzky played the sport of [/INST] ",0.029942619045307973,0.9943807854760326,0.9969445815401978,-3.4780723737423656,5.17592832755952,5.78777862457286,-8.654000701301886,-9.265850998315226
+Fernando Tatis Jr. plays the sport of,baseball,sport,basketball,lion,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Fernando Tatis Jr. plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Fernando Tatis Jr. plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word lion.
+<</SYS>>
+Fernando Tatis Jr. plays the sport of [/INST] ",0.6363832175977714,0.9984950709937713,0.9990932635290809,0.559700407816552,6.497503491285714,7.004751552516516,-5.937803083469163,-6.445051144699963
+Michael Jordan played the sport of,basketball,sport,track,cactus,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Michael Jordan played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word track.
+<</SYS>>
+Michael Jordan played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word cactus.
+<</SYS>>
+Michael Jordan played the sport of [/INST] ",0.5296469812656285,0.9994958344751838,0.9991711123566154,0.11872719508017326,7.592101628898243,7.094596713362207,-7.47337443381807,-6.975869518282034
+Cliff Burton plays the,bass,instrument,banjo,pyramid,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word bass.
+<</SYS>>
+Cliff Burton plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word banjo.
+<</SYS>>
+Cliff Burton plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word pyramid.
+<</SYS>>
+Cliff Burton plays the [/INST] ",0.4562862574448115,0.921878999396452,0.9567189409300811,-0.17530252970993898,2.468155063375518,3.0957945562488796,-2.643457593085457,-3.2710970859588184
+The Amazon Rainforest is in the country of,Brazil,country,Nepal,robot,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Brazil.
+<</SYS>>
+The Amazon Rainforest is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Nepal.
+<</SYS>>
+The Amazon Rainforest is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word robot.
+<</SYS>>
+The Amazon Rainforest is in the country of [/INST] ",0.030403424167688462,0.9987366171007095,0.9982461309689786,-3.4623248446186228,6.67269813341838,6.344175647704925,-10.135022978037004,-9.806500492323547
+Mick Mars plays the,guitar,instrument,saxophone,umbrella,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Mick Mars plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word saxophone.
+<</SYS>>
+Mick Mars plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word umbrella.
+<</SYS>>
+Mick Mars plays the [/INST] ",0.0016217165510962284,0.27148433359045576,0.12483826706056837,-6.422647058318177,-0.9871046958842365,-1.9473896708995695,-5.4355423624339405,-4.475257387418608
+The element with atomic symbol Ag is,silver,element,helium,grape,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word silver.
+<</SYS>>
+The element with atomic symbol Ag is [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word helium.
+<</SYS>>
+The element with atomic symbol Ag is [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word grape.
+<</SYS>>
+The element with atomic symbol Ag is [/INST] ",2.3806659436247143e-05,0.9989060414826948,0.9989084015036419,-10.645521401237374,6.816857936742774,6.819019951873129,-17.46237933798015,-17.464541353110505
+The element with atomic symbol Pb is,lead,element,oxygen,house,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word lead.
+<</SYS>>
+The element with atomic symbol Pb is [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word oxygen.
+<</SYS>>
+The element with atomic symbol Pb is [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word house.
+<</SYS>>
+The element with atomic symbol Pb is [/INST] ",4.692180410999006e-06,4.832462710454999e-05,3.4266544432965196e-05,-12.269608484953785,-9.937520923513565,-10.281306793617503,-2.33208756144022,-1.9883016913362823
+Tom Brady plays the sport of,football,sport,basketball,apple,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Tom Brady plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Tom Brady plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word apple.
+<</SYS>>
+Tom Brady plays the sport of [/INST] ",0.0181576987802529,0.9982700582169607,0.9986611542948103,-3.9903360600748217,6.357936082600735,6.614607707527249,-10.348272142675556,-10.60494376760207
+Pele played the sport of,football,sport,baseball,cake,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Pele played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Pele played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word cake.
+<</SYS>>
+Pele played the sport of [/INST] ",2.1852827636102173e-05,0.09689371079852685,0.5157849105940648,-10.73115838046592,-2.232225640496589,0.06316063104624947,-8.498932739969332,-10.79431901151217
+Art Blakey plays the,drums,instrument,trumpet,turtle,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Art Blakey plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word trumpet.
+<</SYS>>
+Art Blakey plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word turtle.
+<</SYS>>
+Art Blakey plays the [/INST] ",0.005765634151012293,0.8452811424071427,0.5149969393646054,-5.150057811549854,1.6980596369576169,0.06000575615871404,-6.848117448507471,-5.210063567708568
+The Hagia Sophia is in the country of,Turkey,country,Tibet,shoe,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Turkey.
+<</SYS>>
+The Hagia Sophia is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Tibet.
+<</SYS>>
+The Hagia Sophia is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word shoe.
+<</SYS>>
+The Hagia Sophia is in the country of [/INST] ",0.07934460855610041,0.9962540843992167,0.9982802084082135,-2.451285298862368,5.583336256591616,6.363830890933089,-8.034621555453985,-8.815116189795457
+David Beckham played the sport of,football,sport,tennis,elephant,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+David Beckham played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+David Beckham played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word elephant.
+<</SYS>>
+David Beckham played the sport of [/INST] ",0.00028090865698936874,0.7606619903793258,0.34205578113348223,-8.17720005745087,1.1563122751237223,-0.6541463274804461,-9.333512332574593,-7.523053729970424
+The Great Buddha of Kamakura is in the country of,Japan,country,Croatia,turtle,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Japan.
+<</SYS>>
+The Great Buddha of Kamakura is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Croatia.
+<</SYS>>
+The Great Buddha of Kamakura is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word turtle.
+<</SYS>>
+The Great Buddha of Kamakura is in the country of [/INST] ",0.7478934629835481,0.9998507379807482,0.9997118095043939,1.0874087745547163,8.8096580047737,8.151600621378067,-7.722249230218984,-7.064191846823351
+John Bonham plays the,drums,instrument,saxophone,shoe,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+John Bonham plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word saxophone.
+<</SYS>>
+John Bonham plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word shoe.
+<</SYS>>
+John Bonham plays the [/INST] ",0.19229135584632978,0.3106449668698376,0.20922951039992882,-1.435189704387305,-0.7971057514140377,-1.3295759881135782,-0.6380839529732673,-0.10561371627372673
+Mike Piazza played the sport of,baseball,sport,basketball,parrot,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Mike Piazza played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Mike Piazza played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word parrot.
+<</SYS>>
+Mike Piazza played the sport of [/INST] ",0.13189933978251603,0.962139912155674,0.9890233238473939,-1.8842686216579394,3.2352624129022347,4.500945242696867,-5.119531034560174,-6.385213864354807
+Sidney Crosby plays the sport of,hockey,sport,football,cat,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word hockey.
+<</SYS>>
+Sidney Crosby plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Sidney Crosby plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word cat.
+<</SYS>>
+Sidney Crosby plays the sport of [/INST] ",0.05686116295651915,0.9956306141638012,0.9979810188430076,-2.8086009419035927,5.428753861167013,6.20314125048987,-8.237354803070605,-9.011742192393463
+The Lake Baikal is in the country of,Russia,country,Argentina,tractor,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Russia.
+<</SYS>>
+The Lake Baikal is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Argentina.
+<</SYS>>
+The Lake Baikal is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tractor.
+<</SYS>>
+The Lake Baikal is in the country of [/INST] ",0.09847779999797016,0.998996215717186,0.9986068910103086,-2.214253525921656,6.902973850141168,6.57482326599248,-9.117227376062825,-8.789076791914136
+The Great Barrier Reef is in the country of,Australia,country,Turkey,school,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Australia.
+<</SYS>>
+The Great Barrier Reef is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Turkey.
+<</SYS>>
+The Great Barrier Reef is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word school.
+<</SYS>>
+The Great Barrier Reef is in the country of [/INST] ",0.0010158219022693336,0.997408066141371,0.9982524428856953,-6.891040900034451,5.952755719587125,6.347787315080649,-12.843796619621575,-13.238828215115099
+Andres Iniesta plays the sport of,football,sport,snowboarding,dolphin,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Andres Iniesta plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word snowboarding.
+<</SYS>>
+Andres Iniesta plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word dolphin.
+<</SYS>>
+Andres Iniesta plays the sport of [/INST] ",0.0006928015761972123,0.8325266085418315,0.8573046937295474,-7.274073883933078,1.6036407018763696,1.7930817590302968,-8.877714585809448,-9.067155642963375
+Kawhi Leonard plays the sport of,basketball,sport,baseball,moon,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Kawhi Leonard plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Kawhi Leonard plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word moon.
+<</SYS>>
+Kawhi Leonard plays the sport of [/INST] ",0.8253013891845482,0.9997565312509668,0.9996092347693335,1.5526863745659207,8.320278466011523,7.847012769789745,-6.767592091445602,-6.294326395223824
+The Loch Ness is in the country of,Scotland,country,Jordan,rose,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Scotland.
+<</SYS>>
+The Loch Ness is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Jordan.
+<</SYS>>
+The Loch Ness is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word rose.
+<</SYS>>
+The Loch Ness is in the country of [/INST] ",0.1921319320777593,0.9996002078165677,0.999574142649273,-1.4362164806254099,7.824165815162228,7.760980177166869,-9.260382295787638,-9.19719665779228
+The Mount Elbrus is in the country of,Russia,country,Scotland,bird,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Russia.
+<</SYS>>
+The Mount Elbrus is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Scotland.
+<</SYS>>
+The Mount Elbrus is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word bird.
+<</SYS>>
+The Mount Elbrus is in the country of [/INST] ",0.02816471642058618,0.9994936836302037,0.9996313037250465,-3.5411163249701554,7.587842402713166,7.905168591706001,-11.128958727683322,-11.446284916676156
+Aaron Rodgers plays the sport of,football,sport,boxing,grape,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Aaron Rodgers plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word boxing.
+<</SYS>>
+Aaron Rodgers plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word grape.
+<</SYS>>
+Aaron Rodgers plays the sport of [/INST] ",0.07994250285684032,0.9990057390063145,0.9899159291538018,-2.443128502999522,6.912516061073822,4.586662984570323,-9.355644564073344,-7.029791487569844
+Johnny Ramone plays the,guitar,instrument,drums,telephone,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Johnny Ramone plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Johnny Ramone plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word telephone.
+<</SYS>>
+Johnny Ramone plays the [/INST] ",0.0036277569598752784,0.19858327615811552,0.23494795029519266,-5.615506385856647,-1.3951725268719553,-1.1805798688353302,-4.2203338589846915,-4.434926517021317
+The Andes Mountains are in the country of,Chile,country,Greece,zebra,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Chile.
+<</SYS>>
+The Andes Mountains are in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Greece.
+<</SYS>>
+The Andes Mountains are in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word zebra.
+<</SYS>>
+The Andes Mountains are in the country of [/INST] ",1.052454958594245e-05,0.23754211140167422,0.3772054940756143,-11.46178944939138,-1.1662023599667979,-0.5014265022769322,-10.295587089424583,-10.960362947114449
+Alex Ovechkin plays the sport of,hockey,sport,basketball,bridge,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word hockey.
+<</SYS>>
+Alex Ovechkin plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Alex Ovechkin plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word bridge.
+<</SYS>>
+Alex Ovechkin plays the sport of [/INST] ",0.14743329978753703,0.99589054384164,0.9971418039267421,-1.7548755781412795,5.49034665761833,5.854702308253424,-7.245222235759609,-7.609577886394703
+Martina Navratilova played the sport of,tennis,sport,basketball,hat,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Martina Navratilova played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Martina Navratilova played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word hat.
+<</SYS>>
+Martina Navratilova played the sport of [/INST] ",0.2577518024441301,0.9978887582964846,0.9981847751241827,-1.0576865694227784,6.158365545989116,6.309729046025218,-7.216052115411895,-7.367415615447997
+The Buckingham Palace is in the country of,England,country,Australia,sand,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word England.
+<</SYS>>
+The Buckingham Palace is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Australia.
+<</SYS>>
+The Buckingham Palace is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word sand.
+<</SYS>>
+The Buckingham Palace is in the country of [/INST] ",0.00022034488160887244,0.6059561252854916,0.7466626256828692,-8.420096226244802,0.4303453226876699,1.08089134839758,-8.850441548932471,-9.500987574642382
+Kevin Durant plays the sport of,basketball,sport,swimming,fairy,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Kevin Durant plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word swimming.
+<</SYS>>
+Kevin Durant plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word fairy.
+<</SYS>>
+Kevin Durant plays the sport of [/INST] ",0.866966314843739,0.999532564726416,0.9993887627834245,1.8743977554756157,7.667782126492265,7.399414006873563,-5.79338437101665,-5.525016251397948
+Carlos Santana plays the,guitar,instrument,drums,mirror,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Carlos Santana plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Carlos Santana plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word mirror.
+<</SYS>>
+Carlos Santana plays the [/INST] ",0.04648265990790474,0.4334960672746517,0.5415053214670301,-3.02107827276306,-0.26760129844067426,0.16640420828725663,-2.7534769743223855,-3.1874824810503166
+James Harden plays the sport of,basketball,sport,hockey,fox,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+James Harden plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word hockey.
+<</SYS>>
+James Harden plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word fox.
+<</SYS>>
+James Harden plays the sport of [/INST] ",0.803076920866656,0.9934506083587109,0.9983471639956929,1.4056373099867612,5.021812179827527,6.403608472565761,-3.6161748698407656,-4.997971162579
+The element with atomic symbol Fe is,iron,element,ruthenium,desk,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word iron.
+<</SYS>>
+The element with atomic symbol Fe is [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word ruthenium.
+<</SYS>>
+The element with atomic symbol Fe is [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word desk.
+<</SYS>>
+The element with atomic symbol Fe is [/INST] ",1.3167231614860807e-06,0.999742220964965,0.9999295349987143,-13.54036304445804,8.263149981095367,9.560323939590612,-21.803513025553407,-23.10068698404865
+The element with atomic symbol C is,carbon,element,chromium,cake,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word carbon.
+<</SYS>>
+The element with atomic symbol C is [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word chromium.
+<</SYS>>
+The element with atomic symbol C is [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word cake.
+<</SYS>>
+The element with atomic symbol C is [/INST] ",3.3014309410194455e-06,0.002795345213357821,0.001147952276641784,-12.621151263550038,-5.877000409474582,-6.768626941139835,-6.744150854075456,-5.852524322410203
+The Eiffel Tower is in the country of,France,country,Croatia,pencil,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word France.
+<</SYS>>
+The Eiffel Tower is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Croatia.
+<</SYS>>
+The Eiffel Tower is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word pencil.
+<</SYS>>
+The Eiffel Tower is in the country of [/INST] ",0.0013671415914451842,0.9855811162747083,0.9968753269972352,-6.593665071388538,4.22469271567237,5.765296075397428,-10.818357787060908,-12.358961146785965
+Babe Ruth played the sport of,baseball,sport,soccer,blanket,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Babe Ruth played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word soccer.
+<</SYS>>
+Babe Ruth played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word blanket.
+<</SYS>>
+Babe Ruth played the sport of [/INST] ",0.30748676676904624,0.9956657960984606,0.9944420136278525,-0.811895295814556,5.436873706219637,5.186945910150405,-6.248769002034193,-5.998841205964961
+The Palace of Versailles is in the country of,France,country,Germany,seashell,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word France.
+<</SYS>>
+The Palace of Versailles is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Germany.
+<</SYS>>
+The Palace of Versailles is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word seashell.
+<</SYS>>
+The Palace of Versailles is in the country of [/INST] ",0.9642121847965854,0.9999463265426218,0.9995507945910238,3.293703901074936,9.832538279758044,7.707580987486582,-6.538834378683108,-4.413877086411647
+Chad Smith plays the,drums,instrument,trumpet,star,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Chad Smith plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word trumpet.
+<</SYS>>
+Chad Smith plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word star.
+<</SYS>>
+Chad Smith plays the [/INST] ",0.35600473154297496,0.20948511919934698,0.08025034976451045,-0.5927473573461814,-1.3280317742498817,-2.4389503932657637,0.7352844169037003,1.8462030359195822
+Alvin Kamara plays the sport of,football,sport,boxing,laptop,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Alvin Kamara plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word boxing.
+<</SYS>>
+Alvin Kamara plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word laptop.
+<</SYS>>
+Alvin Kamara plays the sport of [/INST] ",0.0072808112463130506,0.9969482722866819,0.9951109680323899,-4.915205542337239,5.788990991629965,5.315859934344888,-10.704196533967204,-10.231065476682128
+Billie Jean King played the sport of,tennis,sport,snowboarding,orange,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Billie Jean King played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word snowboarding.
+<</SYS>>
+Billie Jean King played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word orange.
+<</SYS>>
+Billie Jean King played the sport of [/INST] ",0.21605112555882422,0.9988566872187796,0.9956087491947998,-1.2888287349731957,6.772681315381092,5.4237402503536405,-8.061510050354288,-6.712568985326836
+Mookie Betts plays the sport of,baseball,sport,swimming,house,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Mookie Betts plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word swimming.
+<</SYS>>
+Mookie Betts plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word house.
+<</SYS>>
+Mookie Betts plays the sport of [/INST] ",0.17097931466731936,0.9883304981059543,0.9495763825824314,-1.5787025246465962,4.439038391277626,2.935556307200892,-6.0177409159242226,-4.5142588318474886
+Mike Trout plays the sport of,baseball,sport,tennis,chocolate,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Mike Trout plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Mike Trout plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word chocolate.
+<</SYS>>
+Mike Trout plays the sport of [/INST] ",0.1986201141895739,0.99693634256494,0.9963265326463783,-1.3949410726831921,5.785077476492352,5.602939048834834,-7.180018549175544,-6.997880121518026
+The Wailing Wall is in the country of,Israel,country,China,toothbrush,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Israel.
+<</SYS>>
+The Wailing Wall is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word China.
+<</SYS>>
+The Wailing Wall is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word toothbrush.
+<</SYS>>
+The Wailing Wall is in the country of [/INST] ",0.01929875189645947,0.983645751684234,0.9913645502200997,-3.9282274498209513,4.0967781243642225,4.7432065294100925,-8.025005574185174,-8.671433979231043
+Bryce Harper plays the sport of,baseball,sport,tennis,helicopter,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Bryce Harper plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Bryce Harper plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word helicopter.
+<</SYS>>
+Bryce Harper plays the sport of [/INST] ",0.4849804677031734,0.9978143117428563,0.9977789374029489,-0.06009620938493726,6.123636427846355,6.107546017477779,-6.183732637231293,-6.167642226862717
+Max Roach plays the,drums,instrument,banjo,toothbrush,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Max Roach plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word banjo.
+<</SYS>>
+Max Roach plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word toothbrush.
+<</SYS>>
+Max Roach plays the [/INST] ",0.2593774220051545,0.11807849533431763,0.14206268452344528,-1.0492069253076552,-2.0107534370625935,-1.798262637432791,0.9615465117549382,0.7490557121251358
+Cristiano Ronaldo plays the sport of,football,sport,snowboarding,book,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Cristiano Ronaldo plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word snowboarding.
+<</SYS>>
+Cristiano Ronaldo plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word book.
+<</SYS>>
+Cristiano Ronaldo plays the sport of [/INST] ",0.00012535366421401404,0.6863143181707955,0.34271711043679925,-8.984246140402677,0.7829442412652889,-0.651209147575725,-9.767190381667966,-8.333036992826951
+Jacob deGrom plays the sport of,baseball,sport,tennis,mango,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Jacob deGrom plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Jacob deGrom plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word mango.
+<</SYS>>
+Jacob deGrom plays the sport of [/INST] ",0.2361045050223874,0.9955044420112616,0.9964337941006367,-1.1741564682296783,5.400159789939884,5.6326804416518605,-6.574316258169562,-6.806836909881539
+The Great Ocean Road is in the country of,Australia,country,Israel,spoon,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Australia.
+<</SYS>>
+The Great Ocean Road is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Israel.
+<</SYS>>
+The Great Ocean Road is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word spoon.
+<</SYS>>
+The Great Ocean Road is in the country of [/INST] ",0.0004977234817560026,0.998848652545653,0.9977654472178535,-7.6049680452830275,6.765670312314867,6.101477115291727,-14.370638357597894,-13.706445160574756
+Andrés Segovia plays the,guitar,instrument,banjo,pen,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Andrés Segovia plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word banjo.
+<</SYS>>
+Andrés Segovia plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word pen.
+<</SYS>>
+Andrés Segovia plays the [/INST] ",0.0023904405434672163,0.19830930229199722,0.20676512828829682,-6.033884300006652,-1.3968949251512497,-1.3445358558901397,-4.6369893748554025,-4.689348444116512
+Tony Williams plays the,drums,instrument,guitar,rain,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Tony Williams plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Tony Williams plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word rain.
+<</SYS>>
+Tony Williams plays the [/INST] ",0.41217974795004786,0.5168599206770221,0.3516958413683101,-0.3549616717335476,0.06746526042235983,-0.6115932517942525,-0.42242693215590743,0.2566315800607049
+Venus Williams plays the sport of,tennis,sport,football,bread,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Venus Williams plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Venus Williams plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word bread.
+<</SYS>>
+Venus Williams plays the sport of [/INST] ",0.16516535825371287,0.998584273176785,0.9987003535252601,-1.6202865281059144,6.558695493869401,6.644362502257813,-8.178982021975315,-8.264649030363728
+Rafael Nadal plays the sport of,tennis,sport,hockey,camera,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Rafael Nadal plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word hockey.
+<</SYS>>
+Rafael Nadal plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word camera.
+<</SYS>>
+Rafael Nadal plays the sport of [/INST] ",0.4871090797881088,0.999254311147299,0.9991577809040825,-0.051575110255741845,7.200456165280975,7.078627794680553,-7.252031275536717,-7.130202904936295
+Lars Ulrich plays the,drums,instrument,banjo,watermelon,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Lars Ulrich plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word banjo.
+<</SYS>>
+Lars Ulrich plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word watermelon.
+<</SYS>>
+Lars Ulrich plays the [/INST] ",0.3214791051436062,0.2580306095395693,0.2889200589373935,-0.7469827246740021,-1.056229770057223,-0.9006348209954342,0.3092470453832209,0.15365209632143217
+Serena Williams plays the sport of,tennis,sport,track,beach,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Serena Williams plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word track.
+<</SYS>>
+Serena Williams plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word beach.
+<</SYS>>
+Serena Williams plays the sport of [/INST] ",0.10020287858223192,0.999018992248506,0.9971358550430073,-2.1949724006626323,6.925948707550715,5.852617163220584,-9.120921108213347,-8.047589563883216
+Stephen Curry plays the sport of,basketball,sport,track,clock,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Stephen Curry plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word track.
+<</SYS>>
+Stephen Curry plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word clock.
+<</SYS>>
+Stephen Curry plays the sport of [/INST] ",0.6328141387306513,0.9966894577143156,0.9977352443799519,0.544308605494069,5.707327236224122,6.088021095828891,-5.163018630730053,-5.543712490334822
+Larry Fitzgerald plays the sport of,football,sport,soccer,kiwi,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Larry Fitzgerald plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word soccer.
+<</SYS>>
+Larry Fitzgerald plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word kiwi.
+<</SYS>>
+Larry Fitzgerald plays the sport of [/INST] ",0.002682085708166657,0.9951593023598302,0.998388734481472,-5.918474848878151,5.3258439763454515,6.429122807394895,-11.244318825223601,-12.347597656273045
+The Parthenon is in the country of,Greece,country,Spain,sneaker,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Greece.
+<</SYS>>
+The Parthenon is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Spain.
+<</SYS>>
+The Parthenon is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word sneaker.
+<</SYS>>
+The Parthenon is in the country of [/INST] ",0.006716027433152021,0.9822079528348858,0.9886344956994444,-4.996519773597216,4.011051481551554,4.4657418643051034,-9.00757125514877,-9.46226163790232
+Billie Joe Armstrong plays the,guitar,instrument,violin,tractor,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Billie Joe Armstrong plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word violin.
+<</SYS>>
+Billie Joe Armstrong plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tractor.
+<</SYS>>
+Billie Joe Armstrong plays the [/INST] ",0.034701726093981054,0.7155446064181681,0.6901823700771379,-3.325647716652396,0.922467487597915,0.8009720333316699,-4.248115204250311,-4.126619749984066
+Roger Federer plays the sport of,tennis,sport,boxing,boat,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Roger Federer plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word boxing.
+<</SYS>>
+Roger Federer plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word boat.
+<</SYS>>
+Roger Federer plays the sport of [/INST] ",0.6730597810981912,0.999926352039669,0.9998195646523546,0.7220568161129366,9.516140458846118,8.619957577516539,-8.794083642733181,-7.897900761403602
+The Saint Basil's Cathedral is in the country of,Russia,country,Japan,window,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Russia.
+<</SYS>>
+The Saint Basil's Cathedral is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Japan.
+<</SYS>>
+The Saint Basil's Cathedral is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word window.
+<</SYS>>
+The Saint Basil's Cathedral is in the country of [/INST] ",0.0808731784332013,0.9485764944421698,0.9879824102251108,-2.43054188303291,2.9148670594263817,4.409293503068918,-5.345408942459292,-6.839835386101829
+Peter Green plays the,guitar,instrument,drums,river,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Peter Green plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Peter Green plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word river.
+<</SYS>>
+Peter Green plays the [/INST] ",0.12379939617009154,0.44342107032359823,0.6843340613552803,-1.9569325817500804,-0.22728917700792112,0.7737616939758059,-1.7296434047421594,-2.7306942757258863
+Jerry Garcia plays the,guitar,instrument,drums,parrot,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Jerry Garcia plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Jerry Garcia plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word parrot.
+<</SYS>>
+Jerry Garcia plays the [/INST] ",0.03942500354394312,0.2390048894356338,0.17710726579244443,-3.193131837062013,-1.15814292321514,-1.5360702866332208,-2.034988913846873,-1.6570615504287924
+The Christ the Redeemer statue is in the country of,Brazil,country,Norway,penguin,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Brazil.
+<</SYS>>
+The Christ the Redeemer statue is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Norway.
+<</SYS>>
+The Christ the Redeemer statue is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word penguin.
+<</SYS>>
+The Christ the Redeemer statue is in the country of [/INST] ",0.1531034734841904,0.9658926360841004,0.9946576591260022,-1.7104645324202958,3.343539373677234,5.226734693941048,-5.054003906097529,-6.937199226361344
+Clayton Kershaw plays the sport of,baseball,sport,football,painting,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Clayton Kershaw plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Clayton Kershaw plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word painting.
+<</SYS>>
+Clayton Kershaw plays the sport of [/INST] ",0.34628242563349004,0.9970901209944911,0.9983160530057048,-0.6354207135538622,5.836729656591669,6.384929473302364,-6.472150370145531,-7.020350186856226
+Ringo Starr plays the,drums,instrument,bass,raccoon,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Ringo Starr plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word bass.
+<</SYS>>
+Ringo Starr plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word raccoon.
+<</SYS>>
+Ringo Starr plays the [/INST] ",0.14100532981606642,0.02021136414382789,0.0321973611007525,-1.806965027512017,-3.8810918431098536,-3.4031436852552344,2.0741268155978365,1.5961786577432173
+Lamar Jackson plays the sport of,football,sport,hockey,mountain,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Lamar Jackson plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word hockey.
+<</SYS>>
+Lamar Jackson plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word mountain.
+<</SYS>>
+Lamar Jackson plays the sport of [/INST] ",0.01798119438448513,0.9954545946710232,0.998248264469349,-4.000284003152134,5.389082606941423,6.345394979073762,-9.389366610093557,-10.345678982225897
+Jimi Hendrix plays the,guitar,instrument,violin,laptop,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Jimi Hendrix plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word violin.
+<</SYS>>
+Jimi Hendrix plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word laptop.
+<</SYS>>
+Jimi Hendrix plays the [/INST] ",0.04764242708983782,0.41101459949744257,0.4436035481792753,-2.995216876407538,-0.359772660664798,-0.22654982895440998,-2.6354442157427402,-2.7686670474531283
+The Tower of London is in the country of,England,country,Peru,raccoon,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word England.
+<</SYS>>
+The Tower of London is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Peru.
+<</SYS>>
+The Tower of London is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word raccoon.
+<</SYS>>
+The Tower of London is in the country of [/INST] ",0.007627544876446941,0.9834292590124047,0.9933518031497587,-4.868332474513736,4.083407158383596,5.006739216873192,-8.951739632897333,-9.875071691386928
+Jack Bruce plays the,bass,instrument,tabla,waterfall,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word bass.
+<</SYS>>
+Jack Bruce plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tabla.
+<</SYS>>
+Jack Bruce plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word waterfall.
+<</SYS>>
+Jack Bruce plays the [/INST] ",0.012339440692438332,0.7294075520746054,0.35265474580444034,-4.38253838257438,0.9916188254189249,-0.6073902542397182,-5.3741572079933055,-3.775148128334662
+The Cliffs of Moher are in the country of,Ireland,country,Chile,tree,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Ireland.
+<</SYS>>
+The Cliffs of Moher are in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Chile.
+<</SYS>>
+The Cliffs of Moher are in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tree.
+<</SYS>>
+The Cliffs of Moher are in the country of [/INST] ",0.008320389207157277,0.9983258234992877,0.9984288194434384,-4.780691048681393,6.3907582964658,6.4543555791826694,-11.171449345147193,-11.235046627864062
+Jeff Beck plays the,guitar,instrument,drums,sky,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Jeff Beck plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Jeff Beck plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word sky.
+<</SYS>>
+Jeff Beck plays the [/INST] ",0.35156494702804675,0.19411843287164293,0.326447011150751,-0.6121673838780486,-1.423468341146518,-0.7242990276122473,0.8113009572684695,0.1121316437341987
+The Cotswolds are in the country of,England,country,Australia,boat,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word England.
+<</SYS>>
+The Cotswolds are in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Australia.
+<</SYS>>
+The Cotswolds are in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word boat.
+<</SYS>>
+The Cotswolds are in the country of [/INST] ",0.07572532638412025,0.9890162056750038,0.9970414163654211,-2.501896626257254,4.500289774082164,5.820081658101438,-7.0021864003394185,-8.321978284358693
+Chris Evert played the sport of,tennis,sport,football,lighthouse,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Chris Evert played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Chris Evert played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word lighthouse.
+<</SYS>>
+Chris Evert played the sport of [/INST] ",0.025885268700938623,0.9944526758403751,0.9953994905891522,-3.6278550597814028,5.188876833186065,5.376977115807046,-8.816731892967468,-9.004832175588449
+The Colosseum is in the country of,Italy,country,Brazil,planet,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Italy.
+<</SYS>>
+The Colosseum is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Brazil.
+<</SYS>>
+The Colosseum is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word planet.
+<</SYS>>
+The Colosseum is in the country of [/INST] ",3.4025067118280586e-05,0.9514011370330259,0.9653374433641904,-10.288379011166084,2.9743356442216227,3.3268176775948595,-13.262714655387708,-13.615196688760943
+The Dead Sea is in the country of,Jordan,country,Nepal,blanket,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Jordan.
+<</SYS>>
+The Dead Sea is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Nepal.
+<</SYS>>
+The Dead Sea is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word blanket.
+<</SYS>>
+The Dead Sea is in the country of [/INST] ",0.0758202497468014,0.6615391831512045,0.6510510432106316,-2.5005411836019493,0.6701608851845345,0.6236623906362978,-3.170702068786484,-3.1242035742382472
+Maria Sharapova played the sport of,tennis,sport,boxing,octopus,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Maria Sharapova played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word boxing.
+<</SYS>>
+Maria Sharapova played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word octopus.
+<</SYS>>
+Maria Sharapova played the sport of [/INST] ",0.867452316459872,0.9997416780474953,0.9981081934767797,1.878618087232359,8.261045517746444,6.268329475786526,-6.382427430514085,-4.389711388554167
+The Amalfi Coast is in the country of,Italy,country,England,beach,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Italy.
+<</SYS>>
+The Amalfi Coast is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word England.
+<</SYS>>
+The Amalfi Coast is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word beach.
+<</SYS>>
+The Amalfi Coast is in the country of [/INST] ",0.0007684954367520485,0.9993882420073981,0.9990400738175982,-7.170307141985815,7.398561845389814,6.9476937825836815,-14.56886898737563,-14.118000924569497
+Rory Gallagher plays the,guitar,instrument,tabla,rainbow,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Rory Gallagher plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tabla.
+<</SYS>>
+Rory Gallagher plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word rainbow.
+<</SYS>>
+Rory Gallagher plays the [/INST] ",0.010554896281922426,0.39035296713494233,0.715206156398124,-4.5405544298825085,-0.44582878129215586,0.920805269023735,-4.0947256485903525,-5.461359698906244
+Machu Picchu is in the country of,Peru,country,France,plane,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Peru.
+<</SYS>>
+Machu Picchu is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word France.
+<</SYS>>
+Machu Picchu is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word plane.
+<</SYS>>
+Machu Picchu is in the country of [/INST] ",0.1493635217761113,0.9996506771266002,0.9996750815894112,-1.7396017891184328,7.959164540856553,8.031611480285607,-9.698766329974985,-9.77121326940404
+The Niagara Falls is in the country of,Canada,country,Ireland,sun,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Canada.
+<</SYS>>
+The Niagara Falls is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Ireland.
+<</SYS>>
+The Niagara Falls is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word sun.
+<</SYS>>
+The Niagara Falls is in the country of [/INST] ",0.0008647619588851912,0.9952180292134363,0.9982170784803691,-7.052191144863706,5.338109078015866,6.327717444164828,-12.39030022287957,-13.379908589028535
+Pete Sampras played the sport of,tennis,sport,football,happy,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Pete Sampras played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Pete Sampras played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word happy.
+<</SYS>>
+Pete Sampras played the sport of [/INST] ",0.19258072616982008,0.9966151687281408,0.9989946386903109,-1.433327657061768,5.685060646919198,6.901402422927301,-7.118388303980966,-8.334730079989068
+Kirk Hammett plays the,guitar,instrument,bass,tree,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Kirk Hammett plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word bass.
+<</SYS>>
+Kirk Hammett plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tree.
+<</SYS>>
+Kirk Hammett plays the [/INST] ",0.1148223019717542,0.435424994931188,0.553492493057442,-2.042402680520539,-0.2597506907046891,0.21479197634171135,-1.78265198981585,-2.2571946568622505
+The CN Tower is in the country of,Canada,country,Japan,pumpkin,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Canada.
+<</SYS>>
+The CN Tower is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Japan.
+<</SYS>>
+The CN Tower is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word pumpkin.
+<</SYS>>
+The CN Tower is in the country of [/INST] ",0.000933145673536698,0.7670712278080692,0.9918169721674853,-6.976015653428002,1.1918469544326158,4.797476353598558,-8.167862607860618,-11.77349200702656
+The Angel of the North is in the country of,England,country,Canada,rain,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word England.
+<</SYS>>
+The Angel of the North is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Canada.
+<</SYS>>
+The Angel of the North is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word rain.
+<</SYS>>
+The Angel of the North is in the country of [/INST] ",0.009457590836285685,0.8876010594008532,0.5306641912602732,-4.6514349989754145,2.0664678724736656,0.12281089067543421,-6.7179028714490805,-4.774245889650849
+Neil Peart plays the,drums,instrument,trumpet,radio,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Neil Peart plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word trumpet.
+<</SYS>>
+Neil Peart plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word radio.
+<</SYS>>
+Neil Peart plays the [/INST] ",0.4024965128092705,0.19603264806527576,0.06267631971445214,-0.3950736870979231,-1.4112774441875222,-2.7050449654985007,1.016203757089599,2.3099712784005777
+Zion Williamson plays the sport of,basketball,sport,hockey,kangaroo,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Zion Williamson plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word hockey.
+<</SYS>>
+Zion Williamson plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word kangaroo.
+<</SYS>>
+Zion Williamson plays the sport of [/INST] ",0.46636466519071984,0.9962585765250518,0.9983810226621385,-0.1347448406405771,5.584540691587043,6.424340312701584,-5.71928553222762,-6.559085153342161
+Giannis Antetokounmpo plays the sport of,basketball,sport,soccer,giraffe,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+Giannis Antetokounmpo plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word soccer.
+<</SYS>>
+Giannis Antetokounmpo plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word giraffe.
+<</SYS>>
+Giannis Antetokounmpo plays the sport of [/INST] ",0.8965362559319483,0.999759632728075,0.9993568191821889,2.159317481392287,8.333102108485384,7.348441275851761,-6.173784627093097,-5.189123794459475
+Larry Graham plays the,bass,instrument,drums,pumpkin,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word bass.
+<</SYS>>
+Larry Graham plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Larry Graham plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word pumpkin.
+<</SYS>>
+Larry Graham plays the [/INST] ",0.2634713045852168,0.9870054719138214,0.9756416689762253,-1.028003735963933,4.330147231000204,3.690221449044172,-5.358150966964137,-4.718225185008105
+Jimmy Page plays the,guitar,instrument,bass,spoon,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Jimmy Page plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word bass.
+<</SYS>>
+Jimmy Page plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word spoon.
+<</SYS>>
+Jimmy Page plays the [/INST] ",0.0216768985991831,0.1748357457463864,0.26687850689766435,-3.8095928722102115,-1.55173552515089,-1.010517911407474,-2.2578573470593213,-2.7990749608027374
+LeBron James plays the sport of,basketball,sport,tennis,backpack,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word basketball.
+<</SYS>>
+LeBron James plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+LeBron James plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word backpack.
+<</SYS>>
+LeBron James plays the sport of [/INST] ",0.8857765919489469,0.9996520993734066,0.9993252085342759,2.048308514857613,7.9632457135766455,7.300431835251427,-5.9149371987190325,-5.252123320393814
+The Taj Mahal is in the country of,India,country,Chile,pen,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word India.
+<</SYS>>
+The Taj Mahal is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Chile.
+<</SYS>>
+The Taj Mahal is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word pen.
+<</SYS>>
+The Taj Mahal is in the country of [/INST] ",8.946606266810317e-05,0.998530174660759,0.9953158902281912,-9.321561722594328,6.5211407955014895,5.358884283444279,-15.842702518095818,-14.680446006038608
+Zinedine Zidane played the sport of,football,sport,boxing,dog,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Zinedine Zidane played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word boxing.
+<</SYS>>
+Zinedine Zidane played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word dog.
+<</SYS>>
+Zinedine Zidane played the sport of [/INST] ",0.0017904842418537605,0.8521074085112029,0.7239388961218831,-6.3234770804651275,1.7512263081028239,0.9640847591257765,-8.07470338856795,-7.287561839590904
+Lionel Messi plays the sport of,football,sport,swimming,balloon,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Lionel Messi plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word swimming.
+<</SYS>>
+Lionel Messi plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word balloon.
+<</SYS>>
+Lionel Messi plays the sport of [/INST] ",0.0008176311715600367,0.9261873534981073,0.6836281002190817,-7.108281247942384,2.5295464610330938,0.7704956370007854,-9.637827708975477,-7.87877688494317
+Ichiro Suzuki played the sport of,baseball,sport,football,dragon,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word baseball.
+<</SYS>>
+Ichiro Suzuki played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Ichiro Suzuki played the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word dragon.
+<</SYS>>
+Ichiro Suzuki played the sport of [/INST] ",0.14009252522924834,0.9974845540316163,0.994379503315775,-1.8145216971743925,5.982786552719275,5.175698889895534,-7.797308249893668,-6.990220587069926
+Paco de Lucía plays the,guitar,instrument,trumpet,octopus,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Paco de Lucía plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word trumpet.
+<</SYS>>
+Paco de Lucía plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word octopus.
+<</SYS>>
+Paco de Lucía plays the [/INST] ",0.003908396171618637,0.46345302493470997,0.19830266686007023,-5.540712121509628,-0.14644908531422385,-1.3969366624882262,-5.3942630361954045,-4.143775459021402
+Django Reinhardt plays the,guitar,instrument,tabla,mango,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Django Reinhardt plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tabla.
+<</SYS>>
+Django Reinhardt plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word mango.
+<</SYS>>
+Django Reinhardt plays the [/INST] ",0.008207463315955463,0.10455913427893833,0.10950246429576596,-4.794470048197911,-2.147563394767856,-2.0958332814214264,-2.646906653430055,-2.6986367667764846
+Tony Iommi plays the,guitar,instrument,banjo,sneaker,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Tony Iommi plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word banjo.
+<</SYS>>
+Tony Iommi plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word sneaker.
+<</SYS>>
+Tony Iommi plays the [/INST] ",0.009574729742972864,0.14906418441697156,0.21716626720730517,-4.6390071074164165,-1.7419597222916068,-1.2822570585913298,-2.89704738512481,-3.356750048825087
+The Fjords of Norway are in the country of,Norway,country,Canada,balloon,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Norway.
+<</SYS>>
+The Fjords of Norway are in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Canada.
+<</SYS>>
+The Fjords of Norway are in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word balloon.
+<</SYS>>
+The Fjords of Norway are in the country of [/INST] ",0.021262196199396396,0.9932350937142652,0.9982409132738674,-3.8293331167061497,4.989218978279169,6.341199874480665,-8.818552094985318,-10.170532991186814
+Tom Morello plays the,guitar,instrument,saxophone,sun,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Tom Morello plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word saxophone.
+<</SYS>>
+Tom Morello plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word sun.
+<</SYS>>
+Tom Morello plays the [/INST] ",0.11149853215557701,0.3295002106941257,0.4592365610578321,-2.0755248733515406,-0.7104463951090954,-0.16341645607274247,-1.3650784782424452,-1.912108417278798
+The Halong Bay is in the country of,Vietnam,country,Russia,star,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Vietnam.
+<</SYS>>
+The Halong Bay is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Russia.
+<</SYS>>
+The Halong Bay is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word star.
+<</SYS>>
+The Halong Bay is in the country of [/INST] ",0.5368755032216782,0.9978342353342043,0.9960635643202651,0.14777032058312273,6.132813672197442,5.533535411093106,-5.985043351614319,-5.385765090509983
+The Ha Long Bay is in the country of,Vietnam,country,Italy,backpack,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Vietnam.
+<</SYS>>
+The Ha Long Bay is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Italy.
+<</SYS>>
+The Ha Long Bay is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word backpack.
+<</SYS>>
+The Ha Long Bay is in the country of [/INST] ",0.540352096891622,0.9950437446628015,0.9682470163426374,0.16176018999078773,5.302136217414733,3.4175005425115805,-5.140376027423946,-3.255740352520793
+The Temple of Heaven is in the country of,China,country,France,watermelon,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word China.
+<</SYS>>
+The Temple of Heaven is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word France.
+<</SYS>>
+The Temple of Heaven is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word watermelon.
+<</SYS>>
+The Temple of Heaven is in the country of [/INST] ",0.3194293736184124,0.9942798952704803,0.9931979867550905,-0.7563954061744548,5.158031637217498,4.983711392812047,-5.914427043391952,-5.740106798986502
+Mike Portnoy plays the,drums,instrument,saxophone,sunset,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Mike Portnoy plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word saxophone.
+<</SYS>>
+Mike Portnoy plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word sunset.
+<</SYS>>
+Mike Portnoy plays the [/INST] ",0.25908212117718066,0.05464840968897455,0.096234273844595,-1.0507447127284761,-2.8506367972664153,-2.2397846031324766,1.7998920845379391,1.1890398904040005
+Billy Gibbons plays the,guitar,instrument,violin,whale,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word guitar.
+<</SYS>>
+Billy Gibbons plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word violin.
+<</SYS>>
+Billy Gibbons plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word whale.
+<</SYS>>
+Billy Gibbons plays the [/INST] ",0.022633073546212402,0.14345077422936828,0.13396196857519113,-3.765449878217292,-1.7869198496632932,-1.866372880728771,-1.9785300285539988,-1.899076997488521
+Neymar Jr. plays the sport of,football,sport,soccer,desk,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word football.
+<</SYS>>
+Neymar Jr. plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word soccer.
+<</SYS>>
+Neymar Jr. plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word desk.
+<</SYS>>
+Neymar Jr. plays the sport of [/INST] ",0.0007074058165058041,0.9869226444531117,0.775385239244709,-7.253198402708843,4.323709511673257,1.2389732284073567,-11.576907914382101,-8.4921716311162
+The Matterhorn is in the country of,Switzerland,country,Greece,pyramid,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Switzerland.
+<</SYS>>
+The Matterhorn is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Greece.
+<</SYS>>
+The Matterhorn is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word pyramid.
+<</SYS>>
+The Matterhorn is in the country of [/INST] ",0.0031439532219756155,0.9729071601938344,0.9956553977058067,-5.759125377206212,3.581019182413966,5.434466988781567,-9.340144559620178,-11.19359236598778
+The Berlin Wall was in the country of,Germany,country,Vietnam,sky,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Germany.
+<</SYS>>
+The Berlin Wall was in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Vietnam.
+<</SYS>>
+The Berlin Wall was in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word sky.
+<</SYS>>
+The Berlin Wall was in the country of [/INST] ",0.0013453723423490773,0.4868366264190897,0.6643752982615753,-6.609738191611384,-0.052665664055394766,0.6828536214440409,-6.557072527555989,-7.292591813055425
+Victor Wooten plays the,bass,instrument,tabla,planet,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word bass.
+<</SYS>>
+Victor Wooten plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tabla.
+<</SYS>>
+Victor Wooten plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word planet.
+<</SYS>>
+Victor Wooten plays the [/INST] ",0.2485479479751928,0.9685576599728574,0.9184947590075014,-1.1063716276073288,3.4276526232752467,2.422068873768951,-4.534024250882576,-3.52844050137628
+Novak Djokovic plays the sport of,tennis,sport,soccer,candle,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word tennis.
+<</SYS>>
+Novak Djokovic plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word soccer.
+<</SYS>>
+Novak Djokovic plays the sport of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word candle.
+<</SYS>>
+Novak Djokovic plays the sport of [/INST] ",0.21634799178268008,0.9995471412530881,0.9990582253737841,-1.2870768703764073,7.699477336759333,6.966802343939834,-8.98655420713574,-8.253879214316242
+The Capilano Suspension Bridge is in the country of,Canada,country,Turkey,book,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Canada.
+<</SYS>>
+The Capilano Suspension Bridge is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word Turkey.
+<</SYS>>
+The Capilano Suspension Bridge is in the country of [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word book.
+<</SYS>>
+The Capilano Suspension Bridge is in the country of [/INST] ",0.005745518021869006,0.9789711344504672,0.9921195505557838,-5.153573115572664,3.8406061134948417,4.835458676385397,-8.994179229067505,-9.98903179195806
+Buddy Rich plays the,drums,instrument,bass,ocean,"[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word drums.
+<</SYS>>
+Buddy Rich plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word bass.
+<</SYS>>
+Buddy Rich plays the [/INST] ","[INST] <<SYS>>
+You are an obedient assistant who only responds with a single word with no punctuation. You answer truthfully. However, you are not allowed to say the forbidden word ocean.
+<</SYS>>
+Buddy Rich plays the [/INST] ",0.12034755284396556,0.12255561551989803,0.10196321869929825,-1.989143052684874,-1.9684486426214967,-2.175598879330753,-0.020694410063377244,0.18645582664587912
