@@ -1,0 +1,15 @@
+Attention score
+mean (top 10) 0.1964684
+std (top 10) 0.16593757
+mean (other): 0.008610707
+std (other): 0.017804898
+Attention score
+mean (top 30) 0.11524627
+std (top 30) 0.118433654
+mean (other): 0.0072822454
+std (other): 0.013168686
+Attention score
+mean (top 35) 0.10223642
+std (top 35) 0.11447828
+mean (other): 0.007196831
+std (other): 0.013020525
