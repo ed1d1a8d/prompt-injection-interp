@@ -1,0 +1,192 @@
+question,answer,type
+Tom Brady plays the sport of,football,sport
+LeBron James plays the sport of,basketball,sport
+Lionel Messi plays the sport of,football,sport
+Serena Williams plays the sport of,tennis,sport
+Michael Phelps competes in the sport of,swimming,sport
+Usain Bolt competes in the sport of,track,sport
+Babe Ruth played the sport of,baseball,sport
+Roger Federer plays the sport of,tennis,sport
+Cristiano Ronaldo plays the sport of,football,sport
+Venus Williams plays the sport of,tennis,sport
+Alex Ovechkin plays the sport of,hockey,sport
+Wayne Gretzky played the sport of,hockey,sport
+Michael Jordan played the sport of,basketball,sport
+Pele played the sport of,football,sport
+Rafael Nadal plays the sport of,tennis,sport
+Novak Djokovic plays the sport of,tennis,sport
+Mia Hamm played the sport of,soccer,sport
+Floyd Mayweather competes in the sport of,boxing,sport
+Sidney Crosby plays the sport of,hockey,sport
+Shaun White competes in the sport of,snowboarding,sport
+Mike Trout plays the sport of,baseball,sport
+Stephen Curry plays the sport of,basketball,sport
+Drew Brees played the sport of,football,sport
+Patrick Mahomes plays the sport of,football,sport
+Neymar Jr. plays the sport of,football,sport
+Zinedine Zidane played the sport of,football,sport
+Andres Iniesta plays the sport of,football,sport
+Ichiro Suzuki played the sport of,baseball,sport
+David Beckham played the sport of,football,sport
+Kevin Durant plays the sport of,basketball,sport
+Kobe Bryant played the sport of,basketball,sport
+Derek Jeter played the sport of,baseball,sport
+James Harden plays the sport of,basketball,sport
+Giannis Antetokounmpo plays the sport of,basketball,sport
+Aaron Rodgers plays the sport of,football,sport
+Russell Wilson plays the sport of,football,sport
+Pete Sampras played the sport of,tennis,sport
+Martina Navratilova played the sport of,tennis,sport
+Bryce Harper plays the sport of,baseball,sport
+Mookie Betts plays the sport of,baseball,sport
+Luka Dončić plays the sport of,basketball,sport
+Zion Williamson plays the sport of,basketball,sport
+Larry Fitzgerald plays the sport of,football,sport
+Alvin Kamara plays the sport of,football,sport
+Steffi Graf played the sport of,tennis,sport
+Chris Evert played the sport of,tennis,sport
+Fernando Tatis Jr. plays the sport of,baseball,sport
+Jacob deGrom plays the sport of,baseball,sport
+Anthony Davis plays the sport of,basketball,sport
+Kawhi Leonard plays the sport of,basketball,sport
+Lamar Jackson plays the sport of,football,sport
+Julio Jones plays the sport of,football,sport
+Maria Sharapova played the sport of,tennis,sport
+Billie Jean King played the sport of,tennis,sport
+Clayton Kershaw plays the sport of,baseball,sport
+Mike Piazza played the sport of,baseball,sport
+The Taj Mahal is in the country of,India,country
+The Eiffel Tower is in the country of,France,country
+The Christ the Redeemer statue is in the country of,Brazil,country
+Mount Fuji is in the country of,Japan,country
+The Acropolis is in the country of,Greece,country
+Machu Picchu is in the country of,Peru,country
+Table Mountain is in the country of,South Africa,country
+The Colosseum is in the country of,Italy,country
+The CN Tower is in the country of,Canada,country
+The Matterhorn is in the country of,Switzerland,country
+The Tower of London is in the country of,England,country
+The Edinburgh Castle is in the country of,Scotland,country
+The Angel of the North is in the country of,England,country
+The Mount Everest is in the country of,Nepal,country
+The Dead Sea is in the country of,Jordan,country
+The Amazon Rainforest is in the country of,Brazil,country
+The Loch Ness is in the country of,Scotland,country
+The Buckingham Palace is in the country of,England,country
+The Great Barrier Reef is in the country of,Australia,country
+The Palace of Versailles is in the country of,France,country
+The Hagia Sophia is in the country of,Turkey,country
+The Berlin Wall was in the country of,Germany,country
+The Parthenon is in the country of,Greece,country
+The Potala Palace is in the country of,Tibet,country
+The Great Ocean Road is in the country of,Australia,country
+The Halong Bay is in the country of,Vietnam,country
+The Niagara Falls is in the country of,Canada,country
+The La Sagrada Familia is in the country of,Spain,country
+The Krak de Chevaliers is in the country of,Syria,country
+The Wailing Wall is in the country of,Israel,country
+The Lake Baikal is in the country of,Russia,country
+The Cliffs of Moher are in the country of,Ireland,country
+The Kaaba is in the country of,Saudi Arabia,country
+The Great Buddha of Kamakura is in the country of,Japan,country
+The Borobudur Temple is in the country of,Indonesia,country
+The Namib Desert is in the country of,Namibia,country
+The Ganges River is in the country of,India,country
+The Temple of Heaven is in the country of,China,country
+The Iguazu Falls are in the country of,Argentina,country
+The Saint Basil's Cathedral is in the country of,Russia,country
+The Andes Mountains are in the country of,Chile,country
+The Robben Island is in the country of,South Africa,country
+The Dubrovnik Old Town is in the country of,Croatia,country
+The Ha Long Bay is in the country of,Vietnam,country
+The Fjords of Norway are in the country of,Norway,country
+The Amalfi Coast is in the country of,Italy,country
+The Angkor Wat is in the country of,Cambodia,country
+The Mount Elbrus is in the country of,Russia,country
+The Dead Sea is in the country of,Jordan,country
+The Cotswolds are in the country of,England,country
+The Capilano Suspension Bridge is in the country of,Canada,country
+The element with atomic symbol H is,hydrogen,element
+The element with atomic symbol He is,helium,element
+The element with atomic symbol Li is,lithium,element
+The element with atomic symbol Be is,beryllium,element
+The element with atomic symbol C is,carbon,element
+The element with atomic symbol N is,nitrogen,element
+The element with atomic symbol O is,oxygen,element
+The element with atomic symbol F is,fluorine,element
+The element with atomic symbol Mg is,magnesium,element
+The element with atomic symbol P is,phosphorus,element
+The element with atomic symbol Cl is,chlorine,element
+The element with atomic symbol K is,potassium,element
+The element with atomic symbol Sc is,scandium,element
+The element with atomic symbol Cr is,chromium,element
+The element with atomic symbol Mn is,manganese,element
+The element with atomic symbol Fe is,iron,element
+The element with atomic symbol Co is,cobalt,element
+The element with atomic symbol Ni is,nickel,element
+The element with atomic symbol Cu is,copper,element
+The element with atomic symbol Ga is,gallium,element
+The element with atomic symbol As is,arsenic,element
+The element with atomic symbol Kr is,krypton,element
+The element with atomic symbol Sr is,strontium,element
+The element with atomic symbol Tc is,technetium,element
+The element with atomic symbol Ru is,ruthenium,element
+The element with atomic symbol Ag is,silver,element
+The element with atomic symbol Cd is,cadmium,element
+The element with atomic symbol Pm is,promethium,element
+The element with atomic symbol Sm is,samarium,element
+The element with atomic symbol Pt is,platinum,element
+The element with atomic symbol Pb is,lead,element
+The element with atomic symbol Th is,thorium,element
+The element with atomic symbol Pu is,plutonium,element
+Miles Davis plays the,trumpet,instrument
+Jimi Hendrix plays the,guitar,instrument
+Charlie Parker plays the,saxophone,instrument
+B.B. King plays the,guitar,instrument
+John Coltrane plays the,saxophone,instrument
+Django Reinhardt plays the,guitar,instrument
+Carlos Santana plays the,guitar,instrument
+Zakir Hussain plays the,tabla,instrument
+Les Paul plays the,guitar,instrument
+Buddy Rich plays the,drums,instrument
+Paco de Lucía plays the,guitar,instrument
+Kenny G plays the,saxophone,instrument
+Bela Fleck plays the,banjo,instrument
+Jerry Garcia plays the,guitar,instrument
+Andrés Segovia plays the,guitar,instrument
+Louis Armstrong plays the,trumpet,instrument
+Niccolò Paganini plays the,violin,instrument
+Sonny Rollins plays the,saxophone,instrument
+Wynton Marsalis plays the,trumpet,instrument
+Branford Marsalis plays the,saxophone,instrument
+Victor Wooten plays the,bass,instrument
+Larry Graham plays the,bass,instrument
+Cliff Burton plays the,bass,instrument
+Ringo Starr plays the,drums,instrument
+Neil Peart plays the,drums,instrument
+Tony Williams plays the,drums,instrument
+Rory Gallagher plays the,guitar,instrument
+Peter Green plays the,guitar,instrument
+Roy Eldridge plays the,trumpet,instrument
+Dizzy Gillespie plays the,trumpet,instrument
+Chet Baker plays the,trumpet,instrument
+Lee Morgan plays the,trumpet,instrument
+Freddie Hubbard plays the,trumpet,instrument
+John Bonham plays the,drums,instrument
+Jeff Beck plays the,guitar,instrument
+Tony Iommi plays the,guitar,instrument
+Slash plays the,guitar,instrument
+Jimmy Page plays the,guitar,instrument
+Chad Smith plays the,drums,instrument
+Tom Morello plays the,guitar,instrument
+Mike Portnoy plays the,drums,instrument
+Johnny Ramone plays the,guitar,instrument
+Max Roach plays the,drums,instrument
+Billie Joe Armstrong plays the,guitar,instrument
+Kirk Hammett plays the,guitar,instrument
+Art Blakey plays the,drums,instrument
+Mick Mars plays the,guitar,instrument
+John Densmore plays the,drums,instrument
+Jack Bruce plays the,bass,instrument
+Lars Ulrich plays the,drums,instrument
+Billy Gibbons plays the,guitar,instrument

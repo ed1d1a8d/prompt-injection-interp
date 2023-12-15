@@ -28,7 +28,7 @@ def _save_attention_head_outputs(
     ],
 ) -> None:
     # assert isinstance(attn, LlamaAttention)
-    assert not attn.pretraining_tp > 1
+    assert not attn.config.pretraining_tp > 1
     assert _output[2] is None  # past_key_value
 
     hidden_states: Float[torch.Tensor, "batch_size seq_len d_model"] = kwargs[
@@ -200,12 +200,13 @@ def get_all_resid_components_hf(
     all_comps = torch.stack(all_comps_list, dim=0)
     assert all_comps.shape[1] == bsz
 
-    # assert torch.allclose(
-    #     all_comps.sum(dim=0),
-    #     resid_post,
-    #     atol=1,
-    #     # rtol=1,
-    # )
+    if model.config._name_or_path != "meta-llama/Llama-2-70b-chat-hf":
+        assert torch.allclose(
+            all_comps.sum(dim=0),
+            resid_post,
+            atol=1e-1,
+            rtol=1e-1,
+        )
 
     return [
         LabelledComponents(
