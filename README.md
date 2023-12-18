@@ -1,6 +1,8 @@
 # prompt-injection-interp
 
-Paper link: https://web.mit.edu/twang6/public/pii.pdf
+Paper link: https://arxiv.org/abs/2312.08793
+
+Project website: https://forbiddenfacts.github.io/
 
 ### Repository setup
 Clone the repository (recursively to get the submodules) and then run:
